@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm astro *)",
+      "Bash(pnpm approve-builds *)",
+      "Bash(pnpm add *)",
+      "Bash(npx shadcn-ui@latest init --yes)",
+      "Bash(npx shadcn@latest init --yes)"
+    ]
+  }
+}
