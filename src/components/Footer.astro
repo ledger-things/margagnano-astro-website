@@ -1,0 +1,120 @@
+---
+// Footer: sfondo verde, logo bianco e informazioni di contatto.
+import Reveal from './Reveal.tsx';
+---
+
+<footer class="footer">
+	<div class="footer__inner">
+		<div class="footer__main">
+			<Reveal client:visible inView delay={0.05}>
+				<a class="footer__brand" href="/" aria-label="Masseria Margagnano - Home">
+					<img
+						class="footer__logo"
+						src="/logo/logo-full-white.svg"
+						alt="Masseria Margagnano"
+						width="628"
+						height="387"
+					/>
+				</a>
+			</Reveal>
+
+			<Reveal client:visible inView delay={0.15}>
+				<address class="footer__address">
+					<span class="footer__address-name">Masseria Margagnano</span>
+					<span>Strada Comunale Burgo Cerasina</span>
+					<span>72015 Fasano, Brindisi, Italy</span>
+				</address>
+			</Reveal>
+		</div>
+
+		<div class="footer__divider" aria-hidden="true"></div>
+
+		<p class="footer__copy">&copy; 2026 Masseria Margagnano</p>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background-color: var(--brand-verde);
+		color: var(--brand-avorio);
+		width: 100%;
+	}
+
+	.footer__inner {
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 5vw, 5rem);
+	}
+
+	.footer__main {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: clamp(2rem, 5vw, 4rem);
+		flex-wrap: wrap;
+	}
+
+	.footer__brand {
+		display: inline-flex;
+		flex-shrink: 0;
+	}
+
+	.footer__logo {
+		height: clamp(72px, 9vw, 120px);
+		width: auto;
+	}
+
+	.footer__address {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-style: normal;
+		font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+		line-height: 1.5;
+		text-align: right;
+		opacity: 0.92;
+	}
+
+	.footer__address-name {
+		font-size: 1.15em;
+		letter-spacing: 0.02em;
+		margin-bottom: 0.15rem;
+	}
+
+	.footer__divider {
+		height: 1px;
+		width: 100%;
+		margin: clamp(1.75rem, 3vw, 2.5rem) 0 clamp(1.25rem, 2vw, 1.75rem);
+		background-color: color-mix(in srgb, var(--brand-avorio) 30%, transparent);
+	}
+
+	.footer__copy {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		text-align: right;
+		opacity: 0.85;
+	}
+
+	@media (max-width: 640px) {
+		.footer__main {
+			flex-direction: column;
+			align-items: center;
+			text-align: center;
+			gap: 1.75rem;
+		}
+
+		.footer__address {
+			text-align: center;
+		}
+
+		.footer__copy {
+			text-align: center;
+		}
+	}
+</style>

@@ -70,13 +70,31 @@
     font-display: swap;
 }
 
+/* Monsieur La Doulaise (script) */
+@font-face {
+    font-family: 'Monsieur La Doulaise';
+    src: url('/fonts/MonsieurLaDoulaise-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
     --font-heading: 'New Caledonia LT Std', serif;
     --font-serif: 'New Caledonia LT Std', serif;
     --font-display: 'Times Sans Serif', sans-serif;
+    --font-script: 'Monsieur La Doulaise', cursive;
     --font-sans: 'Geist Variable', sans-serif;
+
+    /* Brand palette Margagnano */
+    --color-terracotta: var(--brand-terracotta);
+    --color-verde: var(--brand-verde);
+    --color-marrone: var(--brand-marrone);
+    --color-azzurro: var(--brand-azzurro);
+    --color-avorio: var(--brand-avorio);
+
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -118,6 +136,13 @@
 }
 
 :root {
+    /* Brand palette Margagnano */
+    --brand-terracotta: #994619;
+    --brand-verde: #7f8872;
+    --brand-marrone: #6b5a44;
+    --brand-azzurro: #6b5a44; /* NB: valore identico a --brand-marrone, probabile refuso */
+    --brand-avorio: #e9e3d3;
+
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);
     --card: oklch(1 0 0);
