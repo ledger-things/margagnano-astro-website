@@ -1,0 +1,81 @@
+---
+// Hero "Coming Soon" temporanea. La versione definitiva verra' definita in seguito.
+import Reveal from './Reveal.tsx';
+---
+
+<section class="hero" aria-label="Coming soon">
+	<div class="hero__bg" aria-hidden="true"></div>
+	<div class="hero__overlay" aria-hidden="true"></div>
+
+	<div class="hero__content">
+		<Reveal client:load delay={0.35}>
+			<p class="hero__eyebrow">Intimate stays in Puglia</p>
+		</Reveal>
+		<Reveal client:load delay={0.5} duration={1.1}>
+			<h1 class="hero__title">Coming Soon</h1>
+		</Reveal>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 100svh;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.hero__bg {
+		position: absolute;
+		inset: 0;
+		background-image: url('/images/hero.png');
+		background-size: cover;
+		background-position: center;
+	}
+
+	.hero__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			to bottom,
+			rgba(0, 0, 0, 0.45) 0%,
+			rgba(0, 0, 0, 0.25) 45%,
+			rgba(0, 0, 0, 0.55) 100%
+		);
+	}
+
+	.hero__content {
+		position: relative;
+		z-index: 1;
+		text-align: center;
+		color: #fff;
+		padding: 0 1.5rem;
+	}
+
+	.hero__eyebrow {
+		font-family: 'Times Sans Serif', sans-serif;
+		text-transform: uppercase;
+		letter-spacing: 0.35em;
+		font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+		margin: 0 0 1.25rem;
+		opacity: 0.9;
+	}
+
+	.hero__title {
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-size: clamp(2.75rem, 8vw, 6.5rem);
+		line-height: 1;
+		margin: 0;
+		letter-spacing: 0.02em;
+	}
+
+	@media (max-width: 640px) {
+		.hero__eyebrow {
+			letter-spacing: 0.25em;
+		}
+	}
+</style>

@@ -3,10 +3,79 @@
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
+/* New Caledonia LT Std */
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdRg.TTF') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdRgIt.TTF') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdSmBold.TTF') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdSmBoldIt.TTF') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdBold.TTF') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdBoldIt.TTF') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdBlk.TTF') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'New Caledonia LT Std';
+    src: url('/fonts/NewCaledoniaLTStdBlkIt.TTF') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* Times Sans Serif */
+@font-face {
+    font-family: 'Times Sans Serif';
+    src: url('/fonts/TIMESS__.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: var(--font-sans);
+    --font-heading: 'New Caledonia LT Std', serif;
+    --font-serif: 'New Caledonia LT Std', serif;
+    --font-display: 'Times Sans Serif', sans-serif;
     --font-sans: 'Geist Variable', sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
@@ -127,4 +196,26 @@
   html {
     @apply font-sans;
     }
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
 }
