@@ -1,0 +1,150 @@
+---
+import Reveal from './Reveal.tsx';
+---
+
+<section id="life" class="life" aria-labelledby="life-title">
+	<div class="life__inner">
+		<div class="life__media">
+			<Reveal client:visible inView delay={0.08} x={-40} y={0} duration={1.05}>
+				<img
+					src="/images/home/life-garden.png"
+					alt="Giardino e canale in pietra della masseria"
+					width="1374"
+					height="1406"
+					loading="lazy"
+				/>
+			</Reveal>
+		</div>
+
+		<div class="life__copy">
+			<Reveal client:visible inView delay={0.12} y={28}>
+				<h2 id="life-title" class="life__title">Life in Margagnano</h2>
+			</Reveal>
+			<Reveal client:visible inView delay={0.24} y={32}>
+				<div class="life__text">
+					<p>
+						Vivere Margagnano significa lasciarsi accompagnare da un susseguirsi di momenti pensati
+						per il benessere e il relax.
+					</p>
+					<p>
+						Dalle colazioni che aprono la giornata ai momenti a bordo piscina, dai percorsi dedicati
+						alla spa ai Rituali di Quiete, ogni esperienza si inserisce con naturalezza nel ritmo
+						della masseria, offrendo il piacere di riscoprire il valore del tempo dedicato a sé.
+					</p>
+					<p>
+						Ogni momento trova il proprio spazio, lasciando che il soggiorno si trasformi in
+						un'esperienza fatta di equilibrio, benessere e cura.
+					</p>
+				</div>
+			</Reveal>
+			<Reveal client:visible inView delay={0.38} y={20}>
+				<a class="life__cta" href="#experience">View more</a>
+			</Reveal>
+		</div>
+	</div>
+</section>
+
+<style>
+	.life {
+		background: #f7f5f1;
+		color: var(--brand-marrone);
+	}
+
+	.life__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: clamp(2rem, 6vw, 5.5rem);
+		align-items: center;
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5.5rem);
+	}
+
+	.life__media {
+		width: 100%;
+		aspect-ratio: 1;
+		overflow: hidden;
+	}
+
+	.life__media :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.life__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.life__copy {
+		max-width: 34rem;
+	}
+
+	.life__title {
+		margin: 0 0 1.5rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+		line-height: 1.1;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+	}
+
+	.life__text {
+		display: grid;
+		gap: 1.15rem;
+		margin-bottom: 2rem;
+	}
+
+	.life__text p {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.1vw, 1.15rem);
+		line-height: 1.7;
+		color: #5c4e3c;
+	}
+
+	.life__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 8.75rem;
+		padding: 0.85rem 1.25rem;
+		border: 1px solid var(--brand-marrone);
+		color: var(--brand-marrone);
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.78rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.life__cta:hover,
+	.life__cta:focus-visible {
+		background: var(--brand-marrone);
+		color: var(--brand-avorio);
+		outline: none;
+	}
+
+	@media (max-width: 900px) {
+		.life__inner {
+			grid-template-columns: 1fr;
+			padding-block: 3.5rem;
+		}
+
+		.life__media {
+			max-width: 28rem;
+			margin: 0 auto;
+		}
+
+		.life__copy {
+			max-width: none;
+		}
+	}
+</style>

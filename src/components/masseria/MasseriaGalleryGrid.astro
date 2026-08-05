@@ -1,0 +1,145 @@
+---
+import Reveal from '../Reveal.tsx';
+---
+
+<section class="mh-gallery" aria-label="Galleria della masseria">
+	<div class="mh-gallery__inner">
+		<figure class="mh-gallery__item mh-gallery__item--left">
+			<Reveal client:visible inView delay={0.06} y={24} duration={0.95}>
+				<img
+					src="/images/home/gallery-vault.png"
+					alt="Volta in pietra della masseria"
+					width="900"
+					height="1200"
+					loading="lazy"
+				/>
+			</Reveal>
+		</figure>
+
+		<figure class="mh-gallery__item mh-gallery__item--mid-top">
+			<Reveal client:visible inView delay={0.12} y={20} duration={0.95}>
+				<img
+					src="/images/home/gallery-grove.png"
+					alt="Uliveto intorno alla masseria"
+					width="1200"
+					height="800"
+					loading="lazy"
+				/>
+			</Reveal>
+		</figure>
+
+		<figure class="mh-gallery__item mh-gallery__item--mid-bottom">
+			<Reveal client:visible inView delay={0.18} y={20} duration={0.95}>
+				<img
+					src="/images/home/gallery-steps.png"
+					alt="Dettaglio architettonico della masseria"
+					width="1200"
+					height="800"
+					loading="lazy"
+				/>
+			</Reveal>
+		</figure>
+
+		<figure class="mh-gallery__item mh-gallery__item--right">
+			<Reveal client:visible inView delay={0.14} y={24} duration={0.95}>
+				<img
+					src="/images/home/gallery-lantern.png"
+					alt="Lanterna sulla pietra della masseria"
+					width="900"
+					height="1200"
+					loading="lazy"
+				/>
+			</Reveal>
+		</figure>
+	</div>
+</section>
+
+<style>
+	.mh-gallery {
+		background: #f3efe8;
+	}
+
+	.mh-gallery__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) minmax(0, 1.05fr);
+		grid-template-rows: 1fr 1fr;
+		gap: clamp(0.55rem, 1.2vw, 0.9rem);
+		height: clamp(28rem, 55vw, 40rem);
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: 0 clamp(1rem, 3.5vw, 3rem) clamp(3rem, 6vw, 5rem);
+		box-sizing: content-box;
+	}
+
+	.mh-gallery__item {
+		margin: 0;
+		overflow: hidden;
+		min-width: 0;
+		min-height: 0;
+	}
+
+	.mh-gallery__item--left {
+		grid-column: 1;
+		grid-row: 1 / -1;
+	}
+
+	.mh-gallery__item--mid-top {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.mh-gallery__item--mid-bottom {
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	.mh-gallery__item--right {
+		grid-column: 3;
+		grid-row: 1 / -1;
+	}
+
+	.mh-gallery__item :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.mh-gallery__item img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 800px) {
+		.mh-gallery__inner {
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto;
+			height: auto;
+			gap: 0.6rem;
+		}
+
+		.mh-gallery__item--left {
+			grid-column: 1;
+			grid-row: 1 / span 2;
+			aspect-ratio: 3 / 4.4;
+		}
+
+		.mh-gallery__item--mid-top {
+			grid-column: 2;
+			grid-row: 1;
+			aspect-ratio: 4 / 3;
+		}
+
+		.mh-gallery__item--mid-bottom {
+			grid-column: 2;
+			grid-row: 2;
+			aspect-ratio: 4 / 3;
+		}
+
+		.mh-gallery__item--right {
+			grid-column: 1 / -1;
+			grid-row: 3;
+			aspect-ratio: 16 / 10;
+		}
+	}
+</style>

@@ -13,6 +13,8 @@ interface RevealProps {
 	duration?: number;
 	/** Spostamento verticale iniziale, in px. */
 	y?: number;
+	/** Spostamento orizzontale iniziale, in px. */
+	x?: number;
 	className?: string;
 	/** Se true, anima quando entra nel viewport (scroll); altrimenti al mount. */
 	inView?: boolean;
@@ -28,6 +30,7 @@ export default function Reveal({
 	delay = 0,
 	duration = 0.9,
 	y = 24,
+	x = 0,
 	className,
 	inView = false,
 	once = true,
@@ -37,8 +40,12 @@ export default function Reveal({
 
 	const MotionTag = motion[as] as React.ComponentType<HTMLMotionProps<'div'>>;
 
-	const hidden = { opacity: 0, y: shouldReduce ? 0 : y };
-	const shown = { opacity: 1, y: 0 };
+	const hidden = {
+		opacity: 0,
+		y: shouldReduce ? 0 : y,
+		x: shouldReduce ? 0 : x,
+	};
+	const shown = { opacity: 1, y: 0, x: 0 };
 
 	const transition = {
 		duration: shouldReduce ? 0 : duration,

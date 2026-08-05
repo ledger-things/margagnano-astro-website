@@ -1,0 +1,205 @@
+---
+/**
+ * Stili globali per MasseriaTabs (isola React).
+ */
+---
+
+<style is:global>
+	.mh-tabs {
+		background: #f2ebe3;
+		color: var(--brand-marrone);
+	}
+
+	.mh-tabs__inner {
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 6vw, 6rem);
+	}
+
+	.mh-tabs__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+		gap: clamp(2.5rem, 6vw, 5.5rem);
+		align-items: start;
+	}
+
+	.mh-tabs__copy {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		max-width: 34rem;
+		min-height: 100%;
+		padding-bottom: 4rem;
+	}
+
+	.mh-tabs__nav-block {
+		width: fit-content;
+		max-width: 100%;
+		margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+	}
+
+	.mh-tabs__nav {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0;
+		margin-bottom: 0.7rem;
+	}
+
+	.mh-tabs__nav-item {
+		display: inline-flex;
+		align-items: baseline;
+	}
+
+	.mh-tabs__sep {
+		margin: 0 0.85rem;
+		color: rgba(153, 70, 25, 0.28);
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+		line-height: 1;
+	}
+
+	.mh-tabs__tab {
+		appearance: none;
+		border: 0;
+		background: transparent;
+		padding: 0;
+		cursor: pointer;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1.05rem, 1.45vw, 1.35rem);
+		font-weight: 400;
+		letter-spacing: 0.01em;
+		line-height: 1.2;
+		color: rgba(153, 70, 25, 0.32);
+		transition: color 0.25s ease;
+	}
+
+	.mh-tabs__tab.is-active {
+		color: var(--brand-terracotta);
+	}
+
+	.mh-tabs__tab:hover,
+	.mh-tabs__tab:focus-visible {
+		color: var(--brand-terracotta);
+		outline: none;
+	}
+
+	/* Barra sotto i tab: segmento attivo spesso, altri sottili */
+	.mh-tabs__progress {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 0.4rem;
+		align-items: end;
+		width: 100%;
+		height: 6px;
+	}
+
+	.mh-tabs__progress-seg {
+		display: block;
+		height: 1px;
+		background: rgba(153, 70, 25, 0.22);
+		transition:
+			height 0.28s ease,
+			background-color 0.28s ease;
+	}
+
+	.mh-tabs__progress-seg.is-active {
+		height: 4px;
+		background: var(--brand-terracotta);
+	}
+
+	.mh-tabs__panel {
+		flex: 1 1 auto;
+	}
+
+	.mh-tabs__heading {
+		margin: 0 0 1.25rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.85rem, 3.2vw, 2.65rem);
+		line-height: 1.12;
+		letter-spacing: 0.01em;
+		color: var(--brand-verde);
+	}
+
+	.mh-tabs__text {
+		margin: 0;
+		max-width: 32rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1rem, 1.15vw, 1.1rem);
+		line-height: 1.7;
+		color: var(--brand-marrone);
+	}
+
+	.mh-tabs__next {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		display: grid;
+		place-items: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		border: 1px solid var(--brand-terracotta);
+		border-radius: 999px;
+		background: transparent;
+		color: var(--brand-terracotta);
+		cursor: pointer;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease,
+			transform 0.25s ease;
+	}
+
+	.mh-tabs__next:hover,
+	.mh-tabs__next:focus-visible {
+		background: var(--brand-terracotta);
+		color: var(--brand-avorio);
+		transform: translateX(2px);
+		outline: none;
+	}
+
+	.mh-tabs__media {
+		position: relative;
+		width: 100%;
+		aspect-ratio: 16 / 10.5;
+		overflow: hidden;
+		min-width: 0;
+		margin-top: clamp(2.6rem, 4.5vw, 3.75rem); /* allinea circa con il titolo, sotto i tab */
+	}
+
+	.mh-tabs__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 900px) {
+		.mh-tabs__grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.mh-tabs__media {
+			order: -1;
+			margin-top: 0;
+			aspect-ratio: 4 / 3;
+		}
+
+		.mh-tabs__copy {
+			padding-bottom: 4.25rem;
+		}
+
+		.mh-tabs__sep {
+			margin: 0 0.5rem;
+		}
+
+		.mh-tabs__tab {
+			font-size: 1rem;
+		}
+
+		.mh-tabs__heading {
+			font-size: clamp(1.65rem, 7vw, 2.1rem);
+		}
+	}
+</style>

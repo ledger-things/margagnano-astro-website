@@ -1,0 +1,212 @@
+---
+import Reveal from './Reveal.tsx';
+---
+
+<section id="masseria" class="masseria" aria-labelledby="masseria-title">
+	<div class="masseria__texture" aria-hidden="true"></div>
+	<div class="masseria__tint" aria-hidden="true"></div>
+
+	<div class="masseria__inner">
+		<div class="masseria__copy">
+			<Reveal client:visible inView delay={0.05} y={28}>
+				<p class="masseria__eyebrow">Nel cuore della Puglia</p>
+			</Reveal>
+			<Reveal client:visible inView delay={0.15} y={32}>
+				<h2 id="masseria-title" class="masseria__title">La masseria</h2>
+			</Reveal>
+			<Reveal client:visible inView delay={0.28} y={36}>
+				<div class="masseria__text">
+					<p>
+						Tra gli ulivi secolari del paesaggio pugliese, a pochi minuti da Fasano, Masseria
+						Margagnano custodisce il fascino autentico delle antiche masserie di Puglia. Il suo
+						nome, tramandato nel tempo, racconta una storia che intreccia memoria, territorio e
+						ospitalità.
+					</p>
+					<p>
+						Un tempo cuore della vita rurale, oggi la masseria conserva la stessa essenza,
+						accogliendo gli ospiti in un luogo dove la pietra, la natura e il silenzio convivono
+						in perfetto equilibrio. Qui ogni giornata segue un ritmo lento, ispirato alla
+						tradizione e alla bellezza del paesaggio pugliese.
+					</p>
+				</div>
+			</Reveal>
+			<Reveal client:visible inView delay={0.4} y={20}>
+				<a class="masseria__cta" href="/la-masseria">View more</a>
+			</Reveal>
+		</div>
+
+		<div class="masseria__media">
+			<div class="masseria__frame">
+				<Reveal client:visible inView delay={0.18} x={36} y={0} duration={1.05}>
+					<img
+						src="/images/home/masseria-arch.png"
+						alt="Cortile della masseria con archi in pietra"
+						width="1040"
+						height="1232"
+						loading="lazy"
+					/>
+				</Reveal>
+			</div>
+			<div class="masseria__frame">
+				<Reveal client:visible inView delay={0.32} x={48} y={0} duration={1.1}>
+					<img
+						src="/images/home/masseria-pov.jpg"
+						alt="Vista dalla finestra sul cortile della masseria"
+						width="1040"
+						height="1232"
+						loading="lazy"
+					/>
+				</Reveal>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.masseria {
+		position: relative;
+		overflow: hidden;
+		background: #f3efe8;
+		color: var(--brand-marrone);
+	}
+
+	.masseria__texture {
+		position: absolute;
+		inset: 0;
+		background-image: url('/images/home/masseria-texture.png');
+		background-size: cover;
+		background-position: center;
+		opacity: 0.55;
+	}
+
+	.masseria__tint {
+		position: absolute;
+		inset: 0;
+		background: rgba(233, 227, 211, 0.45);
+	}
+
+	.masseria__inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+		gap: clamp(2rem, 5vw, 4.5rem);
+		align-items: center;
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5.5rem);
+	}
+
+	.masseria__copy,
+	.masseria__media {
+		min-width: 0;
+	}
+
+	.masseria__eyebrow {
+		margin: 0 0 0.35rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-style: italic;
+		font-size: clamp(1.25rem, 2.2vw, 2rem);
+		color: var(--brand-verde);
+	}
+
+	.masseria__title {
+		margin: 0 0 1.75rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		line-height: 1;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+	}
+
+	.masseria__text {
+		display: grid;
+		gap: 1.35rem;
+		max-width: 38rem;
+		margin-bottom: 2rem;
+	}
+
+	.masseria__text p {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1rem, 1.15vw, 1.2rem);
+		line-height: 1.7;
+		color: var(--brand-marrone);
+	}
+
+	.masseria__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 8.75rem;
+		padding: 0.85rem 1.25rem;
+		border: 1px solid var(--brand-marrone);
+		color: var(--brand-marrone);
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.78rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.masseria__cta:hover,
+	.masseria__cta:focus-visible {
+		background: var(--brand-marrone);
+		color: var(--brand-avorio);
+		outline: none;
+	}
+
+	.masseria__media {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		gap: clamp(0.65rem, 1.2vw, 1rem);
+		width: 100%;
+		align-items: stretch;
+	}
+
+	.masseria__frame {
+		width: 100%;
+		min-width: 0;
+		aspect-ratio: 520 / 616;
+		overflow: hidden;
+	}
+
+	.masseria__frame :global(div) {
+		width: 100%;
+		height: 100%;
+		min-width: 0;
+	}
+
+	.masseria__frame img {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 900px) {
+		.masseria__inner {
+			grid-template-columns: 1fr;
+			padding-block: 3.5rem;
+		}
+
+		.masseria__media {
+			order: -1;
+			max-width: 36rem;
+			margin: 0 auto;
+		}
+	}
+
+	@media (max-width: 520px) {
+		.masseria__media {
+			grid-template-columns: 1fr;
+			max-width: 22rem;
+		}
+	}
+</style>

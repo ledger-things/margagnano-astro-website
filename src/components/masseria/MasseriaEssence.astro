@@ -1,0 +1,69 @@
+---
+import Reveal from '../Reveal.tsx';
+---
+
+<section class="mh-essence" aria-labelledby="essence-title">
+	<div class="mh-essence__inner">
+		<Reveal client:visible inView delay={0.05} y={28} duration={1.05}>
+			<p id="essence-title" class="mh-essence__script">the essence</p>
+		</Reveal>
+		<Reveal client:visible inView delay={0.18} y={18}>
+			<span class="mh-essence__rule" aria-hidden="true"></span>
+		</Reveal>
+		<Reveal client:visible inView delay={0.28} y={24}>
+			<div class="mh-essence__text">
+				<p>
+					Margagnano è il punto d&apos;incontro tra ciò che il tempo ha custodito e ciò che il
+					presente sa valorizzare.
+				</p>
+				<p>Un luogo dove storia, architettura e paesaggio continuano a raccontarsi con naturalezza.</p>
+			</div>
+		</Reveal>
+	</div>
+</section>
+
+<style>
+	.mh-essence {
+		background: #f7f4ee;
+		color: var(--brand-marrone);
+		text-align: center;
+	}
+
+	.mh-essence__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: 40rem;
+		margin: 0 auto;
+		padding: clamp(4rem, 9vw, 6.5rem) 1.5rem;
+	}
+
+	.mh-essence__script {
+		margin: 0;
+		font-family: 'Monsieur La Doulaise', cursive;
+		font-size: clamp(3.25rem, 8vw, 6.25rem);
+		line-height: 0.95;
+		color: var(--brand-azzurro);
+	}
+
+	.mh-essence__rule {
+		display: block;
+		width: 1px;
+		height: 3.25rem;
+		margin: 0.85rem 0 1.35rem;
+		background: var(--brand-azzurro);
+	}
+
+	.mh-essence__text {
+		display: grid;
+		gap: 1.15rem;
+	}
+
+	.mh-essence__text p {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+		line-height: 1.55;
+		color: var(--brand-marrone);
+	}
+</style>

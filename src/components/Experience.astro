@@ -1,0 +1,127 @@
+---
+import Reveal from './Reveal.tsx';
+---
+
+<section id="experience" class="experience" aria-labelledby="experience-title">
+	<div class="experience__bg" aria-hidden="true"></div>
+	<div class="experience__overlay" aria-hidden="true"></div>
+
+	<div class="experience__content">
+		<Reveal client:visible inView delay={0.05} y={36} duration={1.1}>
+			<p class="experience__script">the experience</p>
+		</Reveal>
+		<Reveal client:visible inView delay={0.18} y={20}>
+			<span class="experience__rule" aria-hidden="true"></span>
+		</Reveal>
+		<Reveal client:visible inView delay={0.28} y={28}>
+			<h2 id="experience-title" class="experience__title">Beyond Margagnano</h2>
+		</Reveal>
+		<Reveal client:visible inView delay={0.4} y={24}>
+			<p class="experience__text">
+				Dalla Valle d'Itria alla costa adriatica, un territorio fatto di paesaggi, borghi e
+				tradizioni che completano l'esperienza di Masseria Margagnano.
+			</p>
+		</Reveal>
+		<Reveal client:visible inView delay={0.52} y={18}>
+			<a class="experience__cta" href="#gallery">View more</a>
+		</Reveal>
+	</div>
+</section>
+
+<style>
+	.experience {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: clamp(32rem, 72vh, 52rem);
+		overflow: hidden;
+		color: var(--brand-avorio);
+		text-align: center;
+	}
+
+	.experience__bg {
+		position: absolute;
+		inset: 0;
+		background-image: url('/images/home/experience-coast.png');
+		background-size: cover;
+		background-position: center;
+		filter: blur(1.5px);
+		transform: scale(1.04);
+	}
+
+	.experience__overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(64, 64, 64, 0.45);
+	}
+
+	.experience__content {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 4rem 1.5rem;
+		max-width: 48rem;
+	}
+
+	.experience__script {
+		margin: 0;
+		font-family: 'Monsieur La Doulaise', cursive;
+		font-size: clamp(3.5rem, 8vw, 7.5rem);
+		line-height: 0.95;
+		color: var(--brand-avorio);
+	}
+
+	.experience__rule {
+		display: block;
+		width: 1px;
+		height: 3.5rem;
+		margin: 0.75rem 0 1.1rem;
+		background: rgba(233, 227, 211, 0.85);
+	}
+
+	.experience__title {
+		margin: 0 0 1.25rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.75rem, 3.2vw, 2.6rem);
+		letter-spacing: 0.02em;
+		color: var(--brand-avorio);
+	}
+
+	.experience__text {
+		margin: 0 0 2rem;
+		max-width: 38rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1rem, 1.2vw, 1.15rem);
+		line-height: 1.65;
+		color: rgba(233, 227, 211, 0.95);
+	}
+
+	.experience__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 8.75rem;
+		padding: 0.85rem 1.25rem;
+		border: 1px solid rgba(233, 227, 211, 0.9);
+		color: var(--brand-avorio);
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.78rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.experience__cta:hover,
+	.experience__cta:focus-visible {
+		background: var(--brand-avorio);
+		color: var(--brand-marrone);
+		outline: none;
+	}
+</style>

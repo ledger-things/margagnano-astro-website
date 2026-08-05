@@ -1,0 +1,304 @@
+---
+import Reveal from './Reveal.tsx';
+import SuitesCarousel from './SuitesCarousel.tsx';
+---
+
+<section id="suites" class="suites" aria-labelledby="suites-title">
+	<div class="suites__pattern" aria-hidden="true"></div>
+	<p class="suites__script" aria-hidden="true">Masseria Margagnano</p>
+
+	<div class="suites__inner">
+		<Reveal client:visible inView delay={0.05} y={-16} className="suites__reveal">
+			<h2 id="suites-title" class="suites__title">Le suites</h2>
+		</Reveal>
+
+		<Reveal client:visible inView delay={0.15} y={28} duration={1} className="suites__reveal suites__reveal--carousel">
+			<SuitesCarousel client:visible />
+		</Reveal>
+
+		<Reveal client:visible inView delay={0.28} y={16} className="suites__reveal">
+			<div class="suites__cta-wrap">
+				<a class="suites__cta" href="#life">View more</a>
+			</div>
+		</Reveal>
+	</div>
+</section>
+
+<style>
+	.suites {
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
+		height: 100svh;
+		min-height: 100svh;
+		max-height: 100svh;
+		color: var(--brand-avorio);
+		background-color: var(--brand-verde);
+	}
+
+	.suites__pattern {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 0;
+		width: clamp(9rem, 18vw, 16rem);
+		pointer-events: none;
+		background-color: var(--brand-verde);
+		background-image: url('/images/home/suites-pattern.png');
+		background-repeat: repeat;
+		background-position: center top;
+		background-size: 100% auto;
+	}
+
+	.suites__script {
+		position: absolute;
+		left: 1.5%;
+		bottom: 10%;
+		z-index: 0;
+		margin: 0;
+		font-family: 'Monsieur La Doulaise', cursive;
+		font-size: clamp(3rem, 8vw, 6.5rem);
+		line-height: 1;
+		color: rgba(233, 227, 211, 0.16);
+		white-space: nowrap;
+		pointer-events: none;
+		user-select: none;
+	}
+
+	.suites__inner {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: stretch;
+		width: 100%;
+		height: 100%;
+		min-height: 0;
+		padding: clamp(1.25rem, 3vh, 2.5rem) 0;
+		box-sizing: border-box;
+	}
+
+	.suites :global(.suites__reveal) {
+		width: 100%;
+		flex: 0 0 auto;
+	}
+
+	.suites :global(.suites__reveal--carousel) {
+		flex: 1 1 auto;
+		min-height: 0;
+		display: flex;
+		align-items: center;
+	}
+
+	.suites__title {
+		margin: 0 0 clamp(0.75rem, 2vh, 1.5rem);
+		text-align: center;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(2rem, 4.5vw, 3.75rem);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--brand-avorio);
+	}
+
+	.suites__cta-wrap {
+		display: flex;
+		justify-content: center;
+		margin-top: clamp(0.75rem, 2vh, 1.5rem);
+	}
+
+	.suites__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 8.75rem;
+		padding: 0.7rem 1.15rem;
+		border: 1px solid rgba(233, 227, 211, 0.9);
+		color: var(--brand-avorio);
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.75rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.suites__cta:hover,
+	.suites__cta:focus-visible {
+		background: var(--brand-avorio);
+		color: var(--brand-verde);
+		outline: none;
+	}
+
+	.suites :global(.suites-carousel) {
+		position: relative;
+		z-index: 1;
+		width: 100%;
+		min-width: 0;
+	}
+
+	.suites :global(.suites-carousel__viewport) {
+		overflow: hidden;
+		width: 100%;
+		touch-action: pan-y;
+		cursor: grab;
+	}
+
+	.suites :global(.suites-carousel__viewport:active) {
+		cursor: grabbing;
+	}
+
+	.suites :global(.suites-carousel__track) {
+		display: flex;
+		align-items: center;
+		gap: clamp(0.85rem, 1.8vw, 1.5rem);
+		width: max-content;
+		min-height: clamp(16rem, 50vh, 30rem);
+		will-change: transform;
+	}
+
+	.suites :global(.suites-carousel__card) {
+		appearance: none;
+		border: 0;
+		padding: 0;
+		margin: 0;
+		background: transparent;
+		color: inherit;
+		text-align: left;
+		cursor: pointer;
+		flex: 0 0 auto;
+		width: min(52vw, 34rem);
+		transform-origin: center center;
+	}
+
+	.suites :global(.suites-carousel__card.is-active) {
+		cursor: grab;
+		z-index: 2;
+	}
+
+	.suites :global(.suites-carousel__figure) {
+		position: relative;
+		margin: 0;
+		width: 100%;
+		height: clamp(15rem, 46vh, 27rem);
+		overflow: hidden;
+		background: rgba(0, 0, 0, 0.12);
+		box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+	}
+
+	.suites :global(.suites-carousel__figure img) {
+		display: block;
+		width: 100%;
+		max-width: 100%;
+		height: 100%;
+		object-fit: cover;
+		pointer-events: none;
+		user-select: none;
+	}
+
+	.suites :global(.suites-carousel__caption) {
+		position: absolute;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: clamp(0.75rem, 1.5vh, 1.25rem);
+		background: linear-gradient(
+			to top,
+			rgba(107, 90, 68, 0.78),
+			rgba(107, 90, 68, 0.35) 55%,
+			transparent
+		);
+	}
+
+	.suites :global(.suites-carousel__name) {
+		margin: 0 0 0.25rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: clamp(0.95rem, 1.5vw, 1.35rem);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--brand-avorio);
+	}
+
+	.suites :global(.suites-carousel__desc) {
+		margin: 0;
+		max-width: 16rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.8rem, 1vw, 0.92rem);
+		line-height: 1.35;
+		color: rgba(233, 227, 211, 0.92);
+	}
+
+	.suites :global(.suites-carousel__controls) {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		margin-top: 0.85rem;
+	}
+
+	.suites :global(.suites-carousel__dots) {
+		display: flex;
+		align-items: center;
+		gap: 0.55rem;
+	}
+
+	.suites :global(.suites-carousel__dot) {
+		width: 0.4rem;
+		height: 0.4rem;
+		padding: 0;
+		border: 0;
+		border-radius: 999px;
+		background: rgba(233, 227, 211, 0.35);
+		cursor: pointer;
+		transition:
+			transform 0.25s ease,
+			background-color 0.25s ease;
+	}
+
+	.suites :global(.suites-carousel__dot.is-active) {
+		background: var(--brand-avorio);
+		transform: scale(1.35);
+	}
+
+	.suites :global(.suites-carousel__arrow) {
+		appearance: none;
+		border: 0;
+		background: transparent;
+		color: var(--brand-avorio);
+		font-size: 1.35rem;
+		line-height: 1;
+		padding: 0.25rem 0.5rem;
+		cursor: pointer;
+		opacity: 0.85;
+		transition: opacity 0.2s ease;
+	}
+
+	.suites :global(.suites-carousel__arrow:hover),
+	.suites :global(.suites-carousel__arrow:focus-visible) {
+		opacity: 1;
+		outline: none;
+	}
+
+	@media (max-width: 768px) {
+		.suites__pattern {
+			width: 5rem;
+		}
+
+		.suites__script {
+			bottom: 6%;
+			font-size: 3rem;
+		}
+
+		.suites :global(.suites-carousel__card) {
+			width: min(78vw, 22rem);
+		}
+
+		.suites :global(.suites-carousel__desc) {
+			display: none;
+		}
+	}
+</style>

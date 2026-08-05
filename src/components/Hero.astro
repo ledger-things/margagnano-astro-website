@@ -1,18 +1,36 @@
 ---
-// Hero "Coming Soon" temporanea. La versione definitiva verra' definita in seguito.
 import Reveal from './Reveal.tsx';
+
+const copy = {
+	it: {
+		title: 'Dove il tempo rallenta',
+		subtitle: 'Tra storia ed intima esperienza di vita pugliese',
+		cta: 'Scopri di più',
+	},
+	en: {
+		title: 'Where time slows down',
+		subtitle: 'Between history and intimate Apulian life experience',
+		cta: 'View more',
+	},
+} as const;
+
+const lang = 'en' as keyof typeof copy;
+const t = copy[lang];
 ---
 
-<section class="hero" aria-label="Coming soon">
+<section class="hero" aria-label={t.title}>
 	<div class="hero__bg" aria-hidden="true"></div>
 	<div class="hero__overlay" aria-hidden="true"></div>
 
 	<div class="hero__content">
-		<Reveal client:load delay={0.35}>
-			<p class="hero__eyebrow">Intimate stays in Puglia</p>
+		<Reveal client:load delay={0.35} duration={1.1} y={28}>
+			<h1 class="hero__title">{t.title}</h1>
 		</Reveal>
-		<Reveal client:load delay={0.5} duration={1.1}>
-			<h1 class="hero__title">Coming Soon</h1>
+		<Reveal client:load delay={0.5} duration={1.1} y={20}>
+			<p class="hero__subtitle">{t.subtitle}</p>
+		</Reveal>
+		<Reveal client:load delay={0.7} y={16}>
+			<a class="hero__cta" href="#masseria">{t.cta}</a>
 		</Reveal>
 	</div>
 </section>
@@ -21,11 +39,12 @@ import Reveal from './Reveal.tsx';
 	.hero {
 		position: relative;
 		display: flex;
-		align-items: center;
+		align-items: flex-end;
 		justify-content: center;
 		min-height: 100svh;
 		width: 100%;
 		overflow: hidden;
+		padding-bottom: clamp(4.5rem, 12vh, 8.5rem);
 	}
 
 	.hero__bg {
@@ -40,42 +59,85 @@ import Reveal from './Reveal.tsx';
 		position: absolute;
 		inset: 0;
 		background: linear-gradient(
-			to bottom,
-			rgba(0, 0, 0, 0.45) 0%,
-			rgba(0, 0, 0, 0.25) 45%,
-			rgba(0, 0, 0, 0.55) 100%
+			179.45deg,
+			rgba(233, 227, 211, 0) 25%,
+			rgba(107, 90, 68, 0.42) 55%,
+			rgba(107, 90, 68, 0.7) 99%
 		);
 	}
 
 	.hero__content {
 		position: relative;
 		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 		text-align: center;
-		color: #fff;
+		color: rgba(255, 255, 255, 0.85);
 		padding: 0 1.5rem;
-	}
-
-	.hero__eyebrow {
-		font-family: 'Times Sans Serif', sans-serif;
-		text-transform: uppercase;
-		letter-spacing: 0.35em;
-		font-size: clamp(0.75rem, 1.2vw, 0.95rem);
-		margin: 0 0 1.25rem;
-		opacity: 0.9;
+		max-width: 52rem;
 	}
 
 	.hero__title {
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.75rem, 3.6vw, 3rem);
+		line-height: 1.15;
+		margin: 0;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: rgba(255, 255, 255, 0.85);
+		text-shadow: 0 7px 7px rgba(0, 0, 0, 0.25);
+	}
+
+	.hero__subtitle {
 		font-family: 'New Caledonia LT Std', serif;
 		font-weight: 400;
-		font-size: clamp(2.75rem, 8vw, 6.5rem);
-		line-height: 1;
-		margin: 0;
-		letter-spacing: 0.02em;
+		font-style: italic;
+		font-size: clamp(1.05rem, 2.1vw, 1.65rem);
+		line-height: 1.35;
+		margin: 0.85rem 0 0;
+		letter-spacing: 0.01em;
+		color: rgba(255, 255, 255, 0.85);
+		text-shadow: 0 7px 7px rgba(0, 0, 0, 0.25);
+	}
+
+	.hero__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 1.75rem;
+		padding: 0.85rem 1.75rem;
+		border: 1px solid rgba(255, 255, 255, 0.85);
+		color: rgba(255, 255, 255, 0.85);
+		background: transparent;
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.8rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease,
+			border-color 0.25s ease;
+	}
+
+	.hero__cta:hover,
+	.hero__cta:focus-visible {
+		background-color: rgba(255, 255, 255, 0.85);
+		color: #1a1a1a;
+		border-color: rgba(255, 255, 255, 0.85);
+		outline: none;
 	}
 
 	@media (max-width: 640px) {
-		.hero__eyebrow {
-			letter-spacing: 0.25em;
+		.hero {
+			padding-bottom: 4rem;
+		}
+
+		.hero__cta {
+			letter-spacing: 0.16em;
+			margin-top: 1.5rem;
 		}
 	}
 </style>

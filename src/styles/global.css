@@ -79,6 +79,22 @@
     font-display: swap;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
+#masseria,
+#suites,
+#life,
+#experience,
+#gallery,
+#prefooter,
+#origini,
+#storia,
+#materia {
+	scroll-margin-top: 6rem;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -140,7 +156,7 @@
     --brand-terracotta: #994619;
     --brand-verde: #7f8872;
     --brand-marrone: #6b5a44;
-    --brand-azzurro: #6b5a44; /* NB: valore identico a --brand-marrone, probabile refuso */
+    --brand-azzurro: #8ea4b0; /* celeste brand */
     --brand-avorio: #e9e3d3;
 
     --background: oklch(1 0 0);
