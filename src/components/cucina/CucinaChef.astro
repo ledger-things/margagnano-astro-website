@@ -1,0 +1,213 @@
+---
+import Reveal from '../Reveal.tsx';
+
+const thumbs = [
+	'/images/masseria/tabs.jpg',
+	'/images/masseria/tabs.jpg',
+	'/images/masseria/tabs.jpg',
+] as const;
+---
+
+<section id="filosofia" class="ck-chef" aria-labelledby="ck-chef-title">
+	<div class="ck-chef__inner">
+		<div class="ck-chef__copy">
+			<Reveal client:visible inView delay={0.05} y={28}>
+				<h2 id="ck-chef-title" class="ck-chef__title">Una visione personale della cucina</h2>
+			</Reveal>
+			<Reveal client:visible inView delay={0.18} y={32}>
+				<div class="ck-chef__text">
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+						incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+					</p>
+					<p>
+						Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+						nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+						officia deserunt mollit anim id est laborum.
+					</p>
+					<p>
+						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+						laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
+					</p>
+				</div>
+			</Reveal>
+			<Reveal client:visible inView delay={0.3} y={20} duration={1.1}>
+				<p class="ck-chef__signature">Nome Cognome</p>
+			</Reveal>
+		</div>
+
+		<div class="ck-chef__gallery" aria-hidden="true">
+			<div class="ck-chef__feature">
+				<Reveal client:visible inView delay={0.15} x={28} y={0} duration={1.1}>
+					<img
+						src="/images/masseria/hero-left-alt.jpg"
+						alt=""
+						width="888"
+						height="1232"
+						loading="lazy"
+					/>
+				</Reveal>
+			</div>
+			<div class="ck-chef__thumbs">
+				{
+					thumbs.map((src, i) => (
+						<div class="ck-chef__thumb">
+							<Reveal client:visible inView delay={0.22 + i * 0.08} x={24} y={0} duration={1}>
+								<img src={src} alt="" width="720" height="480" loading="lazy" />
+							</Reveal>
+						</div>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.ck-chef {
+		position: relative;
+		overflow-x: clip;
+		background: var(--brand-verde);
+		color: var(--brand-avorio);
+	}
+
+	.ck-chef__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+		gap: clamp(1.75rem, 4vw, 3.5rem);
+		align-items: stretch;
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.25rem, 5vw, 5rem);
+	}
+
+	.ck-chef__copy,
+	.ck-chef__gallery {
+		min-width: 0;
+	}
+
+	.ck-chef__copy {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		gap: clamp(2rem, 4vh, 3rem);
+		padding-block: 0.25rem;
+	}
+
+	.ck-chef__title {
+		margin: 0 0 1.5rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+		line-height: 1.15;
+		letter-spacing: 0.02em;
+		color: var(--brand-avorio);
+	}
+
+	.ck-chef__text {
+		display: grid;
+		gap: 1.1rem;
+		max-width: 32rem;
+	}
+
+	.ck-chef__text p {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.15vw, 1.1rem);
+		line-height: 1.65;
+		color: rgba(233, 227, 211, 0.95);
+	}
+
+	.ck-chef__signature {
+		margin: 0;
+		font-family: 'Monsieur La Doulaise', cursive;
+		font-weight: 400;
+		font-style: normal;
+		font-size: clamp(3.25rem, 6.5vw, 5.5rem);
+		line-height: 1;
+		letter-spacing: 0;
+		color: rgba(233, 227, 211, 0.85);
+	}
+
+	.ck-chef__gallery {
+		display: grid;
+		grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+		gap: clamp(0.55rem, 1vw, 0.85rem);
+		align-items: stretch;
+		min-height: min(70svh, 36rem);
+	}
+
+	.ck-chef__feature {
+		overflow: hidden;
+		height: 100%;
+		min-height: 100%;
+	}
+
+	.ck-chef__feature :global(div),
+	.ck-chef__thumb :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.ck-chef__feature img,
+	.ck-chef__thumb img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.ck-chef__thumbs {
+		display: grid;
+		grid-template-rows: repeat(3, minmax(0, 1fr));
+		gap: clamp(0.55rem, 1vw, 0.85rem);
+		min-height: 0;
+	}
+
+	.ck-chef__thumb {
+		overflow: hidden;
+		min-height: 0;
+	}
+
+	@media (max-width: 900px) {
+		.ck-chef__inner {
+			grid-template-columns: 1fr;
+			padding-block: 3rem;
+			gap: 2rem;
+		}
+
+		.ck-chef__gallery {
+			order: -1;
+			min-height: auto;
+			aspect-ratio: 4 / 5;
+			max-width: 36rem;
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		.ck-chef__signature {
+			font-size: clamp(2.75rem, 14vw, 4rem);
+		}
+	}
+
+	@media (max-width: 520px) {
+		.ck-chef__gallery {
+			grid-template-columns: 1fr;
+			aspect-ratio: auto;
+		}
+
+		.ck-chef__feature {
+			aspect-ratio: 3 / 4;
+		}
+
+		.ck-chef__thumbs {
+			grid-template-rows: none;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+
+		.ck-chef__thumb {
+			aspect-ratio: 1;
+		}
+	}
+</style>

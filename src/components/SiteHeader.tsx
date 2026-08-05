@@ -11,7 +11,7 @@ type SiteHeaderProps = {
 const leftLinks = [
 	{ href: '/la-masseria', label: 'La masseria' },
 	{ href: '/#suites', label: 'Suites' },
-	{ href: '/#masseria', label: 'Cucina' },
+	{ href: '/la-cucina', label: 'Cucina' },
 	{ href: '/#experience', label: 'Experience' },
 ];
 

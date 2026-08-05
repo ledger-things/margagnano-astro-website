@@ -1,0 +1,175 @@
+---
+import Reveal from '../Reveal.tsx';
+---
+
+<section class="ck-hero" aria-label="La Cucina">
+	<div class="ck-hero__inner">
+		<div class="ck-hero__media">
+			<Reveal client:load delay={0.12} x={-28} y={0} duration={1.15}>
+				<img
+					src="/images/cucina/hero.jpg"
+					alt="Cortile della masseria con archi in pietra e fichi d&apos;India"
+					width="1444"
+					height="856"
+					fetchpriority="high"
+				/>
+			</Reveal>
+		</div>
+
+		<div class="ck-hero__copy">
+			<Reveal client:load delay={0.22} duration={1} y={24}>
+				<p class="ck-hero__eyebrow">Filosofia gastronomica</p>
+			</Reveal>
+			<Reveal client:load delay={0.32} duration={1.05} y={28}>
+				<h1 class="ck-hero__title">La cucina</h1>
+			</Reveal>
+			<Reveal client:load delay={0.44} duration={1} y={24}>
+				<p class="ck-hero__text">
+					La cucina di Margagnano nasce dal profondo rispetto per il territorio pugliese e per ciò
+					che ogni stagione offre naturalmente. Ogni piatto racconta un paesaggio fatto di ulivi,
+					orti, campi e tradizioni tramandate nel tempo, valorizzando ingredienti semplici attraverso
+					una visione contemporanea. La scelta delle materie prime segue il ritmo della natura,
+					privilegiando prodotti freschi, locali e di stagione. Il risultato è una cucina essenziale,
+					autentica e profondamente legata al luogo, dove ogni sapore esprime l&apos;identità della
+					Puglia con equilibrio e naturalezza.
+				</p>
+			</Reveal>
+			<Reveal client:load delay={0.56} y={16}>
+				<a class="ck-hero__cta" href="#filosofia">View more</a>
+			</Reveal>
+		</div>
+	</div>
+</section>
+
+<style>
+	.ck-hero {
+		position: relative;
+		isolation: isolate;
+		overflow-x: clip;
+		min-height: 100svh;
+		background: var(--brand-avorio);
+		color: var(--brand-marrone);
+	}
+
+	.ck-hero__inner {
+		position: relative;
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+		gap: clamp(2rem, 5vw, 5rem);
+		align-items: center;
+		max-width: 90rem;
+		min-height: 100svh;
+		margin: 0 auto;
+		padding: clamp(6rem, 10vh, 7.5rem) clamp(1.25rem, 5vw, 5.5rem) clamp(2.5rem, 5vh, 4rem);
+		box-sizing: border-box;
+	}
+
+	.ck-hero__media,
+	.ck-hero__copy {
+		min-width: 0;
+	}
+
+	.ck-hero__media {
+		width: 100%;
+		max-width: 36rem;
+		aspect-ratio: 3 / 4;
+		overflow: hidden;
+		justify-self: start;
+	}
+
+	.ck-hero__media :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.ck-hero__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 28% center;
+	}
+
+	.ck-hero__copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		max-width: 32rem;
+		padding-block: 0.5rem;
+	}
+
+	.ck-hero__eyebrow {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-style: italic;
+		font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+		line-height: 1.3;
+		color: var(--brand-verde);
+	}
+
+	.ck-hero__title {
+		margin: 0.35rem 0 0;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(2.4rem, 4.5vw, 3.75rem);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+		line-height: 1.05;
+	}
+
+	.ck-hero__text {
+		margin: 1.5rem 0 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.15vw, 1.12rem);
+		line-height: 1.7;
+		color: var(--brand-marrone);
+	}
+
+	.ck-hero__cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		margin-top: 1.85rem;
+		min-width: 8.75rem;
+		padding: 0.85rem 1.25rem;
+		border: 1px solid var(--brand-marrone);
+		color: var(--brand-marrone);
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.78rem;
+		letter-spacing: 0.2em;
+		text-transform: uppercase;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.ck-hero__cta:hover,
+	.ck-hero__cta:focus-visible {
+		background: var(--brand-marrone);
+		color: var(--brand-avorio);
+		outline: none;
+	}
+
+	@media (max-width: 900px) {
+		.ck-hero__inner {
+			grid-template-columns: 1fr;
+			min-height: auto;
+			padding: 5.5rem 1.25rem 2.5rem;
+			gap: 1.75rem;
+		}
+
+		.ck-hero__media {
+			max-width: 22rem;
+			margin: 0 auto;
+			aspect-ratio: 3 / 4;
+		}
+
+		.ck-hero__copy {
+			max-width: 36rem;
+			margin: 0 auto;
+			padding: 0.25rem 0.25rem 1rem;
+		}
+	}
+</style>

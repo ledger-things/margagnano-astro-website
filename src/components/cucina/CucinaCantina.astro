@@ -1,0 +1,189 @@
+---
+import Reveal from '../Reveal.tsx';
+---
+
+<section id="cantina" class="ck-cantina" aria-labelledby="ck-cantina-title">
+	<div class="ck-cantina__texture" aria-hidden="true"></div>
+
+	<div class="ck-cantina__inner">
+		<div class="ck-cantina__row ck-cantina__row--top">
+			<div class="ck-cantina__media ck-cantina__media--tall">
+				<Reveal client:visible inView delay={0.1} x={-24} y={0} duration={1.1}>
+					<img
+						src="/images/masseria/origini.jpg"
+						alt="Facciata della masseria con archi e finestre"
+						width="1704"
+						height="970"
+						loading="lazy"
+					/>
+				</Reveal>
+			</div>
+			<div class="ck-cantina__copy">
+				<Reveal client:visible inView delay={0.18} y={28}>
+					<h2 id="ck-cantina-title" class="ck-cantina__title">La cantina</h2>
+				</Reveal>
+				<Reveal client:visible inView delay={0.28} y={24}>
+					<p class="ck-cantina__text">
+						Un viaggio tra i vini di Puglia. La cantina di Margagnano raccoglie una selezione di
+						etichette che raccontano la ricchezza vitivinicola della Puglia, affiancate da una
+						ricerca dedicata a piccoli produttori e vini di carattere provenienti da altre regioni
+						italiane.
+					</p>
+				</Reveal>
+			</div>
+		</div>
+
+		<div class="ck-cantina__row ck-cantina__row--bottom">
+			<div class="ck-cantina__copy">
+				<Reveal client:visible inView delay={0.15} y={24}>
+					<p class="ck-cantina__text">
+						Ogni bottiglia è scelta per accompagnare la cucina della masseria e valorizzarne i
+						sapori. Degustazioni guidate ed esperienze dedicate permettono di approfondire la
+						cultura del vino attraverso abbinamenti pensati per esaltare il territorio.
+					</p>
+				</Reveal>
+			</div>
+			<div class="ck-cantina__media ck-cantina__media--short">
+				<Reveal client:visible inView delay={0.2} x={24} y={0} duration={1.1}>
+					<img
+						src="/images/masseria/tabs.jpg"
+						alt="Cortile della masseria con archi e vegetazione"
+						width="1444"
+						height="856"
+						loading="lazy"
+					/>
+				</Reveal>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.ck-cantina {
+		position: relative;
+		isolation: isolate;
+		overflow-x: clip;
+		background: var(--brand-avorio);
+		color: var(--brand-marrone);
+	}
+
+	.ck-cantina__texture {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background-image: url('/images/home/masseria-texture.png');
+		background-size: cover;
+		background-position: center;
+		opacity: 0.35;
+		pointer-events: none;
+	}
+
+	.ck-cantina__inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		gap: clamp(1.75rem, 3.5vw, 2.75rem);
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.5rem, 5vw, 5rem);
+	}
+
+	.ck-cantina__row {
+		display: grid;
+		align-items: center;
+		gap: clamp(1.5rem, 3.5vw, 3rem);
+	}
+
+	.ck-cantina__row--top {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+	}
+
+	.ck-cantina__row--bottom {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+	}
+
+	.ck-cantina__media {
+		overflow: hidden;
+		min-width: 0;
+		width: 100%;
+	}
+
+	.ck-cantina__media--tall {
+		height: 600px;
+	}
+
+	.ck-cantina__media--short {
+		height: 400px;
+	}
+
+	.ck-cantina__media :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.ck-cantina__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.ck-cantina__copy {
+		min-width: 0;
+		max-width: 22rem;
+	}
+
+	.ck-cantina__row--top .ck-cantina__copy {
+		justify-self: start;
+	}
+
+	.ck-cantina__row--bottom .ck-cantina__copy {
+		justify-self: end;
+		text-align: left;
+	}
+
+	.ck-cantina__title {
+		margin: 0 0 1.25rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.65rem, 2.8vw, 2.25rem);
+		line-height: 1.1;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+	}
+
+	.ck-cantina__text {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+		line-height: 1.7;
+		color: var(--brand-marrone);
+	}
+
+	@media (max-width: 900px) {
+		.ck-cantina__row--top,
+		.ck-cantina__row--bottom {
+			grid-template-columns: 1fr;
+		}
+
+		.ck-cantina__media--tall {
+			height: auto;
+			aspect-ratio: 16 / 10;
+			max-height: 22rem;
+		}
+
+		.ck-cantina__media--short {
+			order: -1;
+			height: auto;
+			aspect-ratio: 16 / 10;
+			max-height: 16rem;
+		}
+
+		.ck-cantina__copy {
+			max-width: 36rem;
+			justify-self: start !important;
+		}
+	}
+</style>

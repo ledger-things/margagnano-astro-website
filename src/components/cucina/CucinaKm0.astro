@@ -1,0 +1,139 @@
+---
+import Reveal from '../Reveal.tsx';
+---
+
+<section id="produttori" class="ck-km0" aria-labelledby="ck-km0-title">
+	<div class="ck-km0__stage">
+		<div class="ck-km0__media" aria-hidden="true">
+			<img
+				src="/images/cucina/km0.jpg"
+				alt=""
+				width="1200"
+				height="1600"
+				loading="lazy"
+			/>
+		</div>
+
+		<div class="ck-km0__content">
+			<div class="ck-km0__panel">
+				<Reveal client:visible inView delay={0.08} y={28}>
+					<h2 id="ck-km0-title" class="ck-km0__title">Produttori &amp; Km 0</h2>
+				</Reveal>
+				<Reveal client:visible inView delay={0.18} y={24}>
+					<p class="ck-km0__subtitle">Il valore della filiera locale</p>
+				</Reveal>
+				<Reveal client:visible inView delay={0.28} y={28}>
+					<div class="ck-km0__text">
+						<p>
+							Ogni ingrediente nasce da una relazione diretta con il territorio. L&apos;orto della
+							masseria e una rete di piccoli produttori locali permettono di selezionare materie
+							prime che rispettano la stagionalità e raccontano l&apos;identità della Puglia.
+						</p>
+						<p>
+							Olio extravergine d&apos;oliva, ortaggi, formaggi, conserve e prodotti tipici diventano
+							parte di una cucina che privilegia la qualità, la provenienza e il lavoro di chi
+							custodisce ogni giorno il patrimonio gastronomico del territorio.
+						</p>
+					</div>
+				</Reveal>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.ck-km0 {
+		position: relative;
+		isolation: isolate;
+		overflow: hidden;
+		padding: clamp(1.75rem, 4vw, 3.25rem);
+		color: var(--brand-marrone);
+		background: var(--brand-avorio);
+	}
+
+	.ck-km0__stage {
+		position: relative;
+		min-height: min(88svh, 50rem);
+		border: 1px solid #fff;
+		overflow: hidden;
+	}
+
+	.ck-km0__media {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+	}
+
+	.ck-km0__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center right;
+	}
+
+	.ck-km0__content {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		min-height: inherit;
+		padding: clamp(1.5rem, 4vw, 3.5rem);
+		box-sizing: border-box;
+	}
+
+	.ck-km0__panel {
+		width: min(100%, 30.5rem);
+		padding: clamp(2.15rem, 4.2vw, 3.35rem) clamp(1.5rem, 3vw, 2.5rem);
+		background: color-mix(in srgb, var(--brand-avorio) 85%, transparent);
+		box-sizing: border-box;
+	}
+
+	.ck-km0__title {
+		margin: 0;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.55rem, 2.8vw, 2.15rem);
+		line-height: 1.15;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+	}
+
+	.ck-km0__subtitle {
+		margin: 0.65rem 0 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1rem, 1.35vw, 1.2rem);
+		line-height: 1.35;
+		color: var(--brand-marrone);
+	}
+
+	.ck-km0__text {
+		display: grid;
+		gap: 1.15rem;
+		margin-top: 1.5rem;
+	}
+
+	.ck-km0__text p {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+		line-height: 1.7;
+		color: var(--brand-marrone);
+	}
+
+	@media (max-width: 900px) {
+		.ck-km0__stage {
+			min-height: min(82svh, 42rem);
+		}
+
+		.ck-km0__content {
+			align-items: flex-end;
+			padding: clamp(1.25rem, 4vw, 2rem);
+		}
+
+		.ck-km0__panel {
+			width: min(100%, 34rem);
+		}
+	}
+</style>
