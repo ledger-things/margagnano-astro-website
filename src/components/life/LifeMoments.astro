@@ -1,0 +1,526 @@
+---
+import Reveal from '../Reveal.tsx';
+import LifeTimelineRule from './LifeTimelineRule.tsx';
+
+const img = '/images/life/life-1.jpg';
+---
+
+<section class="life-moments" aria-label="Momenti a Margagnano">
+	<div class="life-moments__inner">
+		<!-- Riga 1 — Intro -->
+		<div class="lm-row lm-row--intro">
+			<div class="lm-row__col lm-row__col--intro-copy">
+				<Reveal client:visible inView delay={0.1} y={28} duration={1.75}>
+					<p class="lm-intro">
+						A Margagnano il tempo non è scandito dagli orari, ma dalla luce, dalla natura e dai
+						piccoli rituali che accompagnano ogni giornata. Ogni spazio invita a rallentare,
+						lasciando che siano il paesaggio e il silenzio a guidare l'esperienza.
+					</p>
+				</Reveal>
+				<Reveal client:visible inView delay={0.35} y={36} duration={1.85}>
+					<figure class="lm-fig lm-fig--intro-sq">
+						<img src={img} alt="" width="900" height="1100" loading="lazy" />
+					</figure>
+				</Reveal>
+			</div>
+			<div class="lm-row__col lm-row__col--intro-tall">
+				<Reveal client:visible inView delay={0.25} x={28} y={0} duration={1.9}>
+					<figure class="lm-fig lm-fig--intro-tall">
+						<img src={img} alt="" width="900" height="1200" loading="lazy" />
+					</figure>
+				</Reveal>
+			</div>
+		</div>
+
+		<!-- Riga 2 — 01 -->
+		<div class="lm-row lm-row--01">
+			<div class="lm-row__col lm-row__col--copy">
+				<Reveal client:visible inView delay={0.15} y={24} duration={1.7}>
+					<div class="lm-copy">
+						<h2 class="lm-copy__title">
+							<span class="lm-copy__num">01.&nbsp;</span>RITUALS OF<br />WELLBEING
+						</h2>
+						<p class="lm-copy__text">Spa, trattamenti e percorsi dedicati al benessere.</p>
+					</div>
+				</Reveal>
+				<LifeTimelineRule client:visible align="center" />
+			</div>
+			<div class="lm-row__col lm-row__col--pair">
+				<div class="lm-pair lm-pair--01">
+					<Reveal client:visible inView delay={0.25} y={40} duration={1.8}>
+						<figure class="lm-fig lm-fig--pair lm-fig--pair-a">
+							<img src={img} alt="" width="800" height="1000" loading="lazy" />
+						</figure>
+					</Reveal>
+					<Reveal client:visible inView delay={0.4} y={28} duration={1.8}>
+						<figure class="lm-fig lm-fig--pair lm-fig--pair-b">
+							<img src={img} alt="" width="800" height="1000" loading="lazy" />
+						</figure>
+					</Reveal>
+				</div>
+			</div>
+		</div>
+
+		<!-- Riga 3 — 02 -->
+		<div class="lm-row lm-row--02">
+			<div class="lm-row__col lm-row__col--pair">
+				<div class="lm-pair lm-pair--02">
+					<Reveal client:visible inView delay={0.2} y={36} duration={1.8}>
+						<figure class="lm-fig lm-fig--pair">
+							<img src={img} alt="" width="800" height="1000" loading="lazy" />
+						</figure>
+					</Reveal>
+					<Reveal client:visible inView delay={0.35} y={36} duration={1.8}>
+						<figure class="lm-fig lm-fig--pair">
+							<img src={img} alt="" width="800" height="1000" loading="lazy" />
+						</figure>
+					</Reveal>
+				</div>
+			</div>
+			<div class="lm-row__col lm-row__col--copy lm-row__col--copy-end">
+				<Reveal client:visible inView delay={0.3} y={32} duration={1.7}>
+					<div class="lm-copy">
+						<h2 class="lm-copy__title">
+							<span class="lm-copy__num">02.&nbsp;</span>UNDER<br />THE SUN
+						</h2>
+						<p class="lm-copy__text">Il solarium, tra luce,<br />quiete e paesaggio.</p>
+					</div>
+				</Reveal>
+				<LifeTimelineRule client:visible align="center" />
+			</div>
+		</div>
+
+		<!-- Riga 4 — 03 -->
+		<div class="lm-row lm-row--03">
+			<div class="lm-row__col lm-row__col--copy">
+				<Reveal client:visible inView delay={0.15} y={24} duration={1.7}>
+					<div class="lm-copy">
+						<h2 class="lm-copy__title">
+							<span class="lm-copy__num">03.&nbsp;</span>RITUALS<br />OF QUIET
+						</h2>
+						<p class="lm-copy__text">Il pensatoio e gli angoli più riservati della masseria.</p>
+					</div>
+				</Reveal>
+				<LifeTimelineRule client:visible align="center" />
+			</div>
+			<div class="lm-row__col lm-row__col--trio">
+				<div class="lm-trio">
+					<Reveal client:visible inView delay={0.25} y={40} duration={1.85}>
+						<figure class="lm-fig lm-fig--trio">
+							<img src={img} alt="" width="600" height="1000" loading="lazy" />
+						</figure>
+					</Reveal>
+					<Reveal client:visible inView delay={0.4} y={48} duration={1.85}>
+						<figure class="lm-fig lm-fig--trio lm-fig--trio-mid">
+							<img src={img} alt="" width="600" height="1000" loading="lazy" />
+						</figure>
+					</Reveal>
+					<Reveal client:visible inView delay={0.55} y={40} duration={1.85}>
+						<figure class="lm-fig lm-fig--trio">
+							<img src={img} alt="" width="600" height="1000" loading="lazy" />
+						</figure>
+					</Reveal>
+				</div>
+			</div>
+		</div>
+
+		<!-- Riga 5 — 04 -->
+		<div class="lm-row lm-row--04">
+			<div class="lm-row__col lm-row__col--wide">
+				<Reveal client:visible inView delay={0.2} y={36} duration={1.85}>
+					<figure class="lm-fig lm-fig--wide">
+						<img src={img} alt="" width="1400" height="900" loading="lazy" />
+					</figure>
+				</Reveal>
+			</div>
+			<div class="lm-row__col lm-row__col--copy lm-row__col--copy-end">
+				<Reveal client:visible inView delay={0.35} y={28} duration={1.7}>
+					<div class="lm-copy">
+						<h2 class="lm-copy__title">
+							<span class="lm-copy__num">04.&nbsp;</span>THE POOL
+						</h2>
+						<p class="lm-copy__text">
+							Uno spazio dove acqua, natura e architettura si incontrano.
+						</p>
+					</div>
+				</Reveal>
+			</div>
+		</div>
+	</div>
+</section>
+
+<style>
+	.life-moments {
+		--lm-bg: #f7f4ee;
+		--lm-ink: #4a3f34;
+		--lm-title: var(--brand-terracotta);
+		--lm-rule: rgba(107, 90, 68, 0.32);
+		--lm-gap: clamp(0.75rem, 1.4vw, 1.15rem);
+		--lm-overlap: clamp(-9rem, -11vw, -6rem);
+		--lm-pad-x: clamp(1.25rem, 5vw, 5.5rem);
+
+		position: relative;
+		overflow-x: clip;
+		background: var(--lm-bg);
+		color: var(--lm-ink);
+		padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(5rem, 9vw, 8rem);
+	}
+
+	.life-moments__inner {
+		max-width: 92rem;
+		margin: 0 auto;
+		padding-inline: var(--lm-pad-x);
+	}
+
+	.lm-row {
+		display: grid;
+		column-gap: clamp(1.5rem, 4vw, 4.5rem);
+		position: relative;
+	}
+
+	.lm-row + .lm-row {
+		/* margin-top: var(--lm-overlap); */
+		padding-top: clamp(3.25rem, 5.5vw, 5rem);
+	}
+
+	.lm-fig {
+		margin: 0;
+		overflow: hidden;
+		background: #ddd6c8;
+	}
+
+	.lm-fig img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.lm-fig :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	/* ——— Copy ——— */
+	.lm-intro {
+		margin: 0;
+		max-width: 32rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-style: italic;
+		font-size: clamp(1.15rem, 1.55vw, 1.4rem);
+		line-height: 1.6;
+		color: var(--lm-ink);
+	}
+
+	.lm-row__col--copy {
+		align-self: stretch;
+		display: flex;
+		flex-direction: column;
+		min-height: 100%;
+	}
+
+	.lm-copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		flex: 0 0 auto;
+		width: 100%;
+		max-width: 22rem;
+		text-align: left;
+	}
+
+	/* Colonna destra → titolo, sottotesto allineati a destra */
+	.lm-row__col--copy-end .lm-copy {
+		align-items: flex-end;
+		text-align: right;
+		margin-left: auto;
+	}
+
+	.lm-copy__title {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-size: clamp(1.75rem, 2.8vw, 2.45rem);
+		line-height: 1.12;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--lm-title);
+	}
+
+	.lm-copy__num {
+		font-weight: 400;
+	}
+
+	.lm-copy__text {
+		margin: 1rem 0 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-style: italic;
+		font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+		line-height: 1.5;
+		color: var(--lm-ink);
+	}
+
+	/* Timeline: riempie fino a fine riga, cresce allo scroll */
+	.lm-row__col--copy :global(.lm-timeline) {
+		flex: 1 1 auto;
+		display: flex;
+		justify-content: center;
+		align-items: stretch;
+		width: 100%;
+		max-width: 22rem;
+		min-height: 4.5rem;
+		margin-top: 1.35rem;
+	}
+
+	.lm-row__col--copy-end :global(.lm-timeline) {
+		margin-left: auto;
+	}
+
+	.lm-row__col--copy :global(.lm-timeline__line) {
+		display: block;
+		width: 1px;
+		height: 100%;
+		background: var(--lm-rule);
+		transform-origin: top center;
+		will-change: transform;
+	}
+
+	/* ——— Riga 1: Intro ——— */
+	.lm-row--intro {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 0.92fr);
+		align-items: start;
+		padding-top: clamp(0.25rem, 1.5vw, 1rem);
+		z-index: 1;
+	}
+
+	.lm-row__col--intro-copy {
+		display: flex;
+		flex-direction: column;
+		gap: clamp(2rem, 4vw, 3.25rem);
+		padding-top: clamp(2rem, 5vw, 4.25rem);
+		max-width: 30rem;
+	}
+
+	.lm-fig--intro-sq,
+	.lm-fig--intro-tall {
+		width: min(500px, 100%);
+		aspect-ratio: 1 / 1;
+		height: auto;
+	}
+
+	.lm-row__col--intro-tall {
+		justify-self: end;
+		width: min(100%, 500px);
+		margin-top: 0;
+	}
+
+	/* ——— Riga 2: 01 ——— */
+	.lm-row--01 {
+		grid-template-columns: minmax(13rem, 0.78fr) minmax(0, 1.42fr);
+		align-items: start;
+		z-index: 2;
+	}
+
+	.lm-row--01 .lm-row__col--copy {
+		padding-top: 0;
+	}
+
+	.lm-pair {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: var(--lm-gap);
+		align-items: start;
+	}
+
+	/* sinistra più bassa, destra più alta → entra nello spazio della riga intro */
+	.lm-pair--01 .lm-fig--pair-a {
+		margin-top: clamp(5.5rem, 10vw, 9rem);
+	}
+
+	.lm-pair--01 .lm-fig--pair-b {
+		margin-top: clamp(-3rem, -4.5vw, -1.5rem);
+	}
+
+	.lm-fig--pair {
+		width: 100%;
+		aspect-ratio: 4 / 5.05;
+	}
+
+	/* ——— Riga 3: 02 ——— */
+	.lm-row--02 {
+		grid-template-columns: minmax(0, 1.38fr) minmax(13rem, 0.82fr);
+		align-items: start;
+		z-index: 3;
+	}
+
+	.lm-row--02 .lm-row__col--pair {
+		margin-top: clamp(-1rem, -2vw, 0);
+	}
+
+	.lm-row--02 .lm-row__col--copy-end {
+		justify-self: end;
+		padding-top: 0;
+	}
+
+	.lm-pair--02 {
+		align-items: start;
+	}
+
+	.lm-pair--02 .lm-fig--pair {
+		aspect-ratio: 1 / 1;
+	}
+
+	/* ——— Riga 4: 03 ——— */
+	.lm-row--03 {
+		grid-template-columns: minmax(13rem, 0.72fr) minmax(0, 1.48fr);
+		align-items: start;
+		z-index: 4;
+	}
+
+	.lm-row--03 .lm-row__col--copy {
+		padding-top: 0;
+	}
+
+	.lm-trio {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: var(--lm-gap);
+		align-items: start;
+		margin-top: clamp(-0.5rem, -1vw, 0);
+	}
+
+	.lm-fig--trio {
+		width: 100%;
+		aspect-ratio: 3 / 5.15;
+	}
+
+	.lm-fig--trio-mid {
+		margin-top: clamp(1.75rem, 3.2vw, 2.75rem);
+	}
+
+	/* ——— Riga 5: 04 ——— */
+	.lm-row--04 {
+		grid-template-columns: minmax(0, 1.5fr) minmax(12rem, 0.68fr);
+		align-items: start;
+		z-index: 5;
+	}
+
+	.lm-row--04 .lm-row__col--wide {
+		min-width: 0;
+		margin-top: clamp(-0.75rem, -1.5vw, 0);
+	}
+
+	.lm-fig--wide {
+		width: 100%;
+		aspect-ratio: 16 / 10.2;
+	}
+
+	.lm-row--04 .lm-row__col--copy-end {
+		justify-self: end;
+		padding-top: 0;
+	}
+
+	/* ——— Mobile ——— */
+	@media (max-width: 900px) {
+		.life-moments {
+			--lm-overlap: 0;
+			padding-block: 3rem 4rem;
+		}
+
+		.lm-row + .lm-row {
+			margin-top: 0;
+			padding-top: 3.25rem;
+		}
+
+		.lm-row--intro,
+		.lm-row--01,
+		.lm-row--02,
+		.lm-row--03,
+		.lm-row--04 {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.lm-row__col--intro-copy {
+			padding-top: 0;
+			max-width: none;
+			order: 1;
+		}
+
+		.lm-row__col--intro-tall {
+			justify-self: start;
+			width: min(500px, 85%);
+			margin-left: auto;
+			order: 2;
+		}
+
+		.lm-fig--intro-sq,
+		.lm-fig--intro-tall {
+			width: min(500px, 100%);
+			height: auto;
+			aspect-ratio: 1 / 1;
+		}
+
+		.lm-row--01 .lm-row__col--copy,
+		.lm-row--02 .lm-row__col--copy-end,
+		.lm-row--03 .lm-row__col--copy,
+		.lm-row--04 .lm-row__col--copy-end {
+			padding-top: 0;
+			justify-self: start;
+			align-self: stretch;
+		}
+
+		.lm-pair--01 .lm-fig--pair-a {
+			margin-top: clamp(1.5rem, 6vw, 2.5rem);
+		}
+
+		.lm-pair--01 .lm-fig--pair-b,
+		.lm-row--02 .lm-row__col--pair,
+		.lm-row--04 .lm-row__col--wide,
+		.lm-trio {
+			margin-top: 0;
+		}
+
+		.lm-fig--trio-mid {
+			margin-top: 0.75rem;
+		}
+
+		.lm-copy {
+			max-width: 22rem;
+		}
+
+		.lm-row__col--copy :global(.lm-timeline) {
+			flex: 0 0 auto;
+			min-height: 3.25rem;
+			height: 3.25rem;
+		}
+
+		/* Ordine leggibile su mobile: testo → immagini dove ha senso */
+		.lm-row--02 .lm-row__col--copy-end {
+			order: -1;
+		}
+
+		.lm-row--04 .lm-row__col--copy-end {
+			order: -1;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.lm-pair,
+		.lm-trio {
+			gap: 0.65rem;
+		}
+
+		.lm-fig--intro-tall,
+		.lm-fig--intro-sq {
+			width: 100%;
+			height: auto;
+			aspect-ratio: 1 / 1;
+		}
+
+		.lm-row__col--intro-tall {
+			width: 100%;
+		}
+	}
+</style>

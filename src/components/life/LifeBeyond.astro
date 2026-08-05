@@ -1,0 +1,165 @@
+---
+import Reveal from '../Reveal.tsx';
+
+const partners = [1, 2, 3, 4, 5];
+---
+
+<section class="life-beyond" aria-labelledby="beyond-title">
+	<div class="life-beyond__texture" aria-hidden="true"></div>
+
+	<div class="life-beyond__inner">
+		<Reveal client:visible inView delay={0.1} y={28} duration={1.75}>
+			<h2 id="beyond-title" class="life-beyond__title">Beyond Margagnano</h2>
+		</Reveal>
+
+		<Reveal client:visible inView delay={0.25} y={32} duration={1.8}>
+			<p class="life-beyond__text">
+				Margagnano è il punto di partenza per esplorare un territorio ricco di storia, natura e
+				cultura. Una selezione di luoghi scelti con cura accompagna gli ospiti alla scoperta della
+				Puglia più autentica, creando un percorso che si estende oltre la masseria e ne riflette gli
+				stessi valori di equilibrio, bellezza e autenticità.
+			</p>
+		</Reveal>
+
+		<Reveal client:visible inView delay={0.35} y={24} duration={1.7}>
+			<p class="life-beyond__label">Le partnership</p>
+		</Reveal>
+
+		<div class="life-beyond__grid" role="list">
+			{
+				partners.map((n, i) => (
+					<Reveal client:visible inView delay={0.4 + i * 0.12} y={36} duration={1.8}>
+						<figure class="life-beyond__card" role="listitem">
+							{/* Placeholder — sostituire con logo/immagine partnership */}
+							<span class="life-beyond__placeholder" aria-hidden="true" />
+							<span class="sr-only">Partnership {n}</span>
+						</figure>
+					</Reveal>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.life-beyond {
+		position: relative;
+		isolation: isolate;
+		overflow-x: clip;
+		background: #f3efe8;
+		color: #4a3f34;
+		padding: clamp(4.5rem, 9vw, 7.5rem) 0 clamp(4rem, 8vw, 6.5rem);
+	}
+
+	.life-beyond__texture {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background-image: url('/images/home/masseria-texture.png');
+		background-size: cover;
+		background-position: center;
+		opacity: 0.4;
+		pointer-events: none;
+	}
+
+	.life-beyond__inner {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: 92rem;
+		margin: 0 auto;
+		padding-inline: clamp(1.25rem, 5vw, 5.5rem);
+		text-align: center;
+	}
+
+	.life-beyond__title {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		line-height: 1.15;
+		color: var(--brand-terracotta);
+	}
+
+	.life-beyond__text {
+		margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0;
+		max-width: 46rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+		line-height: 1.65;
+		color: #4a3f34;
+	}
+
+	.life-beyond__label {
+		margin: clamp(2.75rem, 5.5vw, 4rem) 0 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1.15rem, 1.5vw, 1.35rem);
+		line-height: 1.3;
+		color: #4a3f34;
+	}
+
+	.life-beyond__grid {
+		display: grid;
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+		gap: clamp(0.75rem, 1.6vw, 1.35rem);
+		width: 100%;
+		max-width: 64rem;
+		margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+	}
+
+	.life-beyond__grid :global(> *) {
+		min-width: 0;
+	}
+
+	.life-beyond__card {
+		margin: 0;
+		width: 100%;
+		aspect-ratio: 1 / 1;
+		overflow: hidden;
+		background: #d9d4cb;
+	}
+
+	.life-beyond__placeholder {
+		display: block;
+		width: 100%;
+		height: 100%;
+		background: #d5cfc4;
+	}
+
+	.life-beyond__card :global(img) {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	@media (max-width: 900px) {
+		.life-beyond__grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			max-width: 28rem;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.life-beyond__grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			max-width: 20rem;
+		}
+	}
+</style>
