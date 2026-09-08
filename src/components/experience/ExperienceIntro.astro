@@ -1,0 +1,44 @@
+---
+import Reveal from '../Reveal.tsx';
+import './ExperienceIntro.css';
+---
+
+<section class="ex-intro" aria-labelledby="ex-intro-title">
+	<div class="ex-intro__inner">
+		<div class="ex-intro__lead">
+			<Reveal client:visible inView delay={0.08} y={24} duration={1}>
+				<h2 id="ex-intro-title" class="ex-intro__title">La Puglia, oltre la masseria.</h2>
+			</Reveal>
+			<figure class="ex-intro__media">
+				<img
+					src="/images/rooms/hero.jpg"
+					alt="Pietra della masseria e vegetazione sotto il cielo pugliese"
+					width="1200"
+					height="750"
+					loading="lazy"
+				/>
+			</figure>
+		</div>
+
+		<Reveal client:visible inView delay={0.18} y={22} duration={1}>
+			<div class="ex-intro__copy">
+				<p>Masseria Margagnano vive nel cuore di un territorio da esplorare.</p>
+				<p>
+					La sua posizione permette di attraversare paesaggi, luoghi e atmosfere diverse, costruendo
+					ogni giorno un modo personale di vivere la Puglia.
+				</p>
+				<p>
+					Dalla campagna al mare, dalla tavola alla cultura, alcune esperienze possono essere
+					organizzate attraverso una selezione di realtà con cui Margagnano condivide una particolare
+					attenzione per il territorio.
+				</p>
+				<p>
+					Altre nascono dalla vicinanza a luoghi che vale la pena scoprire. L'esperienza di
+					Margagnano non si esaurisce quindi all'interno della masseria. Prosegue lungo la costa, tra
+					i borghi della Valle d'Itria, nei campi da golf, nelle città d'arte e nei luoghi che ancora
+					conservano il ritmo della Puglia.
+				</p>
+			</div>
+		</Reveal>
+	</div>
+</section>

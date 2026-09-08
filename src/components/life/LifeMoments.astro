@@ -37,10 +37,15 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy">
 				<Reveal client:visible inView delay={0.15} y={24} duration={1.7}>
 					<div class="lm-copy">
-						<h2 class="lm-copy__title">
-							<span class="lm-copy__num">01.&nbsp;</span>RITUALS OF<br />WELLBEING
-						</h2>
-						<p class="lm-copy__text">Spa, trattamenti e percorsi dedicati al benessere.</p>
+						<p class="lm-copy__num">01.</p>
+						<h2 class="lm-copy__title">RITUALS OF<br />WELLBEING</h2>
+						<p class="lm-copy__lead">Spaces dedicated to body and mind.</p>
+						<p class="lm-copy__body">
+							L'area wellness riunisce idropiscina con vasca calda e fredda, sauna, bagno turco e
+							sala massaggi. La barberia completa gli spazi dedicati alla cura personale. Accanto
+							alla wellness area, una zona ricreativa con biliardo, tavolo da poker, simulatore F1,
+							bar e area TV offre uno spazio più informale da condividere.
+						</p>
 					</div>
 				</Reveal>
 				<LifeTimelineRule client:visible align="center" />
@@ -80,10 +85,15 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy lm-row__col--copy-end">
 				<Reveal client:visible inView delay={0.3} y={32} duration={1.7}>
 					<div class="lm-copy">
-						<h2 class="lm-copy__title">
-							<span class="lm-copy__num">02.&nbsp;</span>UNDER<br />THE SUN
-						</h2>
-						<p class="lm-copy__text">Il solarium, tra luce,<br />quiete e paesaggio.</p>
+						<p class="lm-copy__num">02.</p>
+						<h2 class="lm-copy__title">MOVEMENT<br />&amp; BALANCE</h2>
+						<p class="lm-copy__lead">A space for movement<br />and stillness.</p>
+						<p class="lm-copy__body">
+							La palestra e la zona yoga sono pensate per accompagnare la giornata attraverso il
+							movimento, l'allenamento e momenti dedicati all'equilibrio. Uno spazio da vivere
+							secondo il proprio ritmo, dal primo allenamento del mattino alla pratica più lenta
+							dello yoga.
+						</p>
 					</div>
 				</Reveal>
 				<LifeTimelineRule client:visible align="center" />
@@ -95,10 +105,17 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy">
 				<Reveal client:visible inView delay={0.15} y={24} duration={1.7}>
 					<div class="lm-copy">
-						<h2 class="lm-copy__title">
-							<span class="lm-copy__num">03.&nbsp;</span>RITUALS<br />OF QUIET
-						</h2>
-						<p class="lm-copy__text">Il pensatoio e gli angoli più riservati della masseria.</p>
+						<p class="lm-copy__num">03.</p>
+						<h2 class="lm-copy__title">UNDER<br />THE SUN</h2>
+						<p class="lm-copy__lead">Water, shade and open-air living.</p>
+						<p class="lm-copy__body">
+							Una grande piscina, accompagnata da docce e zona solarium, è il cuore della vita
+							all'aperto a Margagnano.
+						</p>
+						<p class="lm-copy__body">
+							Accanto all'acqua, la Pool House ospita una cucina esterna e una zona relax: uno
+							spazio pensato per vivere la giornata senza rientrare negli ambienti interni.
+						</p>
 					</div>
 				</Reveal>
 				<LifeTimelineRule client:visible align="center" />
@@ -124,7 +141,6 @@ const img = '/images/life/life-1.jpg';
 			</div>
 		</div>
 
-		<!-- Riga 5 — 04 -->
 		<div class="lm-row lm-row--04">
 			<div class="lm-row__col lm-row__col--wide">
 				<Reveal client:visible inView delay={0.2} y={36} duration={1.85}>
@@ -136,11 +152,14 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy lm-row__col--copy-end">
 				<Reveal client:visible inView delay={0.35} y={28} duration={1.7}>
 					<div class="lm-copy">
-						<h2 class="lm-copy__title">
-							<span class="lm-copy__num">04.&nbsp;</span>THE POOL
-						</h2>
-						<p class="lm-copy__text">
-							Uno spazio dove acqua, natura e architettura si incontrano.
+						<p class="lm-copy__num">04.</p>
+						<h2 class="lm-copy__title">RITUALS<br />OF QUIET</h2>
+						<p class="lm-copy__lead">Places to pause, together or alone.</p>
+						<p class="lm-copy__body">
+							Il pensatoio, le corti, le terrazze e gli spazi comuni creano piccoli luoghi in cui
+							fermarsi durante la giornata. Leggere, conversare, osservare il paesaggio o
+							semplicemente restare in silenzio. A Margagnano, anche il tempo senza programma trova
+							il suo spazio.
 						</p>
 					</div>
 				</Reveal>
@@ -226,7 +245,7 @@ const img = '/images/life/life-1.jpg';
 		align-items: flex-start;
 		flex: 0 0 auto;
 		width: 100%;
-		max-width: 22rem;
+		max-width: 36rem;
 		text-align: left;
 	}
 
@@ -237,28 +256,45 @@ const img = '/images/life/life-1.jpg';
 		margin-left: auto;
 	}
 
-	.lm-copy__title {
+	.lm-copy__num {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: clamp(2.1rem, 3.8vw, 3.25rem);
+		line-height: 1;
+		letter-spacing: 0.02em;
+		color: var(--brand-terracotta);
+	}
+
+	.lm-copy__title {
+		margin: 0.65rem 0 0;
+		font-family: 'Times Sans Serif', sans-serif;
 		font-weight: 400;
-		font-size: clamp(1.75rem, 2.8vw, 2.45rem);
-		line-height: 1.12;
-		letter-spacing: 0.04em;
+		font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+		letter-spacing: 0.06em;
 		text-transform: uppercase;
+		line-height: 1.08;
 		color: var(--lm-title);
 	}
 
-	.lm-copy__num {
-		font-weight: 400;
-	}
-
-	.lm-copy__text {
-		margin: 1rem 0 0;
+	.lm-copy__lead {
+		margin: 1.1rem 0 0;
 		font-family: 'New Caledonia LT Std', serif;
 		font-style: italic;
-		font-size: clamp(1.05rem, 1.35vw, 1.25rem);
-		line-height: 1.5;
-		color: var(--lm-ink);
+		font-size: clamp(1.08rem, 1.45vw, 1.32rem);
+		line-height: 1.4;
+		color: var(--brand-verde);
+	}
+
+	.lm-copy__body {
+		margin: 1.35rem 0 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.12vw, 1.08rem);
+		line-height: 1.7;
+		color: var(--brand-marrone);
+	}
+
+	.lm-copy__body + .lm-copy__body {
+		margin-top: 1.15rem;
 	}
 
 	/* Timeline: riempie fino a fine riga, cresce allo scroll */
@@ -268,7 +304,7 @@ const img = '/images/life/life-1.jpg';
 		justify-content: center;
 		align-items: stretch;
 		width: 100%;
-		max-width: 22rem;
+		max-width: 36rem;
 		min-height: 4.5rem;
 		margin-top: 1.35rem;
 	}
@@ -317,7 +353,7 @@ const img = '/images/life/life-1.jpg';
 
 	/* ——— Riga 2: 01 ——— */
 	.lm-row--01 {
-		grid-template-columns: minmax(13rem, 0.78fr) minmax(0, 1.42fr);
+		grid-template-columns: minmax(18rem, 1fr) minmax(0, 1.2fr);
 		align-items: start;
 		z-index: 2;
 	}
@@ -487,7 +523,7 @@ const img = '/images/life/life-1.jpg';
 		}
 
 		.lm-copy {
-			max-width: 22rem;
+			max-width: 36rem;
 		}
 
 		.lm-row__col--copy :global(.lm-timeline) {

@@ -11,6 +11,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
+  redirects: {
+    '/rooms': '/suites',
+    '/rooms/[slug]': '/suites/[slug]',
+  },
 
   alias: {
     '@': `${__dirname}/src`

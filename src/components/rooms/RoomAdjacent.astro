@@ -1,0 +1,30 @@
+---
+import Reveal from '../Reveal.tsx';
+import { adjacentRooms, type Room } from '../../data/rooms';
+import './RoomAdjacent.css';
+
+interface Props {
+	room: Room;
+}
+
+const { room } = Astro.props;
+const { prev, next } = adjacentRooms(room);
+---
+
+<nav class="room-adjacent" aria-label="Altre camere">
+	<div class="room-adjacent__inner">
+		<Reveal client:visible inView delay={0.08} y={16} duration={0.9} className="room-adjacent__reveal">
+			<a class="room-adjacent__link room-adjacent__link--prev" href={`/suites/${prev.slug}`}>
+				<span class="room-adjacent__dir">← Previous</span>
+				<span class="room-adjacent__name">{prev.name}</span>
+			</a>
+		</Reveal>
+
+		<Reveal client:visible inView delay={0.14} y={16} duration={0.9} className="room-adjacent__reveal">
+			<a class="room-adjacent__link room-adjacent__link--next" href={`/suites/${next.slug}`}>
+				<span class="room-adjacent__dir">Next →</span>
+				<span class="room-adjacent__name">{next.name}</span>
+			</a>
+		</Reveal>
+	</div>
+</nav>

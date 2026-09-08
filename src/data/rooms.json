@@ -1,0 +1,349 @@
+{
+	"page": {
+		"eyebrow": "Suites",
+		"title": "Spaces to be lived",
+		"subtitle": "Shaped by the character of the masseria.",
+		"intro": "Gli spazi privati di Margagnano seguono la stessa filosofia della masseria: rispettare l'architettura, valorizzare la materia e lasciare entrare la luce.",
+		"heroImage": "/images/rooms/hero.jpg",
+		"heroImageAlt": "Cortile della masseria con archi in pietra e cielo pugliese",
+		"overview": {
+			"title": "A house, many rooms.",
+			"paragraphs": [
+				"Le camere si distinguono per dimensioni e configurazioni, ma condividono un linguaggio fatto di pietra, calce, legno, tessuti naturali e dettagli essenziali. Alcuni ambienti sono più raccolti, altri più ampi e articolati. Insieme compongono una casa pensata per essere vissuta nella sua interezza.",
+				"La masseria può ospitare fino a [NUMERO OSPITI DA CONFERMARE] persone, distribuite nelle diverse camere e suite, con spazi comuni pensati per riunire gli ospiti durante la giornata."
+			],
+			"guestCount": "xx"
+		},
+		"roomsCarousel": {
+			"eyebrow": "The room",
+			"title": "Six rooms, six private spaces"
+		},
+		"suitesSection": {
+			"eyebrow": "The suites"
+		},
+		"wholeMasseria": {
+			"eyebrow": "The whole masseria",
+			"title": "More than just rooms.",
+			"text": "Le camere sono parti di una casa più grande, in cui gli spazi privati convivono con sale, corti, terrazze e ambienti comuni. A Margagnano, la masseria viene vissuta nella sua interezza.",
+			"image": "/images/rooms/hero.jpg",
+			"imageAlt": "Cortile della masseria con archi in pietra e cielo pugliese"
+		}
+	},
+	"rooms": [
+		{
+			"slug": "the-suite",
+			"name": "The Suite",
+			"tagline": "A private world within Margagnano",
+			"category": "suite",
+			"bedType": "Double",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Uno spazio privato più ampio, dove gli ambienti si susseguono e si completano.",
+			"headline": "Più di una camera.",
+			"highlights": [
+				{ "value": "27 m²", "label": "Bedroom" },
+				{ "value": "41 m²", "label": "Living room" },
+				{ "value": "2", "label": "Bathrooms" },
+				{ "value": "79 m²", "label": "Private terrace" }
+			],
+			"description": [
+				"La Suite raccoglie in un unico ambiente una dimensione privata più ampia, fatta di spazi che si susseguono e si completano. La camera padronale è collegata a due cabine armadio e a due bagni, creando una zona privata ampia e ben organizzata.",
+				"Un salotto indipendente amplia ulteriormente gli spazi della suite, con due camini che ne caratterizzano gli ambienti. All'esterno, la grande terrazza privata ospita una piscina idromassaggio e una zona solarium, creando una dimensione completamente dedicata alla suite."
+			],
+			"specs": [
+				{
+					"key": "camera",
+					"label": "Camera",
+					"area": "27 m²",
+					"details": ["Camera matrimoniale"]
+				},
+				{
+					"key": "living",
+					"label": "Living room",
+					"area": "41 m²",
+					"details": ["Salotto indipendente", "Camino"]
+				},
+				{
+					"key": "bathrooms",
+					"label": "Bagni",
+					"area": "11.27 m² e 10.97 m²",
+					"details": ["2 bagni", "Vasca e doccia"]
+				},
+				{
+					"key": "closets",
+					"label": "Cabine armadio",
+					"details": ["2 cabine armadio"]
+				},
+				{
+					"key": "terrace",
+					"label": "Terrazza privata",
+					"area": "79 m²",
+					"details": ["Piscina idromassaggio", "Solarium"]
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["2 camini", "TV", "Minibar", "Scrivanie"]
+				}
+			]
+		},
+		{
+			"slug": "curry",
+			"name": "Curry",
+			"tagline": "A quieter way of living",
+			"category": "suite",
+			"bedType": "Double",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Una suite indipendente, organizzata intorno al living e al riposo.",
+			"headline": "Private Suite.",
+			"highlights": [
+				{ "value": "29 m²", "label": "Suite" },
+				{ "value": "16 m²", "label": "Bathroom" },
+				{ "value": "67 m²", "label": "Private terrace" }
+			],
+			"description": [
+				"Curry è una suite indipendente organizzata intorno a una zona living e a una camera da letto. Gli ambienti raccolgono in un unico spazio la dimensione del riposo e quella della permanenza, con un minibar integrato nella zona living.",
+				"Il bagno, particolarmente ampio, completa la suite con una doccia e una vasca idromassaggio. All'esterno, una terrazza privata estende lo spazio della suite verso l'aperto."
+			],
+			"specs": [
+				{
+					"key": "suite",
+					"label": "Suite",
+					"area": "29.13 m²",
+					"details": ["Zona living e camera da letto"]
+				},
+				{
+					"key": "bathroom",
+					"label": "Bagno",
+					"area": "15.95 m²",
+					"details": ["Doccia", "Vasca idromassaggio"]
+				},
+				{
+					"key": "terrace",
+					"label": "Terrazza privata",
+					"area": "67 m²"
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["Minibar"]
+				}
+			]
+		},
+		{
+			"slug": "paprika",
+			"name": "Paprika",
+			"tagline": "Where the fire becomes part of the room",
+			"category": "room",
+			"bedType": "Double",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Un ambiente raccolto, dove il carattere della masseria si rivela nei dettagli.",
+			"description": [
+				"Paprika conserva uno degli elementi più caratteristici delle antiche abitazioni della masseria: il camino. Un dettaglio che dà presenza alla camera e ne accompagna l'atmosfera durante le ore più intime della giornata.",
+				"Lo spazio mantiene una dimensione raccolta, con un ambiente dedicato al riposo e un bagno privato."
+			],
+			"specs": [
+				{
+					"key": "camera",
+					"label": "Camera",
+					"area": "20.86 m²",
+					"details": ["Camera matrimoniale"]
+				},
+				{
+					"key": "bathroom",
+					"label": "Bagno",
+					"area": "5.98 m²",
+					"details": ["Bagno privato"]
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["Camino", "TV", "Minibar", "Scrivania"]
+				}
+			]
+		},
+		{
+			"slug": "timo",
+			"name": "Timo",
+			"tagline": "Defined by simplicity",
+			"category": "room",
+			"bedType": "Double",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Una dimensione intima, costruita intorno alla semplicità della materia.",
+			"description": [
+				"Timo è una camera pensata intorno alla semplicità. Gli elementi necessari alla permanenza trovano posto senza appesantire l'ambiente, lasciando che siano le proporzioni e la materia a definire lo spazio.",
+				"Una soluzione raccolta, parte della sequenza di camere che compongono la zona privata della masseria."
+			],
+			"specs": [
+				{
+					"key": "camera",
+					"label": "Camera",
+					"area": "22.30 m²",
+					"details": ["Camera matrimoniale"]
+				},
+				{
+					"key": "bathroom",
+					"label": "Bagno",
+					"area": "5.84 m²",
+					"details": ["Bagno privato"]
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["TV", "Minibar", "Scrivania"]
+				}
+			]
+		},
+		{
+			"slug": "zafferano",
+			"name": "Zafferano",
+			"tagline": "A small space, made for slowing down",
+			"category": "room",
+			"bedType": "Double",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Uno spazio raccolto e intimo, pensato per il ritmo più lento delle giornate.",
+			"description": [
+				"Zafferano ha una dimensione raccolta e intima. La camera si sviluppa in modo essenziale, lasciando spazio alla quiete e alla semplicità degli ambienti.",
+				"Un piccolo spazio privato all'interno della masseria, pensato per seguire il ritmo più lento delle giornate a Margagnano."
+			],
+			"specs": [
+				{
+					"key": "camera",
+					"label": "Camera",
+					"area": "18.14 m²",
+					"details": ["Camera matrimoniale"]
+				},
+				{
+					"key": "bathroom",
+					"label": "Bagno",
+					"area": "6.10 m²",
+					"details": ["Bagno privato"]
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["TV", "Minibar", "Scrivania"]
+				}
+			]
+		},
+		{
+			"slug": "cannella",
+			"name": "Cannella",
+			"tagline": "An old detail, still part of the story",
+			"category": "room",
+			"bedType": "Double",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Il calore di un camino incontra l'essenzialità dell'architettura.",
+			"description": [
+				"In Cannella, il camino diventa il punto attorno a cui si raccoglie la camera. Un elemento della storia dell'edificio che continua a trovare posto nella vita quotidiana della masseria.",
+				"L'ambiente mantiene una scala intima, con il bagno privato direttamente collegato alla camera."
+			],
+			"specs": [
+				{
+					"key": "camera",
+					"label": "Camera",
+					"area": "17.92 m²",
+					"details": ["Camera matrimoniale"]
+				},
+				{
+					"key": "bathroom",
+					"label": "Bagno",
+					"area": "5.88 m²",
+					"details": ["Bagno privato"]
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["Camino", "TV", "Minibar", "Scrivania"]
+				}
+			]
+		},
+		{
+			"slug": "ginepro",
+			"name": "Ginepro",
+			"tagline": "Two rooms, one private space",
+			"category": "room",
+			"bedType": "Twin room",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Una configurazione pensata per essere vissuta insieme, senza rinunciare alla propria dimensione privata.",
+			"connecting": "salvia",
+			"description": [
+				"Ginepro è pensata per una configurazione diversa: due letti singoli e un collegamento diretto con Salvia permettono di vivere le due camere come parte di uno stesso spazio privato.",
+				"Una soluzione particolarmente versatile all'interno della masseria, capace di adattarsi alla composizione degli ospiti senza rinunciare alla distinzione degli ambienti."
+			],
+			"specs": [
+				{
+					"key": "camera",
+					"label": "Camera",
+					"area": "18.15 m²",
+					"details": ["Camera twin", "2 letti singoli"]
+				},
+				{
+					"key": "bathroom",
+					"label": "Bagno",
+					"area": "6.00 m²",
+					"details": ["Bagno privato"]
+				},
+				{
+					"key": "connecting",
+					"label": "Collegamento",
+					"details": ["Comunicante con Salvia"]
+				},
+				{
+					"key": "outdoor",
+					"label": "Spazio esterno",
+					"area": "8.61 m²",
+					"details": ["Area relax / disimpegno esterno"]
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["TV", "Minibar", "Scrivania"]
+				}
+			]
+		},
+		{
+			"slug": "salvia",
+			"name": "Salvia",
+			"tagline": "Designed to be discovered together",
+			"category": "room",
+			"bedType": "Double",
+			"highlightImage": "/images/rooms/highlightImage.png",
+			"excerpt": "Due ambienti distinti che si incontrano, per essere scoperti insieme.",
+			"connecting": "ginepro",
+			"description": [
+				"Salvia completa la configurazione pensata insieme a Ginepro. Le due camere comunicanti permettono di creare una zona privata più ampia, mantenendo al tempo stesso due ambienti distinti.",
+				"Una soluzione che offre maggiore libertà nella disposizione degli ospiti e nella vita quotidiana all'interno della masseria."
+			],
+			"specs": [
+				{
+					"key": "camera",
+					"label": "Camera",
+					"area": "15.05 m²",
+					"details": ["Camera matrimoniale"]
+				},
+				{
+					"key": "bathroom",
+					"label": "Bagno",
+					"area": "8.02 m²",
+					"details": ["Bagno privato"]
+				},
+				{
+					"key": "connecting",
+					"label": "Collegamento",
+					"details": ["Comunicante con Ginepro"]
+				},
+				{
+					"key": "outdoor",
+					"label": "Spazio esterno",
+					"area": "8.61 m²",
+					"details": ["Area relax / disimpegno esterno", "Condivisi con Ginepro"]
+				},
+				{
+					"key": "amenities",
+					"label": "Dotazioni",
+					"details": ["TV", "Minibar", "Scrivania"]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,88 @@
+.ex-intro {
+	--ex-intro-pad: clamp(1.5rem, 5.5vw, 5.75rem);
+	overflow-x: clip;
+	background: #f6f3ed;
+	color: var(--brand-marrone);
+}
+
+.ex-intro__inner {
+	display: grid;
+	grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+	gap: clamp(2.5rem, 7vw, 7.5rem);
+	align-items: start;
+	max-width: 90rem;
+	margin: 0 auto;
+	padding: clamp(4.25rem, 8vw, 7.25rem) var(--ex-intro-pad);
+	box-sizing: border-box;
+}
+
+.ex-intro__lead,
+.ex-intro__copy {
+	min-width: 0;
+}
+
+.ex-intro__title {
+	margin: 0;
+	max-width: 16ch;
+	font-family: 'Times Sans Serif', sans-serif;
+	font-weight: 400;
+	font-size: clamp(2.05rem, 4.1vw, 3.35rem);
+	letter-spacing: 0.02em;
+	line-height: 1.15;
+	color: var(--brand-terracotta);
+}
+
+.ex-intro__media {
+	margin: clamp(1.75rem, 3.5vw, 2.75rem) 0 0;
+	position: relative;
+	width: calc(100% + max(0px, (100vw - 90rem) / 2) + var(--ex-intro-pad));
+	margin-left: calc(0px - max(0px, (100vw - 90rem) / 2) - var(--ex-intro-pad));
+	aspect-ratio: 16 / 10;
+	overflow: hidden;
+	background: #d9d0c4;
+}
+
+.ex-intro__media img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.ex-intro__copy {
+	display: grid;
+	gap: 1.2rem;
+	max-width: 38rem;
+	padding-top: 0.35rem;
+}
+
+.ex-intro__copy p {
+	margin: 0;
+	font-family: 'New Caledonia LT Std', serif;
+	font-size: clamp(0.98rem, 1.12vw, 1.08rem);
+	line-height: 1.7;
+	color: var(--brand-marrone);
+}
+
+@media (max-width: 800px) {
+	.ex-intro__inner {
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		padding-block: 3.5rem;
+	}
+
+	.ex-intro__title {
+		max-width: none;
+	}
+
+	.ex-intro__media {
+		width: calc(100% + var(--ex-intro-pad));
+		margin-left: calc(0px - var(--ex-intro-pad));
+	}
+
+	.ex-intro__copy {
+		max-width: none;
+		padding-top: 0;
+	}
+}

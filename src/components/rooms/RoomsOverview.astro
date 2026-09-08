@@ -1,0 +1,135 @@
+---
+import Reveal from '../Reveal.tsx';
+import { rooms, roomsPage } from '../../data/rooms';
+
+const { overview } = roomsPage;
+const roomCount = rooms.filter((room) => room.category === 'room').length;
+const suiteCount = rooms.filter((room) => room.category === 'suite').length;
+
+const stats = [
+	{ value: String(roomCount), label: 'rooms' },
+	{ value: String(suiteCount), label: 'suites' },
+	{ value: overview.guestCount, label: 'guests' },
+] as const;
+---
+
+<section class="rooms-overview" aria-labelledby="rooms-overview-title">
+	<div class="rooms-overview__frame">
+		<Reveal client:visible inView delay={0.08} y={24} duration={1}>
+			<div class="rooms-overview__heading">
+				<span class="rooms-overview__rule" aria-hidden="true"></span>
+				<h2 id="rooms-overview-title" class="rooms-overview__title">{overview.title}</h2>
+			</div>
+		</Reveal>
+
+		<Reveal client:visible inView delay={0.18} y={22} duration={1}>
+			<div class="rooms-overview__text">
+				{overview.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+			</div>
+		</Reveal>
+
+		<div class="rooms-overview__stats">
+			{
+				stats.map((stat, i) => (
+					<Reveal client:visible inView delay={0.28 + i * 0.08} y={20} duration={0.95}>
+						<p class="rooms-overview__stat">
+							<span class="rooms-overview__value">{stat.value}</span>
+							<span class="rooms-overview__label">{stat.label}</span>
+						</p>
+					</Reveal>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.rooms-overview {
+		background: #f6f3ed;
+		color: var(--brand-marrone);
+	}
+
+	.rooms-overview__frame {
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(4.25rem, 8vw, 6.75rem) clamp(1.5rem, 5.5vw, 5.75rem);
+		border-block: 1px solid rgba(107, 90, 68, 0.16);
+		text-align: center;
+	}
+
+	.rooms-overview__heading {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.rooms-overview__rule {
+		display: block;
+		width: 3.25rem;
+		height: 1px;
+		margin: 0 0 1.15rem;
+		background: var(--brand-terracotta);
+	}
+
+	.rooms-overview__title {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-size: clamp(1.7rem, 3vw, 2.45rem);
+		line-height: 1.25;
+		color: var(--brand-terracotta);
+	}
+
+	.rooms-overview__text {
+		display: grid;
+		gap: 1.15rem;
+		max-width: 44rem;
+		margin: 1.75rem auto 0;
+	}
+
+	.rooms-overview__text p {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.12vw, 1.08rem);
+		line-height: 1.7;
+		color: var(--brand-marrone);
+	}
+
+	.rooms-overview__stats {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 8.5rem));
+		justify-content: center;
+		gap: clamp(2.5rem, 8vw, 6.5rem);
+		margin-top: clamp(2.75rem, 5vw, 4.25rem);
+	}
+
+	.rooms-overview__stat {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 0;
+	}
+
+	.rooms-overview__value {
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-size: clamp(2.75rem, 5.5vw, 4.35rem);
+		line-height: 1;
+		color: var(--brand-verde);
+	}
+
+	.rooms-overview__label {
+		margin-top: 0.15rem;
+		font-family: 'Monsieur La Doulaise', cursive;
+		font-size: 60px;
+		line-height: 1;
+		color: var(--brand-azzurro);
+	}
+
+	@media (max-width: 640px) {
+		.rooms-overview__stats {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1.25rem;
+		}
+	}
+</style>

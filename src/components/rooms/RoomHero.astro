@@ -1,0 +1,44 @@
+---
+import Reveal from '../Reveal.tsx';
+import type { Room } from '../../data/rooms';
+import './RoomHero.css';
+
+interface Props {
+	room: Room;
+}
+
+const { room } = Astro.props;
+const eyebrow = room.category === 'suite' ? 'Suite' : 'Room';
+---
+
+<section class="rd-hero" aria-label={room.name}>
+	<div class="rd-hero__inner">
+		<div class="rd-hero__copy">
+			<div class="rd-hero__intro">
+				<Reveal client:load delay={0.18} duration={0.95} y={20}>
+					<p class="rd-hero__eyebrow">{eyebrow}</p>
+				</Reveal>
+				<Reveal client:load delay={0.3} duration={1.05} y={28}>
+					<h1 class="rd-hero__title">{room.name}</h1>
+				</Reveal>
+				<Reveal client:load delay={0.42} duration={0.95} y={18}>
+					<p class="rd-hero__tagline">{room.tagline}</p>
+				</Reveal>
+			</div>
+
+			<figure class="rd-hero__thumb">
+				<img src={room.highlightImage} alt="" width="1600" height="900" fetchpriority="high" />
+			</figure>
+		</div>
+
+		<div class="rd-hero__media">
+			<img
+				src={room.highlightImage}
+				alt={`${room.name}, Masseria Margagnano`}
+				width="1400"
+				height="1400"
+				fetchpriority="high"
+			/>
+		</div>
+	</div>
+</section>

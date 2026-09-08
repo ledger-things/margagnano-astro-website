@@ -1,0 +1,108 @@
+---
+import Reveal from '../Reveal.tsx';
+import './ExperienceSelected.css';
+
+const items = [
+	{
+		slug: 'cala-cimi',
+		name: 'Cala Cimì',
+		kind: 'sea club',
+		text: 'Il mare di Puglia, vissuto attraverso una prospettiva più riservata.',
+	},
+	{
+		slug: 'indigenus',
+		name: 'Indigenus',
+		kind: 'experience',
+		text: 'Alla scoperta della Puglia attraverso esperienze e itinerari dedicati al territorio.',
+	},
+	{
+		slug: 'serri',
+		name: 'Serri',
+		kind: 'bistrot',
+		text: 'Un incontro con la cucina e i sapori del territorio.',
+	},
+] as const;
+
+const image = {
+	src: '/images/rooms/hero.jpg',
+	alt: 'Cortile della masseria con archi in pietra',
+	width: 1200,
+	height: 750,
+};
+---
+
+<section class="ex-sel" aria-labelledby="ex-sel-title">
+	<div class="ex-sel__inner">
+		<div class="ex-sel__head">
+			<Reveal client:visible inView delay={0.08} y={20} duration={0.95}>
+				<h2 id="ex-sel-title" class="ex-sel__heading">
+					<span class="ex-sel__title">Esperienze</span>
+					<span class="ex-sel__script">selezionate</span>
+				</h2>
+			</Reveal>
+			<Reveal client:visible inView delay={0.16} y={18} duration={0.95}>
+				<p class="ex-sel__lead">
+					Esperienze pensate per scoprire il territorio attraverso prospettive diverse.
+				</p>
+			</Reveal>
+		</div>
+
+		<div class="ex-sel__list">
+			{
+				items.map((item, i) => {
+					const flipped = i % 2 === 1;
+					return (
+						<article
+							class:list={['ex-sel__row', flipped && 'is-flipped']}
+							aria-labelledby={`ex-sel-${item.slug}`}
+						>
+							<Reveal
+								client:visible
+								inView
+								delay={0.08}
+								x={flipped ? 48 : -48}
+								y={0}
+								duration={1.1}
+								amount={0.35}
+								className="ex-sel__name"
+							>
+								<h3 id={`ex-sel-${item.slug}`}>{item.name}</h3>
+								<p>{item.kind}</p>
+							</Reveal>
+							<Reveal
+								client:visible
+								inView
+								delay={0.16}
+								x={0}
+								y={0}
+								duration={1.15}
+								amount={0.35}
+								className="ex-sel__media"
+							>
+								<img
+									src={image.src}
+									alt={image.alt}
+									width={image.width}
+									height={image.height}
+									loading="lazy"
+								/>
+							</Reveal>
+							<Reveal
+								client:visible
+								inView
+								delay={0.22}
+								x={flipped ? -48 : 48}
+								y={0}
+								duration={1.1}
+								amount={0.35}
+								className="ex-sel__text"
+							>
+								{item.text}
+							</Reveal>
+						</article>
+					);
+				})
+			}
+		</div>
+	</div>
+</section>

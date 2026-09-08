@@ -8,30 +8,14 @@ import {
 	type PanInfo,
 } from 'framer-motion';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { rooms } from '../data/rooms';
 
-type Suite = {
-	name: string;
-	desc: string;
-	image: string;
-};
-
-const suites: Suite[] = [
-	{
-		name: 'Nome uno',
-		desc: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-		image: '/images/home/suite-interior.png',
-	},
-	{
-		name: 'Nome due',
-		desc: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-		image: '/images/home/suite-interior.png',
-	},
-	{
-		name: 'Nome tre',
-		desc: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit.',
-		image: '/images/home/suite-interior.png',
-	},
-];
+const suites = rooms.map((room) => ({
+	slug: room.slug,
+	name: room.name,
+	desc: room.excerpt,
+	image: room.highlightImage,
+}));
 
 const REPEAT = 5;
 const LOOP = Array.from({ length: suites.length * REPEAT }, (_, i) => ({
@@ -79,7 +63,7 @@ function SuiteCard({
 			className={`suites-carousel__card${isActive ? ' is-active' : ''}`}
 			style={{ scale, opacity, y }}
 			aria-current={isActive ? 'true' : undefined}
-			aria-label={`${suite.name}${isActive ? ', selezionata' : ', vai alla suite'}`}
+			aria-label={`${suite.name}${isActive ? ', apri la pagina' : ', vai alla suite'}`}
 			onClick={onSelect}
 		>
 			<figure className="suites-carousel__figure">
@@ -238,6 +222,7 @@ export default function SuitesCarousel() {
 							isActive={i === index}
 							onSelect={() => {
 								if (i !== index) goTo(i);
+								else window.location.assign(`/suites/${suite.slug}`);
 							}}
 						/>
 					))}
@@ -256,7 +241,7 @@ export default function SuitesCarousel() {
 				<div className="suites-carousel__dots" role="tablist" aria-label="Suite">
 					{suites.map((suite, i) => (
 						<button
-							key={suite.name}
+							key={suite.slug}
 							type="button"
 							role="tab"
 							aria-selected={i === activeSource}

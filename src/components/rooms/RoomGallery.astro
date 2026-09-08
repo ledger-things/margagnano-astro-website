@@ -1,0 +1,158 @@
+---
+import Reveal from '../Reveal.tsx';
+import type { Room } from '../../data/rooms';
+
+interface Props {
+	room: Room;
+}
+
+const { room } = Astro.props;
+
+const images = [
+	{
+		src: '/images/home/gallery-vault.png',
+		alt: `Volta in pietra, ${room.name}`,
+		class: 'room-gallery__item--left',
+		width: 900,
+		height: 1200,
+	},
+	{
+		src: '/images/home/gallery-grove.png',
+		alt: `Paesaggio intorno alla masseria, ${room.name}`,
+		class: 'room-gallery__item--mid-top',
+		width: 1200,
+		height: 800,
+	},
+	{
+		src: '/images/home/gallery-steps.png',
+		alt: `Dettaglio architettonico, ${room.name}`,
+		class: 'room-gallery__item--mid-bottom',
+		width: 1200,
+		height: 800,
+	},
+	{
+		src: '/images/home/gallery-lantern.png',
+		alt: `Lanterna sulla pietra, ${room.name}`,
+		class: 'room-gallery__item--right',
+		width: 900,
+		height: 1200,
+	},
+];
+---
+
+<section class="room-gallery" aria-label={`Galleria ${room.name}`}>
+	<div class="room-gallery__inner">
+		<div class="room-gallery__grid">
+			{
+				images.map((image, i) => (
+					<figure class:list={['room-gallery__item', image.class]}>
+						<Reveal client:visible inView delay={0.08 + i * 0.05} y={20} duration={0.95}>
+							<img
+								src={image.src}
+								alt={image.alt}
+								width={image.width}
+								height={image.height}
+								loading="lazy"
+							/>
+						</Reveal>
+					</figure>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.room-gallery {
+		background: #f6f3ed;
+	}
+
+	.room-gallery__inner {
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(2.75rem, 5.5vw, 4.5rem) clamp(1.5rem, 5.5vw, 5.75rem);
+		box-sizing: border-box;
+		border-bottom: 1px solid rgba(153, 70, 25, 0.22);
+	}
+
+	.room-gallery__grid {
+		display: grid;
+		grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) minmax(0, 1.05fr);
+		grid-template-rows: 1fr 1fr;
+		gap: clamp(0.55rem, 1.2vw, 0.9rem);
+		height: clamp(28rem, 52vw, 38rem);
+	}
+
+	.room-gallery__item {
+		margin: 0;
+		overflow: hidden;
+		min-width: 0;
+		min-height: 0;
+		background: #d9d0c4;
+	}
+
+	.room-gallery__item--left {
+		grid-column: 1;
+		grid-row: 1 / -1;
+	}
+
+	.room-gallery__item--mid-top {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.room-gallery__item--mid-bottom {
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	.room-gallery__item--right {
+		grid-column: 3;
+		grid-row: 1 / -1;
+	}
+
+	.room-gallery__item :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.room-gallery__item img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 800px) {
+		.room-gallery__grid {
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: auto;
+			height: auto;
+			gap: 0.6rem;
+		}
+
+		.room-gallery__item--left {
+			grid-column: 1;
+			grid-row: 1 / span 2;
+			aspect-ratio: 3 / 4.4;
+		}
+
+		.room-gallery__item--mid-top {
+			grid-column: 2;
+			grid-row: 1;
+			aspect-ratio: 4 / 3;
+		}
+
+		.room-gallery__item--mid-bottom {
+			grid-column: 2;
+			grid-row: 2;
+			aspect-ratio: 4 / 3;
+		}
+
+		.room-gallery__item--right {
+			grid-column: 1 / -1;
+			grid-row: 3;
+			aspect-ratio: 16 / 10;
+		}
+	}
+</style>

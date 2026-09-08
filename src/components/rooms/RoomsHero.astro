@@ -1,0 +1,172 @@
+---
+import Reveal from '../Reveal.tsx';
+import { roomsPage } from '../../data/rooms';
+---
+
+<section class="rooms-hero" aria-label="Suites">
+	<div class="rooms-hero__inner">
+		<div class="rooms-hero__copy">
+			<Reveal client:load delay={0.18} duration={0.95} y={20}>
+				<p class="rooms-hero__eyebrow">{roomsPage.eyebrow}</p>
+			</Reveal>
+			<Reveal client:load delay={0.3} duration={1.05} y={28}>
+				<h1 class="rooms-hero__title">
+					Spaces to be<br />lived
+				</h1>
+			</Reveal>
+			<Reveal client:load delay={0.42} duration={0.95} y={18}>
+				<p class="rooms-hero__subtitle">{roomsPage.subtitle}</p>
+			</Reveal>
+			<Reveal client:load delay={0.54} duration={1} y={20}>
+				<p class="rooms-hero__text">{roomsPage.intro}</p>
+			</Reveal>
+		</div>
+
+		<div class="rooms-hero__media">
+			<Reveal client:load delay={0.28} x={32} y={0} duration={1.15}>
+				<img
+					src={roomsPage.heroImage}
+					alt={roomsPage.heroImageAlt}
+					width="1444"
+					height="856"
+					fetchpriority="high"
+				/>
+			</Reveal>
+		</div>
+	</div>
+</section>
+
+<style>
+	.rooms-hero {
+		position: relative;
+		isolation: isolate;
+		overflow-x: clip;
+		min-height: 100svh;
+		background: #f6f3ed;
+		color: var(--brand-marrone);
+	}
+
+	.rooms-hero__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+		gap: clamp(2rem, 6vw, 6.5rem);
+		align-items: center;
+		max-width: 90rem;
+		min-height: 100svh;
+		margin: 0 auto;
+		padding: clamp(6.5rem, 11vh, 8rem) clamp(1.5rem, 5.5vw, 5.75rem) clamp(2.75rem, 6vh, 4.5rem);
+		box-sizing: border-box;
+	}
+
+	.rooms-hero__copy,
+	.rooms-hero__media {
+		min-width: 0;
+	}
+
+	.rooms-hero__copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		max-width: 32rem;
+		padding-block: 0.5rem;
+	}
+
+	.rooms-hero__eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		margin: 0;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 24px;
+		letter-spacing: 0.28em;
+		text-transform: uppercase;
+		color: var(--brand-verde);
+	}
+
+	.rooms-hero__eyebrow::after {
+		content: '';
+		flex: 0 0 3.25rem;
+		width: 3.25rem;
+		height: 1px;
+		background: var(--brand-terracotta);
+	}
+
+	.rooms-hero__title {
+		margin: 1.15rem 0 0;
+		max-width: 11ch;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(2.35rem, 4.6vw, 4.15rem);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+		line-height: 1.05;
+	}
+
+	.rooms-hero__subtitle {
+		margin: 1.15rem 0 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-style: italic;
+		font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+		line-height: 1.4;
+		color: var(--brand-marrone);
+	}
+
+	.rooms-hero__text {
+		margin: 1.35rem 0 0;
+		max-width: 28rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.12vw, 1.1rem);
+		line-height: 1.75;
+		color: var(--brand-marrone);
+	}
+
+	.rooms-hero__media {
+		width: 100%;
+		max-width: 42rem;
+		aspect-ratio: 4 / 3;
+		overflow: hidden;
+		justify-self: end;
+	}
+
+	.rooms-hero__media :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.rooms-hero__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center 40%;
+	}
+
+	@media (max-width: 900px) {
+		.rooms-hero__inner {
+			grid-template-columns: 1fr;
+			min-height: auto;
+			padding: 5.75rem 1.25rem 2.75rem;
+			gap: 2rem;
+		}
+
+		.rooms-hero__copy {
+			max-width: 36rem;
+			margin: 0 auto;
+			order: 1;
+		}
+
+		.rooms-hero__title {
+			max-width: none;
+		}
+
+		.rooms-hero__media {
+			order: 2;
+			max-width: 36rem;
+			margin: 0 auto;
+			width: 100%;
+			aspect-ratio: 4 / 3;
+			justify-self: stretch;
+		}
+	}
+</style>

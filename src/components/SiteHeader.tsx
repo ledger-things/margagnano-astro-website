@@ -6,13 +6,29 @@ type Lang = 'it' | 'en';
 type SiteHeaderProps = {
 	/** `light`: logo/nav scuri fin da subito (hero chiari). */
 	tone?: 'auto' | 'light';
+	currentPath?: string;
 };
+
+function normalizePath(pathname: string) {
+	if (pathname.length > 1 && pathname.endsWith('/')) return pathname.slice(0, -1);
+	return pathname;
+}
+
+function isActiveHref(href: string, pathname: string, hash: string) {
+	const path = normalizePath(pathname);
+
+	if (href.startsWith('/#')) {
+		return path === '/' && hash === href.slice(1);
+	}
+
+	return path === href || path.startsWith(`${href}/`);
+}
 
 const leftLinks = [
 	{ href: '/la-masseria', label: 'La masseria' },
-	{ href: '/#suites', label: 'Suites' },
+	{ href: '/suites', label: 'Suites' },
 	{ href: '/la-cucina', label: 'Cucina' },
-	{ href: '/#experience', label: 'Experience' },
+	{ href: '/experience', label: 'Experience' },
 ];
 
 const rightLinks = [
@@ -30,15 +46,23 @@ function readInitialLang(): Lang {
 	return document.documentElement.lang === 'en' ? 'en' : 'it';
 }
 
-export default function SiteHeader({ tone = 'auto' }: SiteHeaderProps) {
+export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHeaderProps) {
 	const [scrolled, setScrolled] = useState(tone === 'light');
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [lang, setLang] = useState<Lang>('it');
+	const [hash, setHash] = useState('');
 	const shouldReduce = useReducedMotion();
 	const menuId = useId();
 
 	useEffect(() => {
 		setLang(readInitialLang());
+	}, []);
+
+	useEffect(() => {
+		const syncHash = () => setHash(window.location.hash);
+		syncHash();
+		window.addEventListener('hashchange', syncHash);
+		return () => window.removeEventListener('hashchange', syncHash);
 	}, []);
 
 	useEffect(() => {
@@ -90,6 +114,14 @@ export default function SiteHeader({ tone = 'auto' }: SiteHeaderProps) {
 
 	const closeMenu = () => setMenuOpen(false);
 
+	const linkProps = (href: string) => {
+		const active = isActiveHref(href, currentPath, hash);
+		return {
+			className: active ? 'is-active' : undefined,
+			'aria-current': (active ? 'page' : undefined) as 'page' | undefined,
+		};
+	};
+
 	const langSwitch = (
 		<div className="site-header__lang" role="group" aria-label="Lingua">
 			<button
@@ -123,7 +155,9 @@ export default function SiteHeader({ tone = 'auto' }: SiteHeaderProps) {
 					<ul className="site-header__links">
 						{leftLinks.map((link) => (
 							<li key={link.label}>
-								<a href={link.href}>{link.label}</a>
+								<a href={link.href} {...linkProps(link.href)}>
+									{link.label}
+								</a>
 							</li>
 						))}
 					</ul>
@@ -150,7 +184,9 @@ export default function SiteHeader({ tone = 'auto' }: SiteHeaderProps) {
 					<ul className="site-header__links">
 						{rightLinks.map((link) => (
 							<li key={link.label}>
-								<a href={link.href}>{link.label}</a>
+								<a href={link.href} {...linkProps(link.href)}>
+									{link.label}
+								</a>
 							</li>
 						))}
 						<li className="site-header__lang-item">{langSwitch}</li>
@@ -201,7 +237,7 @@ export default function SiteHeader({ tone = 'auto' }: SiteHeaderProps) {
 										animate={{ opacity: 1, x: 0 }}
 										transition={{ delay: 0.05 + i * 0.04, duration: 0.35 }}
 									>
-										<a href={link.href} onClick={closeMenu}>
+										<a href={link.href} onClick={closeMenu} {...linkProps(link.href)}>
 											{link.label}
 										</a>
 									</motion.li>

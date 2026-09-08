@@ -1,0 +1,89 @@
+---
+import Reveal from '../Reveal.tsx';
+import ExperiencePlacesAccordion from './ExperiencePlacesAccordion.tsx';
+import './ExperiencePlaces.css';
+
+const places = [
+	{
+		slug: 'fasano',
+		name: 'Fasano',
+		text: 'Il centro storico di Fasano conserva il carattere di un antico borgo pugliese, fatto di vicoli bianchi, archi e piccole corti. Intorno, la campagna si apre tra ulivi secolari e antiche masserie.',
+		vedere: ['Centro storico', 'Piazza Ciaia', 'Museo dell’Olio'],
+		vivere: [
+			'Una passeggiata tra i vicoli del centro',
+			'Un aperitivo al tramonto',
+			'Una visita alle campagne e alle masserie del territorio',
+		],
+		assaggiare: ['Panzerotti', 'Focaccia pugliese', 'Orecchiette', 'Olio extravergine d’oliva'],
+	},
+	{
+		slug: 'polignano',
+		name: 'Polignano a Mare',
+		text: 'Il borgo si affaccia sull’Adriatico con calette, scogliere e case bianche sospese sull’acqua. Il centro è un intreccio di vicoli, terrazze e piccole piazze che guardano il blu.',
+		vedere: ['Centro storico', 'Lama Monachile', 'Grotta Palazzese'],
+		vivere: [
+			'Un tuffo nelle acque della scogliera',
+			'Una passeggiata sul mare al tramonto',
+			'Una visita al borgo quando si accendono le luci',
+		],
+		assaggiare: ['Crudo di mare', 'Focaccia di Polignano', 'Gelato artigianale', 'Vino bianco pugliese'],
+	},
+	{
+		slug: 'ostuni',
+		name: 'Ostuni',
+		text: 'La Città Bianca si riconosce da lontano, distesa sul colle con le case a calce e i tetti a spiovente. Il centro storico è un labirinto di scalinate, archi e belvedere sulla campagna.',
+		vedere: ['Centro storico', 'Cattedrale', 'Mura e belvedere'],
+		vivere: [
+			'Un aperitivo tra i tetti bianchi',
+			'Una passeggiata al tramonto sulle mura',
+			'Una visita alle masserie della campagna circostante',
+		],
+		assaggiare: ['Bombette', 'Burrata', 'Orecchiette alle cime di rapa', 'Olio extravergine d’oliva'],
+	},
+	{
+		slug: 'alberobello',
+		name: 'Alberobello',
+		text: 'Patrimonio UNESCO, Alberobello è il paese dei trulli: coni di pietra, tetti a gradoni e vicoli bianchi. Un paesaggio unico della Valle d’Itria, a pochi minuti dalla masseria.',
+		vedere: ['Rione Monti', 'Aia Piccola', 'Trullo Sovrano'],
+		vivere: [
+			'Una passeggiata tra i trulli al mattino',
+			'Una visita a un trullo abitato',
+			'Un giro nella campagna della Valle d’Itria',
+		],
+		assaggiare: ['Taralli', 'Primitivo', 'Focaccia', 'Formaggi della Valle d’Itria'],
+	},
+] as const;
+---
+
+<section class="ex-places" aria-labelledby="ex-places-title">
+	<div class="ex-places__inner">
+		<div class="ex-places__lead">
+			<Reveal client:visible inView delay={0.08} y={22} duration={1}>
+				<div class="ex-places__intro">
+					<h2 id="ex-places-title" class="ex-places__title">Places to discover</h2>
+					<div class="ex-places__copy">
+						<p>Luoghi che fanno parte del paesaggio di <strong>Margagnano</strong>.</p>
+						<p>
+							Oltre alle esperienze organizzate, la posizione della masseria permette di raggiungere
+							facilmente alcuni dei luoghi più significativi della Puglia centrale.
+						</p>
+					</div>
+				</div>
+			</Reveal>
+
+			<figure class="ex-places__media">
+				<img
+					src="/images/home/masseria-arch.png"
+					alt="Architettura in pietra della masseria e alberi sotto il cielo pugliese"
+					width="1600"
+					height="900"
+					loading="lazy"
+				/>
+			</figure>
+		</div>
+
+		<Reveal client:visible inView delay={0.16} y={20} duration={1}>
+			<ExperiencePlacesAccordion client:visible places={places} />
+		</Reveal>
+	</div>
+</section>

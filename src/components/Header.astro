@@ -8,7 +8,7 @@ interface Props {
 const { tone = 'auto' } = Astro.props;
 ---
 
-<SiteHeader client:load tone={tone} />
+<SiteHeader client:load tone={tone} currentPath={Astro.url.pathname} />
 
 <style is:global>
 	.site-header {
@@ -63,13 +63,13 @@ const { tone = 'auto' } = Astro.props;
 	}
 
 	.site-header__logo--light {
-		height: clamp(4.5rem, 7.5vw, 6.5rem);
+		height: clamp(4.5rem, 8vw, 15.5rem);
 		filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.35));
 		opacity: 1;
 	}
 
 	.site-header__logo--dark {
-		height: clamp(3.25rem, 5.5vw, 4.5rem);
+		height: clamp(3.25rem, 5.5vw, 12.5rem);
 		opacity: 0;
 	}
 
@@ -127,6 +127,11 @@ const { tone = 'auto' } = Astro.props;
 	.site-header.is-scrolled .site-header__links a {
 		color: #6b5a44;
 		text-shadow: none;
+	}
+
+	.site-header__links a.is-active,
+	.site-header.is-scrolled .site-header__links a.is-active {
+		color: var(--brand-terracotta);
 	}
 
 	.site-header__links a:hover,
@@ -314,6 +319,10 @@ const { tone = 'auto' } = Astro.props;
 		font-size: 1.15rem;
 		letter-spacing: 0.03em;
 		transition: opacity 0.2s ease;
+	}
+
+	.site-header__drawer-links a.is-active {
+		color: var(--brand-terracotta);
 	}
 
 	.site-header__drawer-links a:hover,
