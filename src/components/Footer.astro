@@ -1,13 +1,19 @@
 ---
 // Footer: sfondo verde, logo bianco e informazioni di contatto.
 import Reveal from './Reveal.tsx';
+
+interface Props {
+	homeHref?: string;
+}
+
+const { homeHref = '/home' } = Astro.props;
 ---
 
 <footer class="footer">
 	<div class="footer__inner">
 		<div class="footer__main">
 			<Reveal client:visible inView delay={0.05}>
-				<a class="footer__brand" href="/" aria-label="Masseria Margagnano - Home">
+				<a class="footer__brand" href={homeHref} aria-label="Masseria Margagnano - Home">
 					<img
 						class="footer__logo"
 						src="/logo/logo-full-white.svg"
@@ -68,7 +74,7 @@ import Reveal from './Reveal.tsx';
 		display: flex;
 		flex-direction: column;
 		gap: 0.35rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-style: normal;
 		font-size: clamp(0.95rem, 1.2vw, 1.05rem);
@@ -92,7 +98,7 @@ import Reveal from './Reveal.tsx';
 
 	.footer__copy {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-size: clamp(0.7rem, 0.9vw, 0.8rem);
 		letter-spacing: 0.18em;

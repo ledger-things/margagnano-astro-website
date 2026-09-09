@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import ExperiencePlacesAccordion from './ExperiencePlacesAccordion.tsx';
 import './ExperiencePlaces.css';
 
@@ -7,50 +8,114 @@ const places = [
 	{
 		slug: 'fasano',
 		name: 'Fasano',
-		text: 'Il centro storico di Fasano conserva il carattere di un antico borgo pugliese, fatto di vicoli bianchi, archi e piccole corti. Intorno, la campagna si apre tra ulivi secolari e antiche masserie.',
-		vedere: ['Centro storico', 'Piazza Ciaia', 'Museo dell’Olio'],
-		vivere: [
-			'Una passeggiata tra i vicoli del centro',
-			'Un aperitivo al tramonto',
-			'Una visita alle campagne e alle masserie del territorio',
-		],
-		assaggiare: ['Panzerotti', 'Focaccia pugliese', 'Orecchiette', 'Olio extravergine d’oliva'],
+		text: {
+			it: 'Il centro storico di Fasano conserva il carattere di un antico borgo pugliese, fatto di vicoli bianchi, archi e piccole corti. Intorno, la campagna si apre tra ulivi secolari e antiche masserie.',
+			en: 'The historic centre of Fasano keeps the character of an old Apulian town, with white lanes, arches and small courtyards. Around it, the countryside opens among centuries-old olive trees and historic masserie.',
+		},
+		vedere: {
+			it: ['Centro storico', 'Piazza Ciaia', 'Museo dell’Olio'],
+			en: ['Historic centre', 'Piazza Ciaia', 'Olive Oil Museum'],
+		},
+		vivere: {
+			it: [
+				'Una passeggiata tra i vicoli del centro',
+				'Un aperitivo al tramonto',
+				'Una visita alle campagne e alle masserie del territorio',
+			],
+			en: [
+				'A walk through the lanes of the centre',
+				'An aperitivo at sunset',
+				'A visit to the countryside and the masserie of the area',
+			],
+		},
+		assaggiare: {
+			it: ['Panzerotti', 'Focaccia pugliese', 'Orecchiette', 'Olio extravergine d’oliva'],
+			en: ['Panzerotti', 'Apulian focaccia', 'Orecchiette', 'Extra virgin olive oil'],
+		},
 	},
 	{
 		slug: 'polignano',
 		name: 'Polignano a Mare',
-		text: 'Il borgo si affaccia sull’Adriatico con calette, scogliere e case bianche sospese sull’acqua. Il centro è un intreccio di vicoli, terrazze e piccole piazze che guardano il blu.',
-		vedere: ['Centro storico', 'Lama Monachile', 'Grotta Palazzese'],
-		vivere: [
-			'Un tuffo nelle acque della scogliera',
-			'Una passeggiata sul mare al tramonto',
-			'Una visita al borgo quando si accendono le luci',
-		],
-		assaggiare: ['Crudo di mare', 'Focaccia di Polignano', 'Gelato artigianale', 'Vino bianco pugliese'],
+		text: {
+			it: 'Il borgo si affaccia sull’Adriatico con calette, scogliere e case bianche sospese sull’acqua. Il centro è un intreccio di vicoli, terrazze e piccole piazze che guardano il blu.',
+			en: 'The town looks onto the Adriatic with coves, cliffs and white houses suspended over the water. The centre is a weave of lanes, terraces and small squares that face the blue.',
+		},
+		vedere: {
+			it: ['Centro storico', 'Lama Monachile', 'Grotta Palazzese'],
+			en: ['Historic centre', 'Lama Monachile', 'Grotta Palazzese'],
+		},
+		vivere: {
+			it: [
+				'Un tuffo nelle acque della scogliera',
+				'Una passeggiata sul mare al tramonto',
+				'Una visita al borgo quando si accendono le luci',
+			],
+			en: [
+				'A swim from the cliffs',
+				'A walk by the sea at sunset',
+				'A visit to the town when the lights come on',
+			],
+		},
+		assaggiare: {
+			it: ['Crudo di mare', 'Focaccia di Polignano', 'Gelato artigianale', 'Vino bianco pugliese'],
+			en: ['Raw seafood', 'Focaccia of Polignano', 'Artisan gelato', 'Apulian white wine'],
+		},
 	},
 	{
 		slug: 'ostuni',
 		name: 'Ostuni',
-		text: 'La Città Bianca si riconosce da lontano, distesa sul colle con le case a calce e i tetti a spiovente. Il centro storico è un labirinto di scalinate, archi e belvedere sulla campagna.',
-		vedere: ['Centro storico', 'Cattedrale', 'Mura e belvedere'],
-		vivere: [
-			'Un aperitivo tra i tetti bianchi',
-			'Una passeggiata al tramonto sulle mura',
-			'Una visita alle masserie della campagna circostante',
-		],
-		assaggiare: ['Bombette', 'Burrata', 'Orecchiette alle cime di rapa', 'Olio extravergine d’oliva'],
+		text: {
+			it: 'La Città Bianca si riconosce da lontano, distesa sul colle con le case a calce e i tetti a spiovente. Il centro storico è un labirinto di scalinate, archi e belvedere sulla campagna.',
+			en: 'The White City is recognised from afar, laid across the hill with limewashed houses and pitched roofs. The historic centre is a labyrinth of stairways, arches and lookouts over the countryside.',
+		},
+		vedere: {
+			it: ['Centro storico', 'Cattedrale', 'Mura e belvedere'],
+			en: ['Historic centre', 'Cathedral', 'Walls and lookouts'],
+		},
+		vivere: {
+			it: [
+				'Un aperitivo tra i tetti bianchi',
+				'Una passeggiata al tramonto sulle mura',
+				'Una visita alle masserie della campagna circostante',
+			],
+			en: [
+				'An aperitivo among the white roofs',
+				'A sunset walk along the walls',
+				'A visit to the masserie of the surrounding countryside',
+			],
+		},
+		assaggiare: {
+			it: ['Bombette', 'Burrata', 'Orecchiette alle cime di rapa', 'Olio extravergine d’oliva'],
+			en: ['Bombette', 'Burrata', 'Orecchiette with turnip tops', 'Extra virgin olive oil'],
+		},
 	},
 	{
 		slug: 'alberobello',
 		name: 'Alberobello',
-		text: 'Patrimonio UNESCO, Alberobello è il paese dei trulli: coni di pietra, tetti a gradoni e vicoli bianchi. Un paesaggio unico della Valle d’Itria, a pochi minuti dalla masseria.',
-		vedere: ['Rione Monti', 'Aia Piccola', 'Trullo Sovrano'],
-		vivere: [
-			'Una passeggiata tra i trulli al mattino',
-			'Una visita a un trullo abitato',
-			'Un giro nella campagna della Valle d’Itria',
-		],
-		assaggiare: ['Taralli', 'Primitivo', 'Focaccia', 'Formaggi della Valle d’Itria'],
+		text: {
+			it: 'Patrimonio UNESCO, Alberobello è il paese dei trulli: coni di pietra, tetti a gradoni e vicoli bianchi. Un paesaggio unico della Valle d’Itria, a pochi minuti dalla masseria.',
+			en: 'A UNESCO World Heritage site, Alberobello is the town of the trulli: cones of stone, stepped roofs and white lanes. A unique landscape of the Valle d’Itria, a few minutes from the masseria.',
+		},
+		vedere: {
+			it: ['Rione Monti', 'Aia Piccola', 'Trullo Sovrano'],
+			en: ['Rione Monti', 'Aia Piccola', 'Trullo Sovrano'],
+		},
+		vivere: {
+			it: [
+				'Una passeggiata tra i trulli al mattino',
+				'Una visita a un trullo abitato',
+				'Un giro nella campagna della Valle d’Itria',
+			],
+			en: [
+				'A morning walk among the trulli',
+				'A visit to a lived-in trullo',
+				'A drive through the countryside of the Valle d’Itria',
+			],
+		},
+		assaggiare: {
+			it: ['Taralli', 'Primitivo', 'Focaccia', 'Formaggi della Valle d’Itria'],
+			en: ['Taralli', 'Primitivo', 'Focaccia', 'Cheeses of the Valle d’Itria'],
+		},
 	},
 ] as const;
 ---
@@ -62,11 +127,19 @@ const places = [
 				<div class="ex-places__intro">
 					<h2 id="ex-places-title" class="ex-places__title">Places to discover</h2>
 					<div class="ex-places__copy">
-						<p>Luoghi che fanno parte del paesaggio di <strong>Margagnano</strong>.</p>
 						<p>
-							Oltre alle esperienze organizzate, la posizione della masseria permette di raggiungere
-							facilmente alcuni dei luoghi più significativi della Puglia centrale.
+							<I18n
+								it="Luoghi che fanno parte del paesaggio di"
+								en="Places that belong to the landscape of"
+							/>
+							{' '}
+							<strong>Margagnano</strong>.
 						</p>
+						<I18n
+							as="p"
+							it="Oltre alle esperienze organizzate, la posizione della masseria permette di raggiungere facilmente alcuni dei luoghi più significativi della Puglia centrale."
+							en="Beyond arranged experiences, the position of the masseria makes it easy to reach some of the most significant places of central Puglia."
+						/>
 					</div>
 				</div>
 			</Reveal>

@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 
 const thumbs = [
 	'/images/masseria/tabs.jpg',
@@ -13,28 +14,29 @@ const thumbs = [
 		<div class="ck-chef__copy">
 			<Reveal client:visible inView delay={0.05} y={28}>
 				<h2 id="ck-chef-title" class="ck-chef__title">
-					Una cucina che nasce dal piacere di mangiare bene
+					<I18n
+						it="Una cucina che nasce dal piacere di mangiare bene"
+						en="A kitchen born from the pleasure of eating well"
+					/>
 				</h2>
 			</Reveal>
 			<Reveal client:visible inView delay={0.18} y={32}>
 				<div class="ck-chef__text">
-					<p>
-						Il percorso di Pietro Guarini è iniziato lontano dalla cucina, per poi trasformarsi in
-						un cammino costruito attraverso l'esperienza e il tempo. Dopo gli anni trascorsi nella
-						ristorazione di famiglia, ha scelto di entrare in cucina partendo dalle basi,
-						attraversandone ogni ruolo fino a diventare chef.
-					</p>
-					<p>
-						La sua esperienza lo ha portato attraverso il territorio pugliese e, per un periodo, a
-						New York, prima di tornare nella sua terra d'origine. Un percorso fatto di ricerca e
-						osservazione, che oggi si riflette in una cucina personale e profondamente legata al
-						luogo.
-					</p>
-					<p>
-						Per Pietro, tutto parte da una passione per il buon cibo. Cucinare bene significa prima
-						di tutto conoscere ciò che si porta in tavola, scegliere con cura e lasciare che siano
-						gli ingredienti a suggerire la direzione.
-					</p>
+					<I18n
+						as="p"
+						it="Il percorso di Pietro Guarini è iniziato lontano dalla cucina, per poi trasformarsi in un cammino costruito attraverso l'esperienza e il tempo. Dopo gli anni trascorsi nella ristorazione di famiglia, ha scelto di entrare in cucina partendo dalle basi, attraversandone ogni ruolo fino a diventare chef."
+						en="Pietro Guarini’s path began far from the kitchen, then became a journey built through experience and time. After years in the family restaurant, he chose to enter the kitchen from the foundations, moving through every role until he became a chef."
+					/>
+					<I18n
+						as="p"
+						it="La sua esperienza lo ha portato attraverso il territorio pugliese e, per un periodo, a New York, prima di tornare nella sua terra d'origine. Un percorso fatto di ricerca e osservazione, che oggi si riflette in una cucina personale e profondamente legata al luogo."
+						en="His experience took him across Puglia and, for a time, to New York, before he returned to the land he comes from. A path of research and observation that now lives in a personal cuisine, closely bound to this place."
+					/>
+					<I18n
+						as="p"
+						it="Per Pietro, tutto parte da una passione per il buon cibo. Cucinare bene significa prima di tutto conoscere ciò che si porta in tavola, scegliere con cura e lasciare che siano gli ingredienti a suggerire la direzione."
+						en="For Pietro, everything begins with a passion for good food. To cook well is first of all to know what comes to the table, to choose with care and to let the ingredients suggest the way."
+					/>
 				</div>
 			</Reveal>
 			<Reveal client:visible inView delay={0.3} y={20} duration={1.1}>
@@ -118,7 +120,7 @@ const thumbs = [
 
 	.ck-chef__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.15vw, 1.1rem);
 		line-height: 1.65;
 		color: rgba(233, 227, 211, 0.95);

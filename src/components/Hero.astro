@@ -1,36 +1,37 @@
 ---
 import Reveal from './Reveal.tsx';
+import I18n from './I18n.astro';
 
-const copy = {
-	it: {
-		title: 'Dove il tempo rallenta',
-		subtitle: 'Tra storia ed intima esperienza di vita pugliese',
-		cta: 'Scopri di più',
-	},
-	en: {
-		title: 'Where time slows down',
-		subtitle: 'Between history and intimate Apulian life experience',
-		cta: 'View more',
-	},
-} as const;
+interface Props {
+	variant?: 'default' | 'teaser';
+}
 
-const lang = 'en' as keyof typeof copy;
-const t = copy[lang];
+const { variant = 'default' } = Astro.props;
 ---
 
-<section class="hero" aria-label={t.title}>
+<section class:list={['hero', variant === 'teaser' && 'hero--teaser']} aria-labelledby="hero-title">
 	<div class="hero__bg" aria-hidden="true"></div>
 	<div class="hero__overlay" aria-hidden="true"></div>
+	{variant === 'teaser' ? <div class="hero__veil" aria-hidden="true"></div> : null}
 
 	<div class="hero__content">
 		<Reveal client:load delay={0.35} duration={1.1} y={28}>
-			<h1 class="hero__title">{t.title}</h1>
+			<h1 id="hero-title" class="hero__title">
+				<I18n it="Dove il tempo rallenta" en="Where time slows down" />
+			</h1>
 		</Reveal>
 		<Reveal client:load delay={0.5} duration={1.1} y={20}>
-			<p class="hero__subtitle">{t.subtitle}</p>
+			<p class="hero__subtitle">
+				<I18n
+					it="Tra storia ed intima esperienza di vita pugliese"
+					en="Between history and an intimate experience of Apulian life"
+				/>
+			</p>
 		</Reveal>
 		<Reveal client:load delay={0.7} y={16}>
-			<a class="hero__cta" href="#masseria">{t.cta}</a>
+			<a class="hero__cta" href="#masseria">
+				<I18n it="Scopri di più" en="View more" />
+			</a>
 		</Reveal>
 	</div>
 </section>
@@ -66,6 +67,20 @@ const t = copy[lang];
 		);
 	}
 
+	.hero__veil {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		background: linear-gradient(
+			180deg,
+			rgba(12, 10, 8, 0.74) 0%,
+			rgba(12, 10, 8, 0.5) 11%,
+			rgba(12, 10, 8, 0.26) 24%,
+			rgba(12, 10, 8, 0.08) 36%,
+			rgba(12, 10, 8, 0) 50%
+		);
+	}
+
 	.hero__content {
 		position: relative;
 		z-index: 1;
@@ -91,7 +106,7 @@ const t = copy[lang];
 	}
 
 	.hero__subtitle {
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-style: italic;
 		font-size: clamp(1.05rem, 2.1vw, 1.65rem);

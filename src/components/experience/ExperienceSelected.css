@@ -49,7 +49,7 @@
 	max-width: 22rem;
 	justify-self: start;
 	text-align: left;
-	font-family: 'New Caledonia LT Std', serif;
+	font-family: 'Cardo', serif;
 	font-size: clamp(0.98rem, 1.12vw, 1.08rem);
 	line-height: 1.55;
 	color: var(--brand-marrone);
@@ -133,7 +133,7 @@
 	max-width: 16.5rem;
 	justify-self: start;
 	text-align: left;
-	font-family: 'New Caledonia LT Std', serif;
+	font-family: 'Cardo', serif;
 	font-size: clamp(0.98rem, 1.12vw, 1.08rem);
 	line-height: 1.6;
 	color: var(--brand-marrone);

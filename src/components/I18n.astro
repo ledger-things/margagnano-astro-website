@@ -1,0 +1,30 @@
+---
+interface Props {
+	it: string;
+	en: string;
+	as?: string;
+	class?: string;
+	html?: boolean;
+}
+
+const { it, en, as: tag = 'span', class: className, html = false } = Astro.props;
+const Tag = tag as 'span';
+---
+
+{
+	html ? (
+		<>
+			<Tag class:list={['i18n', className]} data-lang="it" set:html={it} />
+			<Tag class:list={['i18n', className]} data-lang="en" set:html={en} />
+		</>
+	) : (
+		<>
+			<Tag class:list={['i18n', className]} data-lang="it">
+				{it}
+			</Tag>
+			<Tag class:list={['i18n', className]} data-lang="en">
+				{en}
+			</Tag>
+		</>
+	)
+}

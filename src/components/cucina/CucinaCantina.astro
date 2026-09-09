@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 ---
 
 <section id="cantina" class="ck-cantina" aria-labelledby="ck-cantina-title">
@@ -20,14 +21,16 @@ import Reveal from '../Reveal.tsx';
 			</div>
 			<div class="ck-cantina__copy">
 				<Reveal client:visible inView delay={0.18} y={28}>
-					<h2 id="ck-cantina-title" class="ck-cantina__title">La cantina</h2>
+					<h2 id="ck-cantina-title" class="ck-cantina__title">
+						<I18n it="La cantina" en="The cellar" />
+					</h2>
 				</Reveal>
 				<Reveal client:visible inView delay={0.28} y={24}>
 					<p class="ck-cantina__text">
-						Un viaggio tra i vini di Puglia. La cantina di Margagnano raccoglie una selezione di
-						etichette che raccontano la ricchezza vitivinicola della Puglia, affiancate da una
-						ricerca dedicata a piccoli produttori e vini di carattere provenienti da altre regioni
-						italiane.
+						<I18n
+							it="Un viaggio tra i vini di Puglia. La cantina di Margagnano raccoglie una selezione di etichette che raccontano la ricchezza vitivinicola della Puglia, affiancate da una ricerca dedicata a piccoli produttori e vini di carattere provenienti da altre regioni italiane."
+							en="A journey through the wines of Puglia. The cellar of Margagnano gathers labels that tell the richness of Apulian viticulture, alongside a search for small producers and wines of character from other Italian regions."
+						/>
 					</p>
 				</Reveal>
 			</div>
@@ -37,9 +40,10 @@ import Reveal from '../Reveal.tsx';
 			<div class="ck-cantina__copy">
 				<Reveal client:visible inView delay={0.15} y={24}>
 					<p class="ck-cantina__text">
-						Ogni bottiglia è scelta per accompagnare la cucina della masseria e valorizzarne i
-						sapori. Degustazioni guidate ed esperienze dedicate permettono di approfondire la
-						cultura del vino attraverso abbinamenti pensati per esaltare il territorio.
+						<I18n
+							it="Ogni bottiglia è scelta per accompagnare la cucina della masseria e valorizzarne i sapori. Degustazioni guidate ed esperienze dedicate permettono di approfondire la cultura del vino attraverso abbinamenti pensati per esaltare il territorio."
+							en="Each bottle is chosen to accompany the kitchen of the masseria and to honour its flavours. Guided tastings and dedicated experiences open the culture of wine through pairings conceived to exalt the territory."
+						/>
 					</p>
 				</Reveal>
 			</div>
@@ -156,7 +160,7 @@ import Reveal from '../Reveal.tsx';
 
 	.ck-cantina__text {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.15vw, 1.08rem);
 		line-height: 1.7;
 		color: var(--brand-marrone);

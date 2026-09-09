@@ -1,5 +1,12 @@
 ---
 import Reveal from './Reveal.tsx';
+import I18n from './I18n.astro';
+
+interface Props {
+	moreHref?: string;
+}
+
+const { moreHref = '/life-in-margagnano' } = Astro.props;
 ---
 
 <section id="life" class="life" aria-labelledby="life-title">
@@ -22,23 +29,25 @@ import Reveal from './Reveal.tsx';
 			</Reveal>
 			<Reveal client:visible inView delay={0.24} y={32}>
 				<div class="life__text">
-					<p>
-						Vivere Margagnano significa lasciarsi accompagnare da un susseguirsi di momenti pensati
-						per il benessere e il relax.
-					</p>
-					<p>
-						Dalle colazioni che aprono la giornata ai momenti a bordo piscina, dai percorsi dedicati
-						alla spa ai Rituali di Quiete, ogni esperienza si inserisce con naturalezza nel ritmo
-						della masseria, offrendo il piacere di riscoprire il valore del tempo dedicato a sé.
-					</p>
-					<p>
-						Ogni momento trova il proprio spazio, lasciando che il soggiorno si trasformi in
-						un'esperienza fatta di equilibrio, benessere e cura.
-					</p>
+					<I18n
+						as="p"
+						it="Vivere Margagnano significa lasciarsi accompagnare da un susseguirsi di momenti pensati per il benessere e il relax."
+						en="To live Margagnano is to be carried through a succession of moments made for wellbeing and rest."
+					/>
+					<I18n
+						as="p"
+						it="Dalle colazioni che aprono la giornata ai momenti a bordo piscina, dai percorsi dedicati alla spa ai Rituali di Quiete, ogni esperienza si inserisce con naturalezza nel ritmo della masseria, offrendo il piacere di riscoprire il valore del tempo dedicato a sé."
+						en="From breakfasts that open the day to hours by the pool, from spa rituals to the quieter corners of the house, each experience finds its place in the rhythm of the masseria — a chance to recover the value of time kept for oneself."
+					/>
+					<I18n
+						as="p"
+						it="Ogni momento trova il proprio spazio, lasciando che il soggiorno si trasformi in un'esperienza fatta di equilibrio, benessere e cura."
+						en="Each moment has its space, so that a stay becomes an experience of balance, wellbeing and care."
+					/>
 				</div>
 			</Reveal>
 			<Reveal client:visible inView delay={0.38} y={20}>
-				<a class="life__cta" href="/life-in-margagnano">View more</a>
+				<a class="life__cta" href={moreHref}>View more</a>
 			</Reveal>
 		</div>
 	</div>
@@ -101,7 +110,7 @@ import Reveal from './Reveal.tsx';
 
 	.life__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.1vw, 1.15rem);
 		line-height: 1.7;
 		color: #5c4e3c;

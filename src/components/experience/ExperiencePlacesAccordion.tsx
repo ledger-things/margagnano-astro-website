@@ -1,13 +1,23 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useState } from 'react';
+import { useSiteLang } from '../../lib/useSiteLang';
+import type { Lang } from '../../lib/i18n';
+
+type Localized = { readonly it: string; readonly en: string };
+type LocalizedList = { readonly it: readonly string[]; readonly en: readonly string[] };
 
 export type PlaceItem = {
 	slug: string;
 	name: string;
-	text: string;
-	vedere: readonly string[];
-	vivere: readonly string[];
-	assaggiare: readonly string[];
+	text: Localized;
+	vedere: LocalizedList;
+	vivere: LocalizedList;
+	assaggiare: LocalizedList;
+};
+
+const labels: Record<Lang, { see: string; live: string; taste: string }> = {
+	it: { see: 'Da vedere:', live: 'Da vivere:', taste: 'Da assaggiare:' },
+	en: { see: 'To see:', live: 'To live:', taste: 'To taste:' },
 };
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -15,6 +25,8 @@ const ease = [0.22, 1, 0.36, 1] as const;
 export default function ExperiencePlacesAccordion({ places }: { places: readonly PlaceItem[] }) {
 	const [openSlug, setOpenSlug] = useState(places[0]?.slug ?? '');
 	const shouldReduce = useReducedMotion();
+	const lang = useSiteLang();
+	const t = labels[lang];
 
 	return (
 		<div className="ex-places__list">
@@ -58,15 +70,15 @@ export default function ExperiencePlacesAccordion({ places }: { places: readonly
 									}}
 								>
 									<div className="ex-places__panel">
-										<p>{place.text}</p>
+										<p>{place.text[lang]}</p>
 										<p>
-											<strong>Da vedere:</strong> {place.vedere.join(' · ')}
+											<strong>{t.see}</strong> {place.vedere[lang].join(' · ')}
 										</p>
 										<p>
-											<strong>Da vivere:</strong> {place.vivere.join(' · ')}
+											<strong>{t.live}</strong> {place.vivere[lang].join(' · ')}
 										</p>
 										<p>
-											<strong>Da assaggiare:</strong> {place.assaggiare.join(' · ')}
+											<strong>{t.taste}</strong> {place.assaggiare[lang].join(' · ')}
 										</p>
 									</div>
 								</motion.div>

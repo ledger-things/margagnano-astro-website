@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import './ExperienceHero.css';
 ---
 
@@ -27,8 +28,10 @@ import './ExperienceHero.css';
 		</Reveal>
 		<Reveal client:load delay={0.48} y={20} duration={1}>
 			<p class="ex-hero__text">
-				Dalla Valle d'Itria alla costa adriatica, un territorio fatto di paesaggi, borghi e
-				tradizioni che completano l'esperienza di Masseria Margagnano.
+				<I18n
+					it="Dalla Valle d'Itria alla costa adriatica, un territorio fatto di paesaggi, borghi e tradizioni che completano l'esperienza di Masseria Margagnano."
+					en="From the Valle d’Itria to the Adriatic coast, a landscape of countryside, villages and traditions that completes the experience of Masseria Margagnano."
+				/>
 			</p>
 		</Reveal>
 	</div>

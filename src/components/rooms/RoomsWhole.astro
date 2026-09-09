@@ -1,6 +1,8 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import { roomsPage } from '../../data/rooms';
+import { roomsPageEn } from '../../data/rooms.en';
 
 const { wholeMasseria } = roomsPage;
 ---
@@ -17,7 +19,9 @@ const { wholeMasseria } = roomsPage;
 					<h2 id="rooms-whole-title" class="rooms-whole__title">{wholeMasseria.title}</h2>
 				</Reveal>
 				<Reveal client:visible inView delay={0.24} y={18} duration={0.95}>
-					<p class="rooms-whole__text">{wholeMasseria.text}</p>
+					<p class="rooms-whole__text">
+						<I18n it={wholeMasseria.text} en={roomsPageEn.wholeMasseria.text} />
+					</p>
 				</Reveal>
 			</div>
 
@@ -104,7 +108,7 @@ const { wholeMasseria } = roomsPage;
 
 	.rooms-whole__text {
 		margin: 1.35rem 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.12vw, 1.08rem);
 		line-height: 1.7;
 		color: var(--brand-marrone);

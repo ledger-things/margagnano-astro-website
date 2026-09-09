@@ -1,0 +1,121 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PublicHeader from '../components/PublicHeader.astro';
+import Footer from '../components/Footer.astro';
+import I18n from '../components/I18n.astro';
+import { MEMBERS_HOME, safeRedirectPath } from '../lib/access';
+
+if (Astro.locals.hasAccess) {
+	return Astro.redirect(MEMBERS_HOME);
+}
+
+const redirectTo = safeRedirectPath(Astro.url.searchParams.get('redirect'));
+const hasError = Astro.url.searchParams.get('error') === '1';
+---
+
+<Layout title="Private access | Masseria Margagnano">
+	<PublicHeader tone="light" />
+	<main class="access-page">
+		<section class="access-gate">
+			<p class="access-gate__eyebrow">Private collection</p>
+			<h1 class="access-gate__title">Enter Margagnano</h1>
+			<p class="access-gate__text">
+				<I18n
+					it="Inserisci la password che ti è stata comunicata per accedere al sito completo."
+					en="Enter the password you have been given to access the full website."
+				/>
+			</p>
+			{
+				hasError ? (
+					<p class="access-gate__error">
+						<I18n it="Password non corretta. Riprova." en="Incorrect password. Please try again." />
+					</p>
+				) : null
+			}
+			<form class="access-gate__form" method="post" action="/api/access">
+				<input type="hidden" name="redirect" value={redirectTo} />
+				<label class="access-gate__field">
+					<span>Password</span>
+					<input type="password" name="password" required autocomplete="current-password" />
+				</label>
+				<button type="submit">Enter →</button>
+			</form>
+		</section>
+	</main>
+	<Footer homeHref="/" />
+</Layout>
+
+<style>
+	.access-page {
+		min-height: 70vh;
+		display: grid;
+		place-items: center;
+		padding: 8rem 1.25rem 4rem;
+	}
+
+	.access-gate {
+		width: min(32rem, 100%);
+		text-align: center;
+		color: var(--brand-marrone);
+	}
+
+	.access-gate__eyebrow {
+		margin: 0 0 0.75rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		color: var(--brand-terracotta);
+	}
+
+	.access-gate__title {
+		margin: 0 0 1rem;
+		font-family: 'Cardo', serif;
+		font-weight: 400;
+		font-size: clamp(2.2rem, 5vw, 3.4rem);
+	}
+
+	.access-gate__text,
+	.access-gate__error {
+		font-family: 'Cardo', serif;
+		line-height: 1.5;
+	}
+
+	.access-gate__error {
+		color: #9a2a1a;
+	}
+
+	.access-gate__form {
+		display: grid;
+		gap: 1.25rem;
+		margin-top: 2rem;
+	}
+
+	.access-gate__field {
+		display: grid;
+		gap: 0.45rem;
+		text-align: left;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.92rem;
+	}
+
+	.access-gate__field input {
+		border: 1px solid #cbb9a8;
+		background: transparent;
+		padding: 0.8rem 0.85rem;
+		font: inherit;
+	}
+
+	.access-gate__form button {
+		appearance: none;
+		justify-self: center;
+		background: transparent;
+		border: 1px solid var(--brand-marrone);
+		color: var(--brand-marrone);
+		padding: 0.85rem 1.8rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		cursor: pointer;
+	}
+</style>

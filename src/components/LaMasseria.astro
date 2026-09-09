@@ -1,5 +1,12 @@
 ---
 import Reveal from './Reveal.tsx';
+import I18n from './I18n.astro';
+
+interface Props {
+	moreHref?: string;
+}
+
+const { moreHref = '/masseria' } = Astro.props;
 ---
 
 <section id="masseria" class="masseria" aria-labelledby="masseria-title">
@@ -9,29 +16,31 @@ import Reveal from './Reveal.tsx';
 	<div class="masseria__inner">
 		<div class="masseria__copy">
 			<Reveal client:visible inView delay={0.05} y={28}>
-				<p class="masseria__eyebrow">Nel cuore della Puglia</p>
+				<p class="masseria__eyebrow">
+					<I18n it="Nel cuore della Puglia" en="In the heart of Puglia" />
+				</p>
 			</Reveal>
 			<Reveal client:visible inView delay={0.15} y={32}>
-				<h2 id="masseria-title" class="masseria__title">La masseria</h2>
+				<h2 id="masseria-title" class="masseria__title">
+					<I18n it="La masseria" en="The masseria" />
+				</h2>
 			</Reveal>
 			<Reveal client:visible inView delay={0.28} y={36}>
 				<div class="masseria__text">
-					<p>
-						Tra gli ulivi secolari del paesaggio pugliese, a pochi minuti da Fasano, Masseria
-						Margagnano custodisce il fascino autentico delle antiche masserie di Puglia. Il suo
-						nome, tramandato nel tempo, racconta una storia che intreccia memoria, territorio e
-						ospitalità.
-					</p>
-					<p>
-						Un tempo cuore della vita rurale, oggi la masseria conserva la stessa essenza,
-						accogliendo gli ospiti in un luogo dove la pietra, la natura e il silenzio convivono
-						in perfetto equilibrio. Qui ogni giornata segue un ritmo lento, ispirato alla
-						tradizione e alla bellezza del paesaggio pugliese.
-					</p>
+					<I18n
+						as="p"
+						it="Tra gli ulivi secolari del paesaggio pugliese, a pochi minuti da Fasano, Masseria Margagnano custodisce il fascino autentico delle antiche masserie di Puglia. Il suo nome, tramandato nel tempo, racconta una storia che intreccia memoria, territorio e ospitalità."
+						en="Among the centuries-old olive trees of the Apulian landscape, a few minutes from Fasano, Masseria Margagnano holds the authentic character of Puglia’s historic masserie. Its name, carried through time, tells a story of memory, land and hospitality."
+					/>
+					<I18n
+						as="p"
+						it="Un tempo cuore della vita rurale, oggi la masseria conserva la stessa essenza, accogliendo gli ospiti in un luogo dove la pietra, la natura e il silenzio convivono in perfetto equilibrio. Qui ogni giornata segue un ritmo lento, ispirato alla tradizione e alla bellezza del paesaggio pugliese."
+						en="Once the heart of rural life, the masseria still keeps that essence, welcoming guests where stone, nature and silence live in balance. Here each day follows a slower rhythm, shaped by tradition and the beauty of the Apulian landscape."
+					/>
 				</div>
 			</Reveal>
 			<Reveal client:visible inView delay={0.4} y={20}>
-				<a class="masseria__cta" href="/la-masseria">View more</a>
+				<a class="masseria__cta" href={moreHref}>View more</a>
 			</Reveal>
 		</div>
 
@@ -104,7 +113,7 @@ import Reveal from './Reveal.tsx';
 
 	.masseria__eyebrow {
 		margin: 0 0 0.35rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-style: italic;
 		font-size: clamp(1.25rem, 2.2vw, 2rem);
 		color: var(--brand-verde);
@@ -130,7 +139,7 @@ import Reveal from './Reveal.tsx';
 
 	.masseria__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1rem, 1.15vw, 1.2rem);
 		line-height: 1.7;
 		color: var(--brand-marrone);

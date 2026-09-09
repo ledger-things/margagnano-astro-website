@@ -1,42 +1,55 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
+
+interface Props {
+	variant?: 'hero' | 'section';
+}
+
+const { variant = 'hero' } = Astro.props;
+const isHero = variant === 'hero';
+const TitleTag = isHero ? 'h1' : 'h2';
 ---
 
-<section class="ck-hero" aria-label="La Cucina">
+<section class:list={['ck-hero', !isHero && 'ck-hero--section']} aria-labelledby="ck-hero-title">
 	<div class="ck-hero__inner">
 		<div class="ck-hero__media">
-			<Reveal client:load delay={0.12} x={-28} y={0} duration={1.15}>
+			<Reveal client:visible inView={!isHero} delay={0.12} x={-28} y={0} duration={1.15}>
 				<img
 					src="/images/cucina/hero.jpg"
 					alt="Cortile della masseria con archi in pietra e fichi d&apos;India"
 					width="1444"
 					height="856"
-					fetchpriority="high"
+					fetchpriority={isHero ? 'high' : undefined}
+					loading={isHero ? 'eager' : 'lazy'}
 				/>
 			</Reveal>
 		</div>
 
 		<div class="ck-hero__copy">
-			<Reveal client:load delay={0.22} duration={1} y={24}>
-				<p class="ck-hero__eyebrow">Filosofia gastronomica</p>
-			</Reveal>
-			<Reveal client:load delay={0.32} duration={1.05} y={28}>
-				<h1 class="ck-hero__title">La cucina</h1>
-			</Reveal>
-			<Reveal client:load delay={0.44} duration={1} y={24}>
-				<p class="ck-hero__text">
-					La cucina di Margagnano nasce dal profondo rispetto per il territorio pugliese e per ciò
-					che ogni stagione offre naturalmente. Ogni piatto racconta un paesaggio fatto di ulivi,
-					orti, campi e tradizioni tramandate nel tempo, valorizzando ingredienti semplici attraverso
-					una visione contemporanea. La scelta delle materie prime segue il ritmo della natura,
-					privilegiando prodotti freschi, locali e di stagione. Il risultato è una cucina essenziale,
-					autentica e profondamente legata al luogo, dove ogni sapore esprime l&apos;identità della
-					Puglia con equilibrio e naturalezza.
+			<Reveal client:visible inView={!isHero} delay={0.22} duration={1} y={24}>
+				<p class="ck-hero__eyebrow">
+					<I18n it="Filosofia gastronomica" en="Culinary philosophy" />
 				</p>
 			</Reveal>
-			<Reveal client:load delay={0.56} y={16}>
-				<a class="ck-hero__cta" href="#filosofia">View more</a>
+			<Reveal client:visible inView={!isHero} delay={0.32} duration={1.05} y={28}>
+				<TitleTag id="ck-hero-title" class="ck-hero__title">
+					<I18n it="La cucina" en="Cuisine" />
+				</TitleTag>
 			</Reveal>
+			<Reveal client:visible inView={!isHero} delay={0.44} duration={1} y={24}>
+				<p class="ck-hero__text">
+					<I18n
+						it="La cucina di Margagnano nasce dal profondo rispetto per il territorio pugliese e per ciò che ogni stagione offre naturalmente. Ogni piatto racconta un paesaggio fatto di ulivi, orti, campi e tradizioni tramandate nel tempo, valorizzando ingredienti semplici attraverso una visione contemporanea. La scelta delle materie prime segue il ritmo della natura, privilegiando prodotti freschi, locali e di stagione. Il risultato è una cucina essenziale, autentica e profondamente legata al luogo, dove ogni sapore esprime l'identità della Puglia con equilibrio e naturalezza."
+						en="The kitchen of Margagnano is born from a deep respect for the Apulian land and for what each season offers of its own accord. Every dish tells a landscape of olive trees, kitchen gardens, fields and traditions handed down over time, honouring simple ingredients through a contemporary eye. Produce follows the rhythm of nature, with a preference for what is fresh, local and in season. The result is a cuisine that is essential, authentic and closely bound to the place, where each flavour expresses the identity of Puglia with balance and ease."
+					/>
+				</p>
+			</Reveal>
+			{isHero ? (
+				<Reveal client:visible delay={0.56} y={16}>
+					<a class="ck-hero__cta" href="#filosofia">View more</a>
+				</Reveal>
+			) : null}
 		</div>
 	</div>
 </section>
@@ -49,6 +62,11 @@ import Reveal from '../Reveal.tsx';
 		min-height: 100svh;
 		background: var(--brand-avorio);
 		color: var(--brand-marrone);
+	}
+
+	.ck-hero--section {
+		min-height: 0;
+		background: var(--brand-cream);
 	}
 
 	.ck-hero__inner {
@@ -64,6 +82,11 @@ import Reveal from '../Reveal.tsx';
 		box-sizing: border-box;
 	}
 
+	.ck-hero--section .ck-hero__inner {
+		min-height: 0;
+		padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5.5rem);
+	}
+
 	.ck-hero__media,
 	.ck-hero__copy {
 		min-width: 0;
@@ -75,6 +98,11 @@ import Reveal from '../Reveal.tsx';
 		aspect-ratio: 3 / 4;
 		overflow: hidden;
 		justify-self: start;
+	}
+
+	.ck-hero--section .ck-hero__media {
+		max-width: 28rem;
+		aspect-ratio: 4 / 5;
 	}
 
 	.ck-hero__media :global(div) {
@@ -100,7 +128,7 @@ import Reveal from '../Reveal.tsx';
 
 	.ck-hero__eyebrow {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-style: italic;
 		font-size: clamp(1.1rem, 1.8vw, 1.45rem);
 		line-height: 1.3;
@@ -120,7 +148,7 @@ import Reveal from '../Reveal.tsx';
 
 	.ck-hero__text {
 		margin: 1.5rem 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.15vw, 1.12rem);
 		line-height: 1.7;
 		color: var(--brand-marrone);
@@ -160,10 +188,19 @@ import Reveal from '../Reveal.tsx';
 			gap: 1.75rem;
 		}
 
+		.ck-hero--section .ck-hero__inner {
+			padding: 3.5rem 1.25rem;
+		}
+
 		.ck-hero__media {
 			max-width: 22rem;
 			margin: 0 auto;
 			aspect-ratio: 3 / 4;
+		}
+
+		.ck-hero--section .ck-hero__media {
+			max-width: 18rem;
+			aspect-ratio: 4 / 5;
 		}
 
 		.ck-hero__copy {

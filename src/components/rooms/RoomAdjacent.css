@@ -45,7 +45,7 @@
 }
 
 .room-adjacent__dir {
-	font-family: 'New Caledonia LT Std', serif;
+	font-family: 'Cardo', serif;
 	font-style: italic;
 	font-size: clamp(0.98rem, 1.15vw, 1.12rem);
 	line-height: 1.3;

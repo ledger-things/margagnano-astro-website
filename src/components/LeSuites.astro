@@ -1,6 +1,14 @@
 ---
 import Reveal from './Reveal.tsx';
 import SuitesCarousel from './SuitesCarousel.tsx';
+import I18n from './I18n.astro';
+
+interface Props {
+	moreHref?: string;
+	variant?: 'default' | 'teaser';
+}
+
+const { moreHref = '/suites', variant = 'default' } = Astro.props;
 ---
 
 <section id="suites" class="suites" aria-labelledby="suites-title">
@@ -9,16 +17,18 @@ import SuitesCarousel from './SuitesCarousel.tsx';
 
 	<div class="suites__inner">
 		<Reveal client:visible inView delay={0.05} y={-16} className="suites__reveal">
-			<h2 id="suites-title" class="suites__title">Le suites</h2>
+			<h2 id="suites-title" class="suites__title">
+				<I18n it="Le suites" en="The suites" />
+			</h2>
 		</Reveal>
 
 		<Reveal client:visible inView delay={0.15} y={28} duration={1} className="suites__reveal suites__reveal--carousel">
-			<SuitesCarousel client:visible />
+			<SuitesCarousel client:visible variant={variant} />
 		</Reveal>
 
 		<Reveal client:visible inView delay={0.28} y={16} className="suites__reveal">
 			<div class="suites__cta-wrap">
-				<a class="suites__cta" href="/suites">View more</a>
+				<a class="suites__cta" href={moreHref}>View more</a>
 			</div>
 		</Reveal>
 	</div>
@@ -226,7 +236,7 @@ import SuitesCarousel from './SuitesCarousel.tsx';
 	.suites :global(.suites-carousel__desc) {
 		margin: 0;
 		max-width: 16rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.8rem, 1vw, 0.92rem);
 		line-height: 1.35;
 		color: rgba(233, 227, 211, 0.92);

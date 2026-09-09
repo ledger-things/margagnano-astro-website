@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 ---
 
 <section class="mh-essence" aria-labelledby="essence-title">
@@ -12,11 +13,16 @@ import Reveal from '../Reveal.tsx';
 		</Reveal>
 		<Reveal client:visible inView delay={0.28} y={24}>
 			<div class="mh-essence__text">
-				<p>
-					Margagnano è il punto d&apos;incontro tra ciò che il tempo ha custodito e ciò che il
-					presente sa valorizzare.
-				</p>
-				<p>Un luogo dove storia, architettura e paesaggio continuano a raccontarsi con naturalezza.</p>
+				<I18n
+					as="p"
+					it="Margagnano è il punto d'incontro tra ciò che il tempo ha custodito e ciò che il presente sa valorizzare."
+					en="Margagnano is the meeting point between what time has kept and what the present knows how to honour."
+				/>
+				<I18n
+					as="p"
+					it="Un luogo dove storia, architettura e paesaggio continuano a raccontarsi con naturalezza."
+					en="A place where history, architecture and landscape continue to speak with ease."
+				/>
 			</div>
 		</Reveal>
 	</div>
@@ -24,7 +30,7 @@ import Reveal from '../Reveal.tsx';
 
 <style>
 	.mh-essence {
-		background: #f7f4ee;
+		background: var(--brand-cream);
 		color: var(--brand-marrone);
 		text-align: center;
 	}
@@ -61,7 +67,7 @@ import Reveal from '../Reveal.tsx';
 
 	.mh-essence__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1.05rem, 1.5vw, 1.25rem);
 		line-height: 1.55;
 		color: var(--brand-marrone);

@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { title = 'Masseria Margagnano' } = Astro.props;
+const indexable = Astro.locals.indexable ?? true;
 ---
 
 <!doctype html>
@@ -19,9 +20,29 @@ const { title = 'Masseria Margagnano' } = Astro.props;
 		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 		<meta name="apple-mobile-web-app-title" content="Masseria Margagnano" />
 		<link rel="manifest" href="/site.webmanifest" />
-		<meta name="theme-color" content="#e9e3d3" />
+		<meta name="theme-color" content="#f9f6ee" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="robots" content={indexable ? 'index, follow' : 'noindex, nofollow'} />
 		<title>{title}</title>
+		<script is:inline>
+			(function () {
+				try {
+					var stored = localStorage.getItem('margagnano-lang');
+					if (stored === 'en' || stored === 'it') document.documentElement.lang = stored;
+				} catch (e) {}
+			})();
+		</script>
+		<style is:inline>
+			.i18n[data-lang='en'] {
+				display: none !important;
+			}
+			html[lang='en'] .i18n[data-lang='it'] {
+				display: none !important;
+			}
+			html[lang='en'] .i18n[data-lang='en'] {
+				display: revert !important;
+			}
+		</style>
 	</head>
 	<body>
 		<slot />

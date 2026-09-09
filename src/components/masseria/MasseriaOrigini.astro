@@ -1,29 +1,36 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 ---
 
 <section id="origini" class="mh-origini" aria-labelledby="origini-title">
 	<div class="mh-origini__inner">
 		<div class="mh-origini__copy">
 			<Reveal client:visible inView delay={0.05} y={28}>
-				<h2 id="origini-title" class="mh-origini__title">Le origini della Masseria</h2>
+				<h2 id="origini-title" class="mh-origini__title">
+					<I18n
+						it="Cinque secoli di storia, ancora presenti in Masseria"
+						en="Five centuries of history, still present in the masseria"
+					/>
+				</h2>
 			</Reveal>
 			<Reveal client:visible inView delay={0.18} y={32}>
 				<div class="mh-origini__text">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-					</p>
-					<p>
-						Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-						nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-						officia deserunt mollit anim id est laborum.
-					</p>
-					<p>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-						laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.
-					</p>
+					<I18n
+						as="p"
+						it="Da oltre cinquecento anni Margagnano appartiene al paesaggio della Puglia. Una masseria che ha costruito nel tempo un'identità ancora riconoscibile."
+						en="For more than five hundred years Margagnano has belonged to the landscape of Puglia. A masseria that has built, over time, an identity that is still recognisable."
+					/>
+					<I18n
+						as="p"
+						it="La pietra, gli spazi della masseria e gli ulivi raccontano ancora questa storia. Sono 195 gli alberi di ulivo che circondano la proprietà, alcuni dei quali secolari, testimoni silenziosi di generazioni che hanno abitato e coltivato questo territorio."
+						en="Stone, the rooms of the masseria and the olive trees still tell this story. One hundred and ninety-five olive trees surround the property, some of them centuries old — silent witnesses to the generations who lived and farmed this land."
+					/>
+					<I18n
+						as="p"
+						it="Oggi Margagnano conserva questo legame con le proprie origini, accogliendo una dimensione contemporanea senza perdere il carattere della masseria e il ritmo lento della campagna pugliese."
+						en="Today Margagnano keeps this bond with its origins, welcoming a contemporary way of living without losing the character of the masseria or the slow rhythm of the Apulian countryside."
+					/>
 				</div>
 			</Reveal>
 		</div>
@@ -84,7 +91,7 @@ import Reveal from '../Reveal.tsx';
 
 	.mh-origini__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.15vw, 1.1rem);
 		line-height: 1.65;
 		color: rgba(233, 227, 211, 0.95);

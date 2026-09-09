@@ -1,6 +1,8 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import { rooms, roomsPage } from '../../data/rooms';
+import { roomsPageEn } from '../../data/rooms.en';
 
 const { overview } = roomsPage;
 const roomCount = rooms.filter((room) => room.category === 'room').length;
@@ -24,7 +26,11 @@ const stats = [
 
 		<Reveal client:visible inView delay={0.18} y={22} duration={1}>
 			<div class="rooms-overview__text">
-				{overview.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+				{
+					overview.paragraphs.map((paragraph, i) => (
+						<I18n as="p" it={paragraph} en={roomsPageEn.overview.paragraphs[i] ?? paragraph} />
+					))
+				}
 			</div>
 		</Reveal>
 
@@ -73,7 +79,7 @@ const stats = [
 
 	.rooms-overview__title {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-size: clamp(1.7rem, 3vw, 2.45rem);
 		line-height: 1.25;
@@ -89,7 +95,7 @@ const stats = [
 
 	.rooms-overview__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.12vw, 1.08rem);
 		line-height: 1.7;
 		color: var(--brand-marrone);
@@ -111,7 +117,7 @@ const stats = [
 	}
 
 	.rooms-overview__value {
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-size: clamp(2.75rem, 5.5vw, 4.35rem);
 		line-height: 1;

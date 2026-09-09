@@ -1,34 +1,36 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 ---
 
 <section id="materia" class="mh-materia" aria-labelledby="materia-title">
 	<div class="mh-materia__texture" aria-hidden="true"></div>
+	<div class="mh-materia__tint" aria-hidden="true"></div>
 
 	<div class="mh-materia__inner">
 		<div class="mh-materia__copy">
 			<Reveal client:visible inView delay={0.05} y={28}>
-				<h2 id="materia-title" class="mh-materia__title">La materia</h2>
+				<h2 id="materia-title" class="mh-materia__title">
+					<I18n it="La materia" en="The material" />
+				</h2>
 			</Reveal>
 			<Reveal client:visible inView delay={0.18} y={32}>
 				<div class="mh-materia__text">
-					<p>
-						La pietra pugliese è l&apos;elemento che più di ogni altro racconta l&apos;identità di
-						Margagnano. Le sue superfici, modellate dal tempo e dalla luce, custodiscono la memoria
-						del luogo e ne definiscono il carattere con naturalezza.
-					</p>
-					<p>
-						Accanto alla pietra, materiali come legno, calce, lino e ferro dialogano in un equilibrio
-						essenziale, dando vita ad ambienti autentici e senza tempo. Ogni texture, finitura e
-						dettaglio è stato scelto per valorizzare la materia nella sua forma più pura, lasciando
-						che siano la semplicità, la luce e l&apos;artigianalità a definire l&apos;esperienza dello
-						spazio.
-					</p>
-					<p>
-						Qui nulla è decorativo: ogni elemento nasce dal desiderio di rispettare
-						l&apos;architettura originaria e il paesaggio che la circonda, creando una continuità
-						naturale tra interno ed esterno.
-					</p>
+					<I18n
+						as="p"
+						it="La pietra pugliese è l'elemento che più di ogni altro racconta l'identità di Margagnano. Le sue superfici, modellate dal tempo e dalla luce, custodiscono la memoria del luogo e ne definiscono il carattere con naturalezza."
+						en="Apulian stone is the element that most clearly tells the identity of Margagnano. Its surfaces, shaped by time and light, keep the memory of the place and define its character with ease."
+					/>
+					<I18n
+						as="p"
+						it="Accanto alla pietra, materiali come legno, calce, lino e ferro dialogano in un equilibrio essenziale, dando vita ad ambienti autentici e senza tempo. Ogni texture, finitura e dettaglio è stato scelto per valorizzare la materia nella sua forma più pura, lasciando che siano la semplicità, la luce e l'artigianalità a definire l'esperienza dello spazio."
+						en="Beside the stone, wood, lime, linen and iron speak in a spare balance, creating rooms that feel authentic and unhurried. Every texture, finish and detail is chosen to honour the material in its purest form, so that simplicity, light and craft define the experience of the space."
+					/>
+					<I18n
+						as="p"
+						it="Qui nulla è decorativo: ogni elemento nasce dal desiderio di rispettare l'architettura originaria e il paesaggio che la circonda, creando una continuità naturale tra interno ed esterno."
+						en="Nothing here is merely decorative: each element comes from the wish to respect the original architecture and the landscape around it, creating a natural continuity between inside and outside."
+					/>
 				</div>
 			</Reveal>
 		</div>
@@ -51,17 +53,24 @@ import Reveal from '../Reveal.tsx';
 	.mh-materia {
 		position: relative;
 		overflow: hidden;
-		background: #f2eee8;
+		background: #f3efe8;
 		color: var(--brand-marrone);
 	}
 
 	.mh-materia__texture {
 		position: absolute;
 		inset: 0;
-		background-image: url('/images/masseria/materials.jpg');
+		background-image: url('/images/home/masseria-texture.png');
 		background-size: cover;
 		background-position: center;
-		opacity: 0.55;
+		opacity: 0.72;
+		pointer-events: none;
+	}
+
+	.mh-materia__tint {
+		position: absolute;
+		inset: 0;
+		background: rgba(233, 227, 211, 0.55);
 		pointer-events: none;
 	}
 
@@ -96,7 +105,7 @@ import Reveal from '../Reveal.tsx';
 
 	.mh-materia__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1rem, 1.2vw, 1.125rem);
 		line-height: 1.65;
 		color: var(--brand-marrone);

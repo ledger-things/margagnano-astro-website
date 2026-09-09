@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import './ExperienceSelected.css';
 
 const items = [
@@ -7,19 +8,28 @@ const items = [
 		slug: 'cala-cimi',
 		name: 'Cala Cimì',
 		kind: 'sea club',
-		text: 'Il mare di Puglia, vissuto attraverso una prospettiva più riservata.',
+		text: {
+			it: 'Il mare di Puglia, vissuto attraverso una prospettiva più riservata.',
+			en: 'The sea of Puglia, lived through a more private perspective.',
+		},
 	},
 	{
 		slug: 'indigenus',
 		name: 'Indigenus',
 		kind: 'experience',
-		text: 'Alla scoperta della Puglia attraverso esperienze e itinerari dedicati al territorio.',
+		text: {
+			it: 'Alla scoperta della Puglia attraverso esperienze e itinerari dedicati al territorio.',
+			en: 'Discovering Puglia through experiences and itineraries dedicated to the land.',
+		},
 	},
 	{
 		slug: 'serri',
 		name: 'Serri',
 		kind: 'bistrot',
-		text: 'Un incontro con la cucina e i sapori del territorio.',
+		text: {
+			it: 'Un incontro con la cucina e i sapori del territorio.',
+			en: 'An encounter with the cooking and flavours of the territory.',
+		},
 	},
 ] as const;
 
@@ -36,13 +46,20 @@ const image = {
 		<div class="ex-sel__head">
 			<Reveal client:visible inView delay={0.08} y={20} duration={0.95}>
 				<h2 id="ex-sel-title" class="ex-sel__heading">
-					<span class="ex-sel__title">Esperienze</span>
-					<span class="ex-sel__script">selezionate</span>
+					<span class="ex-sel__title">
+						<I18n it="Esperienze" en="Experiences" />
+					</span>
+					<span class="ex-sel__script">
+						<I18n it="selezionate" en="selected" />
+					</span>
 				</h2>
 			</Reveal>
 			<Reveal client:visible inView delay={0.16} y={18} duration={0.95}>
 				<p class="ex-sel__lead">
-					Esperienze pensate per scoprire il territorio attraverso prospettive diverse.
+					<I18n
+						it="Esperienze pensate per scoprire il territorio attraverso prospettive diverse."
+						en="Experiences conceived to discover the territory through different perspectives."
+					/>
 				</p>
 			</Reveal>
 		</div>
@@ -97,7 +114,7 @@ const image = {
 								amount={0.35}
 								className="ex-sel__text"
 							>
-								{item.text}
+								<I18n it={item.text.it} en={item.text.en} />
 							</Reveal>
 						</article>
 					);

@@ -6,20 +6,14 @@ import RoomHero from '../../components/rooms/RoomHero.astro';
 import RoomDetails from '../../components/rooms/RoomDetails.astro';
 import RoomGallery from '../../components/rooms/RoomGallery.astro';
 import RoomAdjacent from '../../components/rooms/RoomAdjacent.astro';
-import { rooms, type Room } from '../../data/rooms';
+import { rooms } from '../../data/rooms';
 
-export function getStaticPaths() {
-	return rooms.map((room) => ({
-		params: { slug: room.slug },
-		props: { room },
-	}));
+const slug = Astro.params.slug;
+const room = rooms.find((item) => item.slug === slug);
+
+if (!room) {
+	return new Response(null, { status: 404, statusText: 'Not Found' });
 }
-
-interface Props {
-	room: Room;
-}
-
-const { room } = Astro.props;
 ---
 
 <Layout title={`${room.name} | Masseria Margagnano`}>

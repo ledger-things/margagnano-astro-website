@@ -1,45 +1,56 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useState } from 'react';
+import { useSiteLang } from '../../lib/useSiteLang';
 
 type TabId = 'tradizione' | 'territorio' | 'contemporaneita';
 
 const tabs: {
 	id: TabId;
-	label: string;
-	title: string;
-	body: string;
+	label: { it: string; en: string };
+	title: { it: string; en: string };
+	body: { it: string; en: string };
 	image: string;
-	alt: string;
+	alt: { it: string; en: string };
 }[] = [
 	{
 		id: 'tradizione',
-		label: 'Tradizione',
-		title: 'Custodire la memoria',
-		body: 'Margagnano affonda le proprie radici nella storia rurale della Puglia, conservando il carattere autentico delle antiche masserie. Ogni ambiente riflette il valore del tempo, della semplicità e del saper fare tramandato nel corso delle generazioni. La tradizione non viene esibita, ma custodita e reinterpretata con rispetto, affinché continui a vivere nel presente.',
+		label: { it: 'Tradizione', en: 'Tradition' },
+		title: { it: 'Custodire la memoria', en: 'Keeping memory' },
+		body: {
+			it: 'Margagnano affonda le proprie radici nella storia rurale della Puglia, conservando il carattere autentico delle antiche masserie. Ogni ambiente riflette il valore del tempo, della semplicità e del saper fare tramandato nel corso delle generazioni. La tradizione non viene esibita, ma custodita e reinterpretata con rispetto, affinché continui a vivere nel presente.',
+			en: 'Margagnano is rooted in the rural history of Puglia, keeping the authentic character of the old masserie. Every room reflects the value of time, of simplicity and of a craft handed down through generations. Tradition is not displayed: it is kept and quietly reinterpreted, so that it can still live in the present.',
+		},
 		image: '/images/masseria/tabs.jpg',
-		alt: 'Archi e cortile in pietra della masseria',
+		alt: { it: 'Archi e cortile in pietra della masseria', en: 'Stone arches and courtyard of the masseria' },
 	},
 	{
 		id: 'territorio',
-		label: 'Territorio',
-		title: 'Il paesaggio intorno',
-		body: 'Intorno a Margagnano si aprono uliveti, muri a secco e la luce della Valle d’Itria. Il territorio non è solo sfondo: entra nelle giornate, nei silenzi e nel modo in cui si vive la masseria, restituendo il ritmo autentico della Puglia.',
+		label: { it: 'Territorio', en: 'Landscape' },
+		title: { it: 'Il paesaggio intorno', en: 'The landscape around' },
+		body: {
+			it: 'Intorno a Margagnano si aprono uliveti, muri a secco e la luce della Valle d’Itria. Il territorio non è solo sfondo: entra nelle giornate, nei silenzi e nel modo in cui si vive la masseria, restituendo il ritmo autentico della Puglia.',
+			en: 'Around Margagnano open olive groves, dry-stone walls and the light of the Valle d’Itria. The land is not a backdrop: it enters the days, the silences and the way the masseria is lived, returning the true rhythm of Puglia.',
+		},
 		image: '/images/masseria/tabs-territorio.jpg',
-		alt: 'Giardino e canali in pietra della masseria',
+		alt: { it: 'Giardino e canali in pietra della masseria', en: 'Garden and stone channels of the masseria' },
 	},
 	{
 		id: 'contemporaneita',
-		label: 'Contemporaneità',
-		title: 'Una nuova quiete',
-		body: 'Accanto alla memoria, una cura contemporanea dell’ospitalità: comfort discreto, design essenziale e un’attenzione al dettaglio che lascia intatta l’anima del luogo, senza mai sovrastarla.',
+		label: { it: 'Contemporaneità', en: 'The present' },
+		title: { it: 'Una nuova quiete', en: 'A new quiet' },
+		body: {
+			it: 'Accanto alla memoria, una cura contemporanea dell’ospitalità: comfort discreto, design essenziale e un’attenzione al dettaglio che lascia intatta l’anima del luogo, senza mai sovrastarla.',
+			en: 'Beside memory, a contemporary care for hospitality: discreet comfort, essential design and an attention to detail that leaves the soul of the place intact, never overwhelming it.',
+		},
 		image: '/images/masseria/tabs-contemporanea.jpg',
-		alt: 'Interno suite della masseria',
+		alt: { it: 'Interno suite della masseria', en: 'Suite interior of the masseria' },
 	},
 ];
 
 export default function MasseriaTabs() {
 	const [active, setActive] = useState(0);
 	const shouldReduce = useReducedMotion();
+	const lang = useSiteLang();
 	const current = tabs[active];
 
 	const goNext = () => setActive((i) => (i + 1) % tabs.length);
@@ -50,7 +61,7 @@ export default function MasseriaTabs() {
 				<div className="mh-tabs__grid">
 					<div className="mh-tabs__copy">
 						<div className="mh-tabs__nav-block">
-							<div className="mh-tabs__nav" role="tablist" aria-label="Storia della masseria">
+							<div className="mh-tabs__nav" role="tablist" aria-label={lang === 'it' ? 'Storia della masseria' : 'History of the masseria'}>
 								{tabs.map((tab, index) => {
 									const selected = index === active;
 									return (
@@ -70,7 +81,7 @@ export default function MasseriaTabs() {
 												className={`mh-tabs__tab${selected ? ' is-active' : ''}`}
 												onClick={() => setActive(index)}
 											>
-												{tab.label}
+												{tab.label[lang]}
 											</button>
 										</span>
 									);
@@ -102,9 +113,9 @@ export default function MasseriaTabs() {
 									transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
 								>
 									<h2 id="storia-title" className="mh-tabs__heading">
-										{current.title}
+										{current.title[lang]}
 									</h2>
-									<p className="mh-tabs__text">{current.body}</p>
+									<p className="mh-tabs__text">{current.body[lang]}</p>
 								</motion.div>
 							</AnimatePresence>
 						</div>
@@ -112,7 +123,7 @@ export default function MasseriaTabs() {
 						<button
 							type="button"
 							className="mh-tabs__next"
-							aria-label="Sezione successiva"
+							aria-label={lang === 'it' ? 'Sezione successiva' : 'Next section'}
 							onClick={goNext}
 						>
 							<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
@@ -133,7 +144,7 @@ export default function MasseriaTabs() {
 							<motion.img
 								key={current.image}
 								src={current.image}
-								alt={current.alt}
+								alt={current.alt[lang]}
 								width={1444}
 								height={856}
 								initial={shouldReduce ? false : { opacity: 0 }}

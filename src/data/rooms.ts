@@ -1,4 +1,6 @@
 import roomsJson from './rooms.json';
+import { roomsEn, type RoomEn } from './rooms.en';
+import type { Lang } from '../lib/i18n';
 
 export type RoomCategory = 'suite' | 'room';
 
@@ -76,6 +78,31 @@ export const roomsPage = roomsData.page;
 export const rooms = roomsData.rooms;
 export const guestRooms = rooms.filter((room) => room.category === 'room');
 export const suites = rooms.filter((room) => room.category === 'suite');
+
+export function localizeRoom(room: Room, lang: Lang): Room {
+	if (lang !== 'en') return room;
+	const en = roomsEn[room.slug] as RoomEn | undefined;
+	if (!en) return room;
+	return {
+		...room,
+		excerpt: en.excerpt,
+		headline: en.headline ?? room.headline,
+		description: en.description,
+		specs: room.specs.map((spec) => {
+			const enSpec = en.specs[spec.key];
+			if (!enSpec) return spec;
+			return {
+				...spec,
+				label: enSpec.label,
+				details: enSpec.details ?? spec.details,
+			};
+		}),
+	};
+}
+
+export function localizeRooms(lang: Lang) {
+	return rooms.map((room) => localizeRoom(room, lang));
+}
 
 export function getRoomBySlug(slug: string) {
 	return rooms.find((room) => room.slug === slug);

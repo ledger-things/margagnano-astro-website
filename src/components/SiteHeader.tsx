@@ -1,12 +1,13 @@
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useId, useState } from 'react';
-
-type Lang = 'it' | 'en';
+import { applySiteLang, type Lang } from '../lib/i18n';
+import { useSiteLang } from '../lib/useSiteLang';
 
 type SiteHeaderProps = {
 	/** `light`: logo/nav scuri fin da subito (hero chiari). */
 	tone?: 'auto' | 'light';
 	currentPath?: string;
+	homeHref?: string;
 };
 
 function normalizePath(pathname: string) {
@@ -17,45 +18,41 @@ function normalizePath(pathname: string) {
 function isActiveHref(href: string, pathname: string, hash: string) {
 	const path = normalizePath(pathname);
 
-	if (href.startsWith('/#')) {
-		return path === '/' && hash === href.slice(1);
+	if (href.includes('#')) {
+		const [hrefPath, hrefHash] = href.split('#');
+		const targetPath = normalizePath(hrefPath || '/');
+		const currentHash = hash.startsWith('#') ? hash.slice(1) : hash;
+		return path === targetPath && currentHash === hrefHash;
 	}
 
 	return path === href || path.startsWith(`${href}/`);
 }
 
 const leftLinks = [
-	{ href: '/la-masseria', label: 'La masseria' },
-	{ href: '/suites', label: 'Suites' },
-	{ href: '/la-cucina', label: 'Cucina' },
-	{ href: '/experience', label: 'Experience' },
+	{ href: '/masseria', label: { it: 'La masseria', en: 'The masseria' } },
+	{ href: '/suites', label: { it: 'Suites', en: 'Suites' } },
+	{ href: '/cuisine', label: { it: 'Cucina', en: 'Cuisine' } },
+	{ href: '/experience', label: { it: 'Experience', en: 'Experience' } },
 ];
 
 const rightLinks = [
-	{ href: '/life-in-margagnano', label: 'Life in Margagnano' },
-	{ href: '/#prefooter', label: 'Contatti' },
+	{ href: '/life-in-margagnano', label: { it: 'Life in Margagnano', en: 'Life in Margagnano' } },
+	{ href: '/home#prefooter', label: { it: 'Contatti', en: 'Contacts' } },
 ];
 
 const allLinks = [...leftLinks, ...rightLinks];
 
-function readInitialLang(): Lang {
-	if (typeof window === 'undefined') return 'it';
-	const stored = window.localStorage.getItem('margagnano-lang');
-	if (stored === 'it' || stored === 'en') return stored;
-	return document.documentElement.lang === 'en' ? 'en' : 'it';
-}
-
-export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHeaderProps) {
+export default function SiteHeader({
+	tone = 'auto',
+	currentPath = '/',
+	homeHref = '/home',
+}: SiteHeaderProps) {
 	const [scrolled, setScrolled] = useState(tone === 'light');
 	const [menuOpen, setMenuOpen] = useState(false);
-	const [lang, setLang] = useState<Lang>('it');
+	const lang = useSiteLang();
 	const [hash, setHash] = useState('');
 	const shouldReduce = useReducedMotion();
 	const menuId = useId();
-
-	useEffect(() => {
-		setLang(readInitialLang());
-	}, []);
 
 	useEffect(() => {
 		const syncHash = () => setHash(window.location.hash);
@@ -105,10 +102,7 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 	}, []);
 
 	const setLanguage = (next: Lang) => {
-		setLang(next);
-		document.documentElement.lang = next;
-		window.localStorage.setItem('margagnano-lang', next);
-		window.dispatchEvent(new CustomEvent('margagnano:lang', { detail: { lang: next } }));
+		applySiteLang(next);
 	};
 
 	const closeMenu = () => setMenuOpen(false);
@@ -122,7 +116,7 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 	};
 
 	const langSwitch = (
-		<div className="site-header__lang" role="group" aria-label="Lingua">
+		<div className="site-header__lang" role="group" aria-label={lang === 'it' ? 'Lingua' : 'Language'}>
 			<button
 				type="button"
 				className={`site-header__lang-btn${lang === 'it' ? ' is-active' : ''}`}
@@ -149,20 +143,20 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 		<header
 			className={`site-header${scrolled ? ' is-scrolled' : ''}${menuOpen ? ' is-menu-open' : ''}`}
 		>
-			<nav className="site-header__nav" aria-label="Navigazione principale">
+			<nav className="site-header__nav" aria-label={lang === 'it' ? 'Navigazione principale' : 'Main navigation'}>
 				<div className="site-header__side site-header__side--left">
 					<ul className="site-header__links">
 						{leftLinks.map((link) => (
-							<li key={link.label}>
+							<li key={link.href}>
 								<a href={link.href} {...linkProps(link.href)}>
-									{link.label}
+									{link.label[lang]}
 								</a>
 							</li>
 						))}
 					</ul>
 				</div>
 
-				<a className="site-header__brand" href="/" aria-label="Masseria Margagnano - Home">
+				<a className="site-header__brand" href={homeHref} aria-label="Masseria Margagnano - Home">
 					<img
 						src="/images/logo-margagnano-white.png"
 						alt=""
@@ -182,9 +176,9 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 				<div className="site-header__side site-header__side--right">
 					<ul className="site-header__links">
 						{rightLinks.map((link) => (
-							<li key={link.label}>
+							<li key={link.href}>
 								<a href={link.href} {...linkProps(link.href)}>
-									{link.label}
+									{link.label[lang]}
 								</a>
 							</li>
 						))}
@@ -197,7 +191,7 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 					className="site-header__toggle"
 					aria-expanded={menuOpen}
 					aria-controls={menuId}
-					aria-label={menuOpen ? 'Chiudi menu' : 'Apri menu'}
+					aria-label={menuOpen ? (lang === 'it' ? 'Chiudi menu' : 'Close menu') : lang === 'it' ? 'Apri menu' : 'Open menu'}
 					onClick={() => setMenuOpen((open) => !open)}
 				>
 					<span className="site-header__toggle-lines" aria-hidden="true">
@@ -215,7 +209,7 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 						className="site-header__drawer"
 						role="dialog"
 						aria-modal="true"
-						aria-label="Menu di navigazione"
+						aria-label={lang === 'it' ? 'Menu di navigazione' : 'Navigation menu'}
 						initial={shouldReduce ? { opacity: 1 } : { opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={shouldReduce ? { opacity: 1 } : { opacity: 0 }}
@@ -231,13 +225,13 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 							<ul className="site-header__drawer-links">
 								{allLinks.map((link, i) => (
 									<motion.li
-										key={link.label}
+										key={link.href}
 										initial={shouldReduce ? false : { opacity: 0, x: 24 }}
 										animate={{ opacity: 1, x: 0 }}
 										transition={{ delay: 0.05 + i * 0.04, duration: 0.35 }}
 									>
 										<a href={link.href} onClick={closeMenu} {...linkProps(link.href)}>
-											{link.label}
+											{link.label[lang]}
 										</a>
 									</motion.li>
 								))}
@@ -248,7 +242,7 @@ export default function SiteHeader({ tone = 'auto', currentPath = '/' }: SiteHea
 						<button
 							type="button"
 							className="site-header__drawer-backdrop"
-							aria-label="Chiudi menu"
+							aria-label={lang === 'it' ? 'Chiudi menu' : 'Close menu'}
 							onClick={closeMenu}
 						/>
 					</motion.div>

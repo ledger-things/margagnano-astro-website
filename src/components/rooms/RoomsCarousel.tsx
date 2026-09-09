@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { guestRooms, roomCardMeta } from '../../data/rooms';
-
-const cards = guestRooms.map(roomCardMeta);
+import { guestRooms, localizeRoom, roomCardMeta } from '../../data/rooms';
+import { useSiteLang } from '../../lib/useSiteLang';
 
 export default function RoomsCarousel() {
+	const lang = useSiteLang();
+	const cards = guestRooms.map((room) => roomCardMeta(localizeRoom(room, lang)));
 	const viewportRef = useRef<HTMLDivElement>(null);
 	const [canPrev, setCanPrev] = useState(false);
 	const [canNext, setCanNext] = useState(true);
@@ -45,7 +46,7 @@ export default function RoomsCarousel() {
 			<button
 				type="button"
 				className="rooms-carousel__arrow rooms-carousel__arrow--prev"
-				aria-label="Camere precedenti"
+				aria-label={lang === 'it' ? 'Camere precedenti' : 'Previous rooms'}
 				disabled={!canPrev}
 				onClick={() => scrollByCard(-1)}
 			>
@@ -56,7 +57,7 @@ export default function RoomsCarousel() {
 				ref={viewportRef}
 				className="rooms-carousel__viewport"
 				aria-roledescription="carousel"
-				aria-label="Le camere"
+				aria-label={lang === 'it' ? 'Le camere' : 'The rooms'}
 			>
 				<div className="rooms-carousel__track">
 					{cards.map((room) => (
@@ -84,7 +85,7 @@ export default function RoomsCarousel() {
 			<button
 				type="button"
 				className="rooms-carousel__arrow rooms-carousel__arrow--next"
-				aria-label="Camere successive"
+				aria-label={lang === 'it' ? 'Camere successive' : 'Next rooms'}
 				disabled={!canNext}
 				onClick={() => scrollByCard(1)}
 			>

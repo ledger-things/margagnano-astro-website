@@ -1,0 +1,246 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PublicHeader from '../components/PublicHeader.astro';
+import Footer from '../components/Footer.astro';
+import PrivateCollectionCta from '../components/PrivateCollectionCta.astro';
+import AccessRequestForm from '../components/AccessRequestForm.tsx';
+---
+
+<Layout title="Request private access | Masseria Margagnano">
+	<PublicHeader tone="light" />
+	<main>
+		<PrivateCollectionCta variant="hero" href="#access-form" />
+		<AccessRequestForm client:load />
+	</main>
+	<Footer homeHref="/" />
+</Layout>
+
+<style is:global>
+	.access-form {
+		max-width: 52rem;
+		margin: 0 auto;
+		padding: clamp(5rem, 10vw, 8rem) clamp(1.25rem, 5vw, 2.5rem) clamp(4rem, 8vw, 6.5rem);
+		color: #5a3a2c;
+	}
+
+	.access-form__intro {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.access-form__title {
+		margin: 0 0 1.5rem;
+		font-family: 'Cardo', serif;
+		font-weight: 400;
+		font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+		line-height: 1.15;
+		color: var(--brand-terracotta);
+	}
+
+	.access-form__intro p {
+		margin: 0 auto 1rem;
+		max-width: 44rem;
+		font-family: 'Cardo', serif;
+		font-size: 1.05rem;
+		line-height: 1.65;
+	}
+
+	.access-form__notice {
+		margin: 0 0 1.5rem;
+		text-align: center;
+		font-family: 'Cardo', serif;
+	}
+
+	.access-form--success {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 22rem;
+	}
+
+	.access-form__notice--success {
+		margin: 0 auto;
+		max-width: 34rem;
+		color: var(--brand-verde);
+		font-size: clamp(1.25rem, 2.4vw, 1.85rem);
+		line-height: 1.55;
+	}
+
+	.access-form__notice--error {
+		color: #9a2a1a;
+	}
+
+	.access-form__honeypot {
+		position: absolute;
+		left: -9999px;
+		opacity: 0;
+		height: 0;
+		width: 0;
+	}
+
+	.access-form__grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.35rem 1.75rem;
+	}
+
+	.access-form__field {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.92rem;
+	}
+
+	.access-form__field input,
+	.access-form__field select,
+	.access-form__field textarea {
+		width: 100%;
+		border: 1px solid #cbb9a8;
+		background: transparent;
+		padding: 0.7rem 0.75rem;
+		color: #3d2c22;
+		font: inherit;
+		border-radius: 0;
+	}
+
+	.access-form__field textarea {
+		resize: vertical;
+		min-height: 8rem;
+	}
+
+	.access-form__section {
+		margin-top: 2.75rem;
+	}
+
+	.access-form__section-title {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin: 0 0 1.25rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.78rem;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: #8a6a58;
+	}
+
+	.access-form__section-title::after {
+		content: '';
+		flex: 1;
+		height: 1px;
+		background: #d7c6b6;
+	}
+
+	.access-form__fieldset {
+		border: 0;
+		margin: 0;
+		padding: 0;
+	}
+
+	.access-form__fieldset legend {
+		padding: 0;
+		margin-bottom: 1rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.95rem;
+	}
+
+	.access-form__radio {
+		display: flex;
+		align-items: center;
+		gap: 0.6rem;
+		margin-bottom: 0.85rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.95rem;
+	}
+
+	.access-form__dates {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 1.25rem;
+		margin: 0.25rem 0 1.25rem;
+	}
+
+	.access-form__pills {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.65rem 1.25rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.access-form__pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.95rem;
+		cursor: pointer;
+	}
+
+	.access-form__privacy {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.65rem;
+		margin-top: 2rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.95rem;
+	}
+
+	.access-form__privacy a {
+		color: inherit;
+		text-underline-offset: 0.15em;
+	}
+
+	.access-form__actions {
+		display: flex;
+		justify-content: center;
+		margin-top: 2.25rem;
+	}
+
+	.access-form__submit {
+		appearance: none;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-height: 3.75rem;
+		padding: 0.7rem 1.65rem;
+		border: 0;
+		border-radius: 0;
+		background: rgba(233, 227, 211, 0.92);
+		color: var(--brand-terracotta);
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 1.2rem;
+		font-weight: 400;
+		letter-spacing: 0.01em;
+		line-height: 1.2;
+		text-transform: none;
+		white-space: nowrap;
+		cursor: pointer;
+		transition: background-color 0.2s ease;
+	}
+
+	.access-form__submit:hover,
+	.access-form__submit:focus-visible {
+		background: rgba(233, 227, 211, 1);
+		outline: none;
+	}
+
+	.access-form__submit:disabled {
+		opacity: 0.55;
+		cursor: wait;
+	}
+
+	@media (max-width: 720px) {
+		.access-form__grid,
+		.access-form__dates {
+			grid-template-columns: 1fr;
+		}
+
+		.access-form__submit {
+			width: 100%;
+			max-width: 24rem;
+			white-space: normal;
+			text-align: center;
+		}
+	}
+</style>

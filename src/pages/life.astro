@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PublicHeader from '../components/PublicHeader.astro';
+import Footer from '../components/Footer.astro';
+import LifeHero from '../components/life/LifeHero.astro';
+import LifeMoments from '../components/life/LifeMoments.astro';
+import PrivateCollectionCta from '../components/PrivateCollectionCta.astro';
+---
+
+<Layout title="Life in Margagnano | Masseria Margagnano">
+	<PublicHeader tone="light" />
+	<main>
+		<LifeHero />
+		<LifeMoments />
+		<PrivateCollectionCta />
+	</main>
+	<Footer homeHref="/" />
+</Layout>

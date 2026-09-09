@@ -1,6 +1,8 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import { formatRoomSpecValue, type Room } from '../../data/rooms';
+import { roomsEn } from '../../data/rooms.en';
 import './RoomDetails.css';
 
 interface Props {
@@ -8,6 +10,7 @@ interface Props {
 }
 
 const { room } = Astro.props;
+const en = roomsEn[room.slug];
 ---
 
 <section class="room-details" aria-labelledby="room-details-title">
@@ -21,25 +24,38 @@ const { room } = Astro.props;
 
 			<Reveal client:visible inView delay={0.18} y={20} duration={1}>
 				<div class="room-details__text">
-					{room.description.map((paragraph) => <p>{paragraph}</p>)}
+					{room.description.map((paragraph, i) => (
+						<I18n as="p" it={paragraph} en={en?.description[i] ?? paragraph} />
+					))}
 				</div>
 			</Reveal>
 
 			<div class="room-details__specs">
 				{
-					room.specs.map((spec, i) => (
-						<Reveal
-							client:visible
-							inView
-							delay={0.28 + i * 0.06}
-							y={18}
-							duration={0.95}
-							className="room-details__spec"
-						>
-							<p class="room-details__label">{spec.label}</p>
-							<p class="room-details__value">{formatRoomSpecValue(spec)}</p>
-						</Reveal>
-					))
+					room.specs.map((spec, i) => {
+						const enSpec = en?.specs[spec.key];
+						const itValue = formatRoomSpecValue(spec);
+						const enValue = enSpec
+							? formatRoomSpecValue({ ...spec, label: enSpec.label, details: enSpec.details ?? spec.details })
+							: itValue;
+						return (
+							<Reveal
+								client:visible
+								inView
+								delay={0.28 + i * 0.06}
+								y={18}
+								duration={0.95}
+								className="room-details__spec"
+							>
+								<p class="room-details__label">
+									<I18n it={spec.label} en={enSpec?.label ?? spec.label} />
+								</p>
+								<p class="room-details__value">
+									<I18n it={itValue} en={enValue} />
+								</p>
+							</Reveal>
+						);
+					})
 				}
 			</div>
 		</div>

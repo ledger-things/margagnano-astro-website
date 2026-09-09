@@ -11,7 +11,7 @@ const { room } = Astro.props;
 const { prev, next } = adjacentRooms(room);
 ---
 
-<nav class="room-adjacent" aria-label="Altre camere">
+<nav class="room-adjacent" aria-label="Other rooms">
 	<div class="room-adjacent__inner">
 		<Reveal client:visible inView delay={0.08} y={16} duration={0.9} className="room-adjacent__reveal">
 			<a class="room-adjacent__link room-adjacent__link--prev" href={`/suites/${prev.slug}`}>

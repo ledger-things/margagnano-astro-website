@@ -8,23 +8,41 @@ import {
 	type PanInfo,
 } from 'framer-motion';
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { rooms } from '../data/rooms';
+import { rooms, localizeRoom } from '../data/rooms';
+import { useSiteLang } from '../lib/useSiteLang';
 
-const suites = rooms.map((room) => ({
-	slug: room.slug,
-	name: room.name,
-	desc: room.excerpt,
-	image: room.highlightImage,
-}));
+type Slide = {
+	slug: string;
+	name: string;
+	desc: string;
+	image: string;
+};
+
+/** Placeholder finché non arrivano le foto suite del teaser. */
+const teaserSlides: Slide[] = [
+	{ slug: 'teaser-1', name: 'Suite', desc: '', image: '/images/home/suite-interior.png' },
+	{ slug: 'teaser-2', name: 'Suite', desc: '', image: '/images/rooms/hero.jpg' },
+	{ slug: 'teaser-3', name: 'Suite', desc: '', image: '/images/masseria/gallery-1.jpg' },
+	{ slug: 'teaser-4', name: 'Suite', desc: '', image: '/images/masseria/gallery-2.jpg' },
+	{ slug: 'teaser-5', name: 'Suite', desc: '', image: '/images/home/gallery-vault.png' },
+	{ slug: 'teaser-6', name: 'Suite', desc: '', image: '/images/masseria/gallery-4.jpg' },
+	{ slug: 'teaser-7', name: 'Suite', desc: '', image: '/images/rooms/highlightImage.png' },
+	{ slug: 'teaser-8', name: 'Suite', desc: '', image: '/images/home/gallery-lantern.png' },
+];
 
 const REPEAT = 5;
-const LOOP = Array.from({ length: suites.length * REPEAT }, (_, i) => ({
-	...suites[i % suites.length],
-	key: `${i}-${suites[i % suites.length].name}`,
-	sourceIndex: i % suites.length,
-}));
 
-const START = suites.length * Math.floor(REPEAT / 2);
+function buildLoop(slides: Slide[]) {
+	return Array.from({ length: slides.length * REPEAT }, (_, i) => ({
+		...slides[i % slides.length],
+		key: `${i}-${slides[i % slides.length].slug}`,
+		sourceIndex: i % slides.length,
+	}));
+}
+
+const teaserLoop = buildLoop(teaserSlides);
+
+type LoopSlide = ReturnType<typeof buildLoop>[number];
 
 function mod(n: number, m: number) {
 	return ((n % m) + m) % m;
@@ -37,14 +55,18 @@ function SuiteCard({
 	centerOffset,
 	step,
 	isActive,
+	imagesOnly = false,
+	lang,
 	onSelect,
 }: {
-	suite: (typeof LOOP)[number];
+	suite: LoopSlide;
 	index: number;
 	x: MotionValue<number>;
 	centerOffset: MotionValue<number>;
 	step: number;
 	isActive: boolean;
+	imagesOnly?: boolean;
+	lang: 'it' | 'en';
 	onSelect: () => void;
 }) {
 	// Distanza dal centro del viewport (0 = card centrale)
@@ -63,25 +85,46 @@ function SuiteCard({
 			className={`suites-carousel__card${isActive ? ' is-active' : ''}`}
 			style={{ scale, opacity, y }}
 			aria-current={isActive ? 'true' : undefined}
-			aria-label={`${suite.name}${isActive ? ', apri la pagina' : ', vai alla suite'}`}
+			aria-label={
+				imagesOnly
+					? `${lang === 'it' ? 'Immagine' : 'Image'} ${suite.sourceIndex + 1}${isActive ? '' : lang === 'it' ? ', vai alla slide' : ', go to slide'}`
+					: `${suite.name}${isActive ? (lang === 'it' ? ', apri la pagina' : ', open page') : lang === 'it' ? ', vai alla suite' : ', go to suite'}`
+			}
 			onClick={onSelect}
 		>
 			<figure className="suites-carousel__figure">
 				<img src={suite.image} alt="" width={1170} height={792} draggable={false} />
-				<figcaption className="suites-carousel__caption">
-					<p className="suites-carousel__name">{suite.name}</p>
-					<p className="suites-carousel__desc">{suite.desc}</p>
-				</figcaption>
+				{imagesOnly ? null : (
+					<figcaption className="suites-carousel__caption">
+						<p className="suites-carousel__name">{suite.name}</p>
+						<p className="suites-carousel__desc">{suite.desc}</p>
+					</figcaption>
+				)}
 			</figure>
 		</motion.button>
 	);
 }
 
-export default function SuitesCarousel() {
+export default function SuitesCarousel({ variant = 'default' }: { variant?: 'default' | 'teaser' }) {
+	const lang = useSiteLang();
+	const imagesOnly = variant === 'teaser';
+	const memberSlides: Slide[] = rooms.map((room) => {
+		const localized = localizeRoom(room, lang);
+		return {
+			slug: localized.slug,
+			name: localized.name,
+			desc: localized.excerpt,
+			image: localized.highlightImage,
+		};
+	});
+	const memberLoop = buildLoop(memberSlides);
+	const slides = imagesOnly ? teaserSlides : memberSlides;
+	const loop = imagesOnly ? teaserLoop : memberLoop;
+	const start = slides.length * Math.floor(REPEAT / 2);
 	const shouldReduce = useReducedMotion();
 	const viewportRef = useRef<HTMLDivElement>(null);
 	const trackRef = useRef<HTMLDivElement>(null);
-	const [index, setIndex] = useState(START);
+	const [index, setIndex] = useState(start);
 	const [step, setStep] = useState(0);
 	const [ready, setReady] = useState(false);
 	const x = useMotionValue(0);
@@ -152,7 +195,7 @@ export default function SuitesCarousel() {
 				mass: 0.8,
 				onComplete: () => {
 					animating.current = false;
-					const normalized = START + mod(next, suites.length);
+					const normalized = start + mod(next, slides.length);
 					if (normalized !== next) {
 						x.set(targetFor(normalized));
 						setIndex(normalized);
@@ -160,7 +203,7 @@ export default function SuitesCarousel() {
 				},
 			});
 		},
-		[shouldReduce, step, targetFor, x],
+		[shouldReduce, slides.length, start, step, targetFor, x],
 	);
 
 	const stepBy = useCallback(
@@ -196,10 +239,14 @@ export default function SuitesCarousel() {
 		goTo(index);
 	};
 
-	const activeSource = mod(index, suites.length);
+	const activeSource = mod(index, slides.length);
 
 	return (
-		<div className="suites-carousel" aria-roledescription="carousel" aria-label="Le suites">
+		<div
+			className={`suites-carousel${imagesOnly ? ' suites-carousel--teaser' : ''}`}
+			aria-roledescription="carousel"
+			aria-label={lang === 'it' ? 'Le suites' : 'The suites'}
+		>
 			<div ref={viewportRef} className="suites-carousel__viewport">
 				<motion.div
 					ref={trackRef}
@@ -211,7 +258,7 @@ export default function SuitesCarousel() {
 					dragMomentum={false}
 					onDragEnd={onDragEnd}
 				>
-					{LOOP.map((suite, i) => (
+					{loop.map((suite, i) => (
 						<SuiteCard
 							key={suite.key}
 							suite={suite}
@@ -220,9 +267,11 @@ export default function SuitesCarousel() {
 							centerOffset={centerOffset}
 							step={step || 1}
 							isActive={i === index}
+							imagesOnly={imagesOnly}
+							lang={lang}
 							onSelect={() => {
 								if (i !== index) goTo(i);
-								else window.location.assign(`/suites/${suite.slug}`);
+								else if (!imagesOnly) window.location.assign(`/suites/${suite.slug}`);
 							}}
 						/>
 					))}
@@ -233,28 +282,28 @@ export default function SuitesCarousel() {
 				<button
 					type="button"
 					className="suites-carousel__arrow"
-					aria-label="Suite precedente"
+					aria-label={lang === 'it' ? 'Slide precedente' : 'Previous slide'}
 					onClick={() => stepBy(-1)}
 				>
 					←
 				</button>
-				<div className="suites-carousel__dots" role="tablist" aria-label="Suite">
-					{suites.map((suite, i) => (
+				<div className="suites-carousel__dots" role="tablist" aria-label="Slide">
+					{slides.map((suite, i) => (
 						<button
 							key={suite.slug}
 							type="button"
 							role="tab"
 							aria-selected={i === activeSource}
-							aria-label={suite.name}
+							aria-label={imagesOnly ? `Slide ${i + 1}` : suite.name}
 							className={`suites-carousel__dot${i === activeSource ? ' is-active' : ''}`}
-							onClick={() => goTo(START + i)}
+							onClick={() => goTo(start + i)}
 						/>
 					))}
 				</div>
 				<button
 					type="button"
 					className="suites-carousel__arrow"
-					aria-label="Suite successiva"
+					aria-label={lang === 'it' ? 'Slide successiva' : 'Next slide'}
 					onClick={() => stepBy(1)}
 				>
 					→

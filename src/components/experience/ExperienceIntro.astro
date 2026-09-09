@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import './ExperienceIntro.css';
 ---
 
@@ -7,7 +8,9 @@ import './ExperienceIntro.css';
 	<div class="ex-intro__inner">
 		<div class="ex-intro__lead">
 			<Reveal client:visible inView delay={0.08} y={24} duration={1}>
-				<h2 id="ex-intro-title" class="ex-intro__title">La Puglia, oltre la masseria.</h2>
+				<h2 id="ex-intro-title" class="ex-intro__title">
+					<I18n it="La Puglia, oltre la masseria." en="Puglia, beyond the masseria." />
+				</h2>
 			</Reveal>
 			<figure class="ex-intro__media">
 				<img
@@ -22,22 +25,26 @@ import './ExperienceIntro.css';
 
 		<Reveal client:visible inView delay={0.18} y={22} duration={1}>
 			<div class="ex-intro__copy">
-				<p>Masseria Margagnano vive nel cuore di un territorio da esplorare.</p>
-				<p>
-					La sua posizione permette di attraversare paesaggi, luoghi e atmosfere diverse, costruendo
-					ogni giorno un modo personale di vivere la Puglia.
-				</p>
-				<p>
-					Dalla campagna al mare, dalla tavola alla cultura, alcune esperienze possono essere
-					organizzate attraverso una selezione di realtà con cui Margagnano condivide una particolare
-					attenzione per il territorio.
-				</p>
-				<p>
-					Altre nascono dalla vicinanza a luoghi che vale la pena scoprire. L'esperienza di
-					Margagnano non si esaurisce quindi all'interno della masseria. Prosegue lungo la costa, tra
-					i borghi della Valle d'Itria, nei campi da golf, nelle città d'arte e nei luoghi che ancora
-					conservano il ritmo della Puglia.
-				</p>
+				<I18n
+					as="p"
+					it="Masseria Margagnano vive nel cuore di un territorio da esplorare."
+					en="Masseria Margagnano lives at the heart of a territory to be explored."
+				/>
+				<I18n
+					as="p"
+					it="La sua posizione permette di attraversare paesaggi, luoghi e atmosfere diverse, costruendo ogni giorno un modo personale di vivere la Puglia."
+					en="Its position allows you to move through different landscapes, places and atmospheres, shaping a personal way of living Puglia each day."
+				/>
+				<I18n
+					as="p"
+					it="Dalla campagna al mare, dalla tavola alla cultura, alcune esperienze possono essere organizzate attraverso una selezione di realtà con cui Margagnano condivide una particolare attenzione per il territorio."
+					en="From countryside to sea, from the table to culture, some experiences can be arranged through a selection of places with which Margagnano shares a particular care for the land."
+				/>
+				<I18n
+					as="p"
+					it="Altre nascono dalla vicinanza a luoghi che vale la pena scoprire. L'esperienza di Margagnano non si esaurisce quindi all'interno della masseria. Prosegue lungo la costa, tra i borghi della Valle d'Itria, nei campi da golf, nelle città d'arte e nei luoghi che ancora conservano il ritmo della Puglia."
+					en="Others come from the nearness of places worth discovering. The experience of Margagnano does not end inside the masseria. It continues along the coast, among the villages of the Valle d’Itria, on the golf courses, in the cities of art and in the places that still keep the rhythm of Puglia."
+				/>
 			</div>
 		</Reveal>
 	</div>

@@ -1,20 +1,22 @@
 ---
 import Reveal from '../Reveal.tsx';
 import LifeTimelineRule from './LifeTimelineRule.tsx';
+import I18n from '../I18n.astro';
 
 const img = '/images/life/life-1.jpg';
 ---
 
-<section class="life-moments" aria-label="Momenti a Margagnano">
+<section class="life-moments" aria-labelledby="life-moments-intro">
 	<div class="life-moments__inner">
 		<!-- Riga 1 — Intro -->
 		<div class="lm-row lm-row--intro">
 			<div class="lm-row__col lm-row__col--intro-copy">
 				<Reveal client:visible inView delay={0.1} y={28} duration={1.75}>
-					<p class="lm-intro">
-						A Margagnano il tempo non è scandito dagli orari, ma dalla luce, dalla natura e dai
-						piccoli rituali che accompagnano ogni giornata. Ogni spazio invita a rallentare,
-						lasciando che siano il paesaggio e il silenzio a guidare l'esperienza.
+					<p id="life-moments-intro" class="lm-intro">
+						<I18n
+							it="A Margagnano il tempo non è scandito dagli orari, ma dalla luce, dalla natura e dai piccoli rituali che accompagnano ogni giornata. Ogni spazio invita a rallentare, lasciando che siano il paesaggio e il silenzio a guidare l'esperienza."
+							en="At Margagnano time is not marked by the clock, but by light, nature and the small rituals that accompany each day. Every space invites you to slow down, letting the landscape and the silence guide the experience."
+						/>
 					</p>
 				</Reveal>
 				<Reveal client:visible inView delay={0.35} y={36} duration={1.85}>
@@ -39,12 +41,11 @@ const img = '/images/life/life-1.jpg';
 					<div class="lm-copy">
 						<p class="lm-copy__num">01.</p>
 						<h2 class="lm-copy__title">RITUALS OF<br />WELLBEING</h2>
-						<p class="lm-copy__lead">Spaces dedicated to body and mind.</p>
-						<p class="lm-copy__body">
-							L'area wellness riunisce idropiscina con vasca calda e fredda, sauna, bagno turco e
-							sala massaggi. La barberia completa gli spazi dedicati alla cura personale. Accanto
-							alla wellness area, una zona ricreativa con biliardo, tavolo da poker, simulatore F1,
-							bar e area TV offre uno spazio più informale da condividere.
+						<p class="lm-copy__lead">
+							<I18n
+								it="Spa, trattamenti e percorsi dedicati al benessere."
+								en="Spa, treatments and rituals dedicated to wellbeing."
+							/>
 						</p>
 					</div>
 				</Reveal>
@@ -86,13 +87,12 @@ const img = '/images/life/life-1.jpg';
 				<Reveal client:visible inView delay={0.3} y={32} duration={1.7}>
 					<div class="lm-copy">
 						<p class="lm-copy__num">02.</p>
-						<h2 class="lm-copy__title">MOVEMENT<br />&amp; BALANCE</h2>
-						<p class="lm-copy__lead">A space for movement<br />and stillness.</p>
-						<p class="lm-copy__body">
-							La palestra e la zona yoga sono pensate per accompagnare la giornata attraverso il
-							movimento, l'allenamento e momenti dedicati all'equilibrio. Uno spazio da vivere
-							secondo il proprio ritmo, dal primo allenamento del mattino alla pratica più lenta
-							dello yoga.
+						<h2 class="lm-copy__title">UNDER<br />THE SUN</h2>
+						<p class="lm-copy__lead">
+							<I18n
+								it="Il solarium, tra luce, quiete e paesaggio."
+								en="The solarium, between light, quiet and landscape."
+							/>
 						</p>
 					</div>
 				</Reveal>
@@ -106,15 +106,12 @@ const img = '/images/life/life-1.jpg';
 				<Reveal client:visible inView delay={0.15} y={24} duration={1.7}>
 					<div class="lm-copy">
 						<p class="lm-copy__num">03.</p>
-						<h2 class="lm-copy__title">UNDER<br />THE SUN</h2>
-						<p class="lm-copy__lead">Water, shade and open-air living.</p>
-						<p class="lm-copy__body">
-							Una grande piscina, accompagnata da docce e zona solarium, è il cuore della vita
-							all'aperto a Margagnano.
-						</p>
-						<p class="lm-copy__body">
-							Accanto all'acqua, la Pool House ospita una cucina esterna e una zona relax: uno
-							spazio pensato per vivere la giornata senza rientrare negli ambienti interni.
+						<h2 class="lm-copy__title">RITUALS<br />OF QUIET</h2>
+						<p class="lm-copy__lead">
+							<I18n
+								it="Il pensatoio e gli angoli più riservati della masseria."
+								en="The thinking room and the most private corners of the masseria."
+							/>
 						</p>
 					</div>
 				</Reveal>
@@ -153,13 +150,12 @@ const img = '/images/life/life-1.jpg';
 				<Reveal client:visible inView delay={0.35} y={28} duration={1.7}>
 					<div class="lm-copy">
 						<p class="lm-copy__num">04.</p>
-						<h2 class="lm-copy__title">RITUALS<br />OF QUIET</h2>
-						<p class="lm-copy__lead">Places to pause, together or alone.</p>
-						<p class="lm-copy__body">
-							Il pensatoio, le corti, le terrazze e gli spazi comuni creano piccoli luoghi in cui
-							fermarsi durante la giornata. Leggere, conversare, osservare il paesaggio o
-							semplicemente restare in silenzio. A Margagnano, anche il tempo senza programma trova
-							il suo spazio.
+						<h2 class="lm-copy__title">THE POOL</h2>
+						<p class="lm-copy__lead">
+							<I18n
+								it="Uno spazio dove acqua, natura e architettura si incontrano."
+								en="A space where water, nature and architecture meet."
+							/>
 						</p>
 					</div>
 				</Reveal>
@@ -170,7 +166,7 @@ const img = '/images/life/life-1.jpg';
 
 <style>
 	.life-moments {
-		--lm-bg: #f7f4ee;
+		--lm-bg: var(--brand-cream);
 		--lm-ink: #4a3f34;
 		--lm-title: var(--brand-terracotta);
 		--lm-rule: rgba(107, 90, 68, 0.32);
@@ -225,7 +221,7 @@ const img = '/images/life/life-1.jpg';
 	.lm-intro {
 		margin: 0;
 		max-width: 32rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-style: italic;
 		font-size: clamp(1.15rem, 1.55vw, 1.4rem);
 		line-height: 1.6;
@@ -278,7 +274,7 @@ const img = '/images/life/life-1.jpg';
 
 	.lm-copy__lead {
 		margin: 1.1rem 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-style: italic;
 		font-size: clamp(1.08rem, 1.45vw, 1.32rem);
 		line-height: 1.4;
@@ -287,7 +283,7 @@ const img = '/images/life/life-1.jpg';
 
 	.lm-copy__body {
 		margin: 1.35rem 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.12vw, 1.08rem);
 		line-height: 1.7;
 		color: var(--brand-marrone);

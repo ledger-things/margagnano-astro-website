@@ -1,8 +1,9 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 ---
 
-<section class="mh-hero" aria-label="La Masseria">
+<section class="mh-hero" aria-labelledby="mh-hero-title">
 	<div class="mh-hero__texture" aria-hidden="true"></div>
 
 	<div class="mh-hero__frame">
@@ -20,11 +21,14 @@ import Reveal from '../Reveal.tsx';
 
 		<div class="mh-hero__copy">
 			<Reveal client:load delay={0.25} duration={1.05} y={28}>
-				<h1 class="mh-hero__title">Masseria<br />Margagnano</h1>
+				<h1 id="mh-hero-title" class="mh-hero__title">Masseria<br />Margagnano</h1>
 			</Reveal>
 			<Reveal client:load delay={0.4} duration={1} y={20}>
 				<p class="mh-hero__subtitle">
-					Un luogo dove architettura, paesaggio e tempo convivono in equilibrio.
+					<I18n
+						it="Un luogo dove architettura, paesaggio e tempo convivono in equilibrio."
+						en="A place where architecture, landscape and time live in balance."
+					/>
 				</p>
 			</Reveal>
 			<Reveal client:load delay={0.55} y={16}>
@@ -71,7 +75,7 @@ import Reveal from '../Reveal.tsx';
 		position: relative;
 		z-index: 1;
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(16rem, 22rem) minmax(0, 1fr);
+		grid-template-columns: minmax(0, 1fr) minmax(18rem, 26rem) minmax(0, 1fr);
 		align-items: stretch;
 		min-height: 100svh;
 		padding-block: clamp(5.5rem, 9vh, 7rem) clamp(1.5rem, 3vh, 2.5rem);
@@ -128,17 +132,17 @@ import Reveal from '../Reveal.tsx';
 		margin: 0;
 		font-family: 'Times Sans Serif', sans-serif;
 		font-weight: 400;
-		font-size: clamp(1.45rem, 2.5vw, 2.05rem);
-		letter-spacing: 0.1em;
+		font-size: clamp(1.75rem, 3.6vw, 3rem);
+		letter-spacing: 0.06em;
 		text-transform: uppercase;
 		color: var(--brand-terracotta);
-		line-height: 1.2;
+		line-height: 1.15;
 	}
 
 	.mh-hero__subtitle {
 		margin: 1.15rem 0 0;
 		max-width: 18rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-style: italic;
 		font-size: clamp(0.95rem, 1.25vw, 1.15rem);
 		line-height: 1.45;

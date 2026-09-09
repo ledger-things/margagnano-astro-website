@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 ---
 
 <section id="produttori" class="ck-km0" aria-labelledby="ck-km0-title">
@@ -17,24 +18,27 @@ import Reveal from '../Reveal.tsx';
 		<div class="ck-km0__content">
 			<div class="ck-km0__panel">
 				<Reveal client:visible inView delay={0.08} y={28}>
-					<h2 id="ck-km0-title" class="ck-km0__title">Produttori &amp; Km 0</h2>
+					<h2 id="ck-km0-title" class="ck-km0__title">
+						<I18n it="Produttori & Km 0" en="Producers & zero-mile" />
+					</h2>
 				</Reveal>
 				<Reveal client:visible inView delay={0.18} y={24}>
-					<p class="ck-km0__subtitle">Il valore della filiera locale</p>
+					<p class="ck-km0__subtitle">
+						<I18n it="Il valore della filiera locale" en="The value of a local supply" />
+					</p>
 				</Reveal>
 				<Reveal client:visible inView delay={0.28} y={28}>
 					<div class="ck-km0__text">
-						<p>
-							Il territorio è parte integrante della cucina di Margagnano. La selezione delle materie
-							prime privilegia prodotti locali e freschi, scelti nel rispetto della stagionalità e
-							del lavoro di chi li produce.
-						</p>
-						<p>
-							Dall'orto ai produttori del territorio, ogni ingrediente racconta il paesaggio da cui
-							proviene. Anche l'olio extravergine prodotto dalla masseria ne è un'espressione
-							diretta: un elemento essenziale che porta in tavola il legame più autentico con questa
-							terra.
-						</p>
+						<I18n
+							as="p"
+							it="Il territorio è parte integrante della cucina di Margagnano. La selezione delle materie prime privilegia prodotti locali e freschi, scelti nel rispetto della stagionalità e del lavoro di chi li produce."
+							en="The land is part of the kitchen of Margagnano. Produce is chosen for what is local and fresh, with respect for the seasons and for the work of those who grow it."
+						/>
+						<I18n
+							as="p"
+							it="Dall'orto ai produttori del territorio, ogni ingrediente racconta il paesaggio da cui proviene. Anche l'olio extravergine prodotto dalla masseria ne è un'espressione diretta: un elemento essenziale che porta in tavola il legame più autentico con questa terra."
+							en="From the kitchen garden to the producers of the territory, each ingredient tells the landscape it comes from. Extra virgin olive oil made at the masseria is a direct expression of that bond: an essential element that brings this land to the table."
+						/>
 					</div>
 				</Reveal>
 			</div>
@@ -103,7 +107,7 @@ import Reveal from '../Reveal.tsx';
 
 	.ck-km0__subtitle {
 		margin: 0.65rem 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1rem, 1.35vw, 1.2rem);
 		line-height: 1.35;
 		color: var(--brand-marrone);
@@ -117,7 +121,7 @@ import Reveal from '../Reveal.tsx';
 
 	.ck-km0__text p {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.95rem, 1.1vw, 1.05rem);
 		line-height: 1.7;
 		color: var(--brand-marrone);

@@ -1,6 +1,8 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import { roomsPage } from '../../data/rooms';
+import { roomsPageEn } from '../../data/rooms.en';
 ---
 
 <section class="rooms-hero" aria-label="Suites">
@@ -18,7 +20,9 @@ import { roomsPage } from '../../data/rooms';
 				<p class="rooms-hero__subtitle">{roomsPage.subtitle}</p>
 			</Reveal>
 			<Reveal client:load delay={0.54} duration={1} y={20}>
-				<p class="rooms-hero__text">{roomsPage.intro}</p>
+				<p class="rooms-hero__text">
+					<I18n it={roomsPage.intro} en={roomsPageEn.intro} />
+				</p>
 			</Reveal>
 		</div>
 
@@ -105,7 +109,7 @@ import { roomsPage } from '../../data/rooms';
 
 	.rooms-hero__subtitle {
 		margin: 1.15rem 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-style: italic;
 		font-size: clamp(1.05rem, 1.5vw, 1.35rem);
 		line-height: 1.4;
@@ -115,7 +119,7 @@ import { roomsPage } from '../../data/rooms';
 	.rooms-hero__text {
 		margin: 1.35rem 0 0;
 		max-width: 28rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.12vw, 1.1rem);
 		line-height: 1.75;
 		color: var(--brand-marrone);

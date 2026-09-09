@@ -1,5 +1,12 @@
 ---
 import Reveal from './Reveal.tsx';
+import I18n from './I18n.astro';
+
+interface Props {
+	moreHref?: string;
+}
+
+const { moreHref = '/experience' } = Astro.props;
 ---
 
 <section id="experience" class="experience" aria-labelledby="experience-title">
@@ -18,12 +25,14 @@ import Reveal from './Reveal.tsx';
 		</Reveal>
 		<Reveal client:visible inView delay={0.4} y={24}>
 			<p class="experience__text">
-				Dalla Valle d'Itria alla costa adriatica, un territorio fatto di paesaggi, borghi e
-				tradizioni che completano l'esperienza di Masseria Margagnano.
+				<I18n
+					it="Dalla Valle d'Itria alla costa adriatica, un territorio fatto di paesaggi, borghi e tradizioni che completano l'esperienza di Masseria Margagnano."
+					en="From the Valle d’Itria to the Adriatic coast, a landscape of countryside, villages and traditions that completes the experience of Masseria Margagnano."
+				/>
 			</p>
 		</Reveal>
 		<Reveal client:visible inView delay={0.52} y={18}>
-			<a class="experience__cta" href="/experience">View more</a>
+			<a class="experience__cta" href={moreHref}>View more</a>
 		</Reveal>
 	</div>
 </section>
@@ -94,7 +103,7 @@ import Reveal from './Reveal.tsx';
 	.experience__text {
 		margin: 0 0 2rem;
 		max-width: 38rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1rem, 1.2vw, 1.15rem);
 		line-height: 1.65;
 		color: rgba(233, 227, 211, 0.95);

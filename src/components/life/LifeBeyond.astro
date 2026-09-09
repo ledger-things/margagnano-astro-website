@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 
 const partners = [1, 2, 3, 4, 5];
 ---
@@ -14,15 +15,17 @@ const partners = [1, 2, 3, 4, 5];
 
 		<Reveal client:visible inView delay={0.25} y={32} duration={1.8}>
 			<p class="life-beyond__text">
-				Margagnano è il punto di partenza per esplorare un territorio ricco di storia, natura e
-				cultura. Una selezione di luoghi scelti con cura accompagna gli ospiti alla scoperta della
-				Puglia più autentica, creando un percorso che si estende oltre la masseria e ne riflette gli
-				stessi valori di equilibrio, bellezza e autenticità.
+				<I18n
+					it="Margagnano è il punto di partenza per esplorare un territorio ricco di storia, natura e cultura. Una selezione di luoghi scelti con cura accompagna gli ospiti alla scoperta della Puglia più autentica, creando un percorso che si estende oltre la masseria e ne riflette gli stessi valori di equilibrio, bellezza e autenticità."
+					en="Margagnano is a starting point for a land rich in history, nature and culture. A carefully chosen selection of places accompanies guests into a more authentic Puglia, extending beyond the masseria and reflecting the same values of balance, beauty and authenticity."
+				/>
 			</p>
 		</Reveal>
 
 		<Reveal client:visible inView delay={0.35} y={24} duration={1.7}>
-			<p class="life-beyond__label">Le partnership</p>
+			<p class="life-beyond__label">
+				<I18n it="Le partnership" en="Partnerships" />
+			</p>
 		</Reveal>
 
 		<div class="life-beyond__grid" role="list">
@@ -76,7 +79,7 @@ const partners = [1, 2, 3, 4, 5];
 
 	.life-beyond__title {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-size: clamp(1.85rem, 3.2vw, 2.75rem);
 		letter-spacing: 0.06em;
@@ -88,7 +91,7 @@ const partners = [1, 2, 3, 4, 5];
 	.life-beyond__text {
 		margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0;
 		max-width: 46rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1.05rem, 1.35vw, 1.2rem);
 		line-height: 1.65;
 		color: #4a3f34;
@@ -96,7 +99,7 @@ const partners = [1, 2, 3, 4, 5];
 
 	.life-beyond__label {
 		margin: clamp(2.75rem, 5.5vw, 4rem) 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1.15rem, 1.5vw, 1.35rem);
 		line-height: 1.3;
 		color: #4a3f34;

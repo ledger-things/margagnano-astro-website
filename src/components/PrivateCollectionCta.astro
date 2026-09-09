@@ -1,0 +1,182 @@
+---
+import Reveal from './Reveal.tsx';
+import I18n from './I18n.astro';
+
+interface Props {
+	imageSrc?: string;
+	href?: string;
+	variant?: 'default' | 'hero';
+}
+
+const {
+	imageSrc = '/images/home/masseria-arch.png',
+	href = '/request-access',
+	variant = 'default',
+} = Astro.props;
+---
+
+<section
+	class:list={['private-cta', variant === 'hero' && 'private-cta--hero']}
+	aria-labelledby="private-cta-title"
+>
+	<div class="private-cta__texture" aria-hidden="true"></div>
+	<div class="private-cta__tint" aria-hidden="true"></div>
+
+	<div class="private-cta__inner">
+		<div class="private-cta__copy">
+			<Reveal client:visible inView delay={0.08} y={24}>
+				<h2 id="private-cta-title" class="private-cta__title">
+					<I18n it="Scopri la private collection" en="Discover the private collection" />
+				</h2>
+			</Reveal>
+			<Reveal client:visible inView delay={0.18} y={20}>
+				<p class="private-cta__text">
+					<I18n
+						it="Richiedi l'accesso per scoprire ciò che sta oltre la prima impressione di Margagnano."
+						en="Request access to discover what lies beyond the first impression of Margagnano."
+					/>
+				</p>
+			</Reveal>
+			<Reveal client:visible inView delay={0.28} y={16}>
+				<a class="private-cta__link" href={href}>
+					<I18n it="Richiedi l'accesso privato →" en="Request private access →" />
+				</a>
+			</Reveal>
+		</div>
+		<div class="private-cta__media">
+			<Reveal client:visible inView delay={0.16} y={24}>
+				<img
+					src={imageSrc}
+					alt="Cortile della masseria con archi in pietra"
+					width="1040"
+					height="720"
+					loading={variant === 'hero' ? 'eager' : 'lazy'}
+				/>
+			</Reveal>
+		</div>
+	</div>
+</section>
+
+<style>
+	/* Texture come La masseria */
+	.private-cta {
+		position: relative;
+		overflow: hidden;
+		background: #f3efe8;
+		color: var(--brand-marrone);
+		padding: clamp(4rem, 9vw, 7rem) 0 clamp(4rem, 9vw, 7rem) clamp(1.25rem, 5vw, 5.5rem);
+	}
+
+	.private-cta--hero {
+		min-height: 100svh;
+		display: grid;
+		align-items: center;
+		padding: clamp(7.5rem, 14vh, 10.5rem) 0 clamp(3.25rem, 8vh, 5.5rem) clamp(1.5rem, 6vw, 6.5rem);
+	}
+
+	.private-cta__texture {
+		position: absolute;
+		inset: 0;
+		background-image: url('/images/home/masseria-texture.png');
+		background-size: cover;
+		background-position: center;
+		opacity: 0.55;
+	}
+
+	.private-cta__tint {
+		position: absolute;
+		inset: 0;
+		background: rgba(233, 227, 211, 0.45);
+	}
+
+	.private-cta__inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: minmax(16rem, 38rem) minmax(0, 1fr);
+		align-items: center;
+		gap: clamp(2rem, 6vw, 5rem);
+		width: 100%;
+	}
+
+	.private-cta__media {
+		min-width: 0;
+		justify-self: stretch;
+	}
+
+	.private-cta__media :global(div) {
+		width: 100%;
+	}
+
+	.private-cta__title {
+		margin: 0 0 1.6rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.85rem, 3.4vw, 2.85rem);
+		line-height: 1.08;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: #7a95af;
+		max-width: 22ch;
+	}
+
+	.private-cta__text {
+		margin: 0 0 2rem;
+		max-width: 32rem;
+		font-family: 'Cardo', serif;
+		font-size: 16px;
+		line-height: 1.5;
+		color: var(--brand-marrone);
+	}
+
+	.private-cta__link {
+		color: var(--brand-terracotta);
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: clamp(0.95rem, 1.8vw, 1.7rem);
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		white-space: nowrap;
+	}
+
+	.private-cta__link:hover,
+	.private-cta__link:focus-visible {
+		opacity: 0.7;
+		outline: none;
+	}
+
+	.private-cta__media img {
+		display: block;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 722 / 428;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	@media (max-width: 860px) {
+		.private-cta {
+			padding-right: clamp(1.25rem, 5vw, 5.5rem);
+		}
+
+		.private-cta__inner {
+			grid-template-columns: 1fr;
+		}
+
+		.private-cta--hero {
+			min-height: 0;
+			align-items: start;
+			padding-top: clamp(6.5rem, 12vh, 8.5rem);
+			padding-right: clamp(1.5rem, 6vw, 6.5rem);
+		}
+
+		.private-cta__title {
+			max-width: 14ch;
+		}
+
+		.private-cta__link {
+			white-space: normal;
+			font-size: clamp(0.95rem, 4vw, 1.25rem);
+		}
+	}
+</style>
