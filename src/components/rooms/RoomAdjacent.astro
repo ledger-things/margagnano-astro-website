@@ -1,5 +1,6 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 import { adjacentRooms, type Room } from '../../data/rooms';
 import './RoomAdjacent.css';
 
@@ -15,14 +16,18 @@ const { prev, next } = adjacentRooms(room);
 	<div class="room-adjacent__inner">
 		<Reveal client:visible inView delay={0.08} y={16} duration={0.9} className="room-adjacent__reveal">
 			<a class="room-adjacent__link room-adjacent__link--prev" href={`/suites/${prev.slug}`}>
-				<span class="room-adjacent__dir">← Previous</span>
+				<span class="room-adjacent__dir">
+					<I18n it="← Precedente" en="← Previous" />
+				</span>
 				<span class="room-adjacent__name">{prev.name}</span>
 			</a>
 		</Reveal>
 
-		<Reveal client:visible inView delay={0.14} y={16} duration={0.9} className="room-adjacent__reveal">
+		<Reveal client:visible inView delay={0.14} y={16} duration={0.9} className="room-adjacent__reveal room-adjacent__reveal--next">
 			<a class="room-adjacent__link room-adjacent__link--next" href={`/suites/${next.slug}`}>
-				<span class="room-adjacent__dir">Next →</span>
+				<span class="room-adjacent__dir">
+					<I18n it="Successiva →" en="Next →" />
+				</span>
 				<span class="room-adjacent__name">{next.name}</span>
 			</a>
 		</Reveal>

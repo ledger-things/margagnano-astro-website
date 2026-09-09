@@ -14,6 +14,15 @@ import Reveal from '../Reveal.tsx';
 	</div>
 
 	<div class="life-hero__content">
+		<Reveal client:load delay={0.12} duration={1} y={16}>
+			<img
+				class="life-hero__crest"
+				src="/logo/crest-white.svg"
+				alt=""
+				width="236"
+				height="325"
+			/>
+		</Reveal>
 		<Reveal client:load delay={0.2} duration={1.1} y={24}>
 			<h1 class="life-hero__title">Life in Margagnano</h1>
 		</Reveal>
@@ -63,6 +72,13 @@ import Reveal from '../Reveal.tsx';
 		text-align: center;
 	}
 
+	.life-hero__crest {
+		display: none;
+		width: 4.1rem;
+		height: auto;
+		filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
+	}
+
 	.life-hero__title {
 		margin: 0;
 		font-family: 'Cardo', serif;
@@ -105,5 +121,15 @@ import Reveal from '../Reveal.tsx';
 		border-style: solid;
 		border-width: 0.55rem 0 0.55rem 0.9rem;
 		border-color: transparent transparent transparent #fff;
+	}
+
+	@media (max-width: 640px) {
+		.life-hero__content {
+			padding: 5.75rem 1.35rem 2rem;
+		}
+
+		.life-hero__crest {
+			display: block;
+		}
 	}
 </style>

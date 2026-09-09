@@ -20,6 +20,15 @@ import I18n from '../I18n.astro';
 		</div>
 
 		<div class="mh-hero__copy">
+			<Reveal client:load delay={0.15} duration={1} y={18}>
+				<img
+					class="mh-hero__crest"
+					src="/logo/crest-color.svg"
+					alt=""
+					width="236"
+					height="325"
+				/>
+			</Reveal>
 			<Reveal client:load delay={0.25} duration={1.05} y={28}>
 				<h1 id="mh-hero-title" class="mh-hero__title">Masseria<br />Margagnano</h1>
 			</Reveal>
@@ -128,6 +137,13 @@ import I18n from '../I18n.astro';
 		box-sizing: border-box;
 	}
 
+	.mh-hero__crest {
+		display: none;
+		width: 3.75rem;
+		height: auto;
+		margin: 0 auto 1.1rem;
+	}
+
 	.mh-hero__title {
 		margin: 0;
 		font-family: 'Times Sans Serif', sans-serif;
@@ -199,6 +215,16 @@ import I18n from '../I18n.astro';
 			max-width: 26rem;
 			margin: 0 auto;
 			padding: 1.25rem 1.5rem 1.75rem;
+			align-items: center;
+			text-align: center;
+		}
+
+		.mh-hero__crest {
+			display: block;
+		}
+
+		.mh-hero__subtitle {
+			max-width: 22rem;
 		}
 
 		.mh-hero__media--right {

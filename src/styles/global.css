@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/geist";
 
 /* Cardo — testi base */
 @font-face {
@@ -68,7 +67,7 @@ html {
     --font-serif: 'Cardo', serif;
     --font-display: 'Times Sans Serif', sans-serif;
     --font-script: 'Monsieur La Doulaise', cursive;
-    --font-sans: 'Geist Variable', sans-serif;
+    --font-sans: 'Cardo', serif;
 
     /* Brand palette Margagnano */
     --color-terracotta: var(--brand-terracotta);
@@ -204,7 +203,7 @@ html {
     background-color: var(--brand-cream);
     }
   html {
-    @apply font-sans;
+    font-family: 'Cardo', serif;
     }
 }
 

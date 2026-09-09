@@ -175,29 +175,59 @@ import GallerySlider from './GallerySlider.tsx';
 	}
 
 	@media (max-width: 768px) {
+		.gallery {
+			height: auto;
+			min-height: 100svh;
+			max-height: none;
+			overflow: visible;
+		}
+
 		.gallery__inner {
-			padding-top: 4.25rem;
+			padding: 5.5rem 0.85rem 2.5rem;
+			justify-content: flex-start;
+		}
+
+		.gallery :global(.gallery-slider__stage) {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 0;
+		}
+
+		.gallery :global(.gallery-slider__nav) {
+			position: absolute;
+			z-index: 2;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 2.5rem;
+			height: 2.5rem;
+			display: grid;
+			place-items: center;
+			background: rgba(249, 246, 238, 0.82);
+			font-size: 1.15rem;
+		}
+
+		.gallery :global(.gallery-slider__nav--prev) {
+			left: 0.35rem;
+		}
+
+		.gallery :global(.gallery-slider__nav--next) {
+			right: 0.35rem;
 		}
 
 		.gallery :global(.gallery-slider__grid) {
 			grid-template-columns: 1fr 1fr;
-			height: clamp(18rem, 55vh, 26rem);
-		}
-
-		.gallery :global(.gallery-slider__cell--tall) {
-			min-height: 0;
+			height: auto;
+			gap: 0.4rem;
 		}
 
 		.gallery :global(.gallery-slider__stack) {
-			grid-column: 1 / -1;
-			grid-template-columns: 1fr 1fr;
-			grid-template-rows: auto;
-			height: auto;
+			display: contents;
 		}
 
+		.gallery :global(.gallery-slider__cell),
 		.gallery :global(.gallery-slider__stack .gallery-slider__cell) {
-			aspect-ratio: 4 / 3;
+			aspect-ratio: 3 / 4;
 			height: auto;
+			min-height: 0;
 		}
 	}
 </style>

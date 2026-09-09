@@ -15,6 +15,15 @@ const { variant = 'default' } = Astro.props;
 	{variant === 'teaser' ? <div class="hero__veil" aria-hidden="true"></div> : null}
 
 	<div class="hero__content">
+		<Reveal client:load delay={0.2} duration={1} y={18}>
+			<img
+				class="hero__crest"
+				src="/logo/crest-white.svg"
+				alt=""
+				width="236"
+				height="325"
+			/>
+		</Reveal>
 		<Reveal client:load delay={0.35} duration={1.1} y={28}>
 			<h1 id="hero-title" class="hero__title">
 				<I18n it="Dove il tempo rallenta" en="Where time slows down" />
@@ -93,6 +102,14 @@ const { variant = 'default' } = Astro.props;
 		max-width: 52rem;
 	}
 
+	.hero__crest {
+		display: none;
+		width: 4.35rem;
+		height: auto;
+		margin: 0 auto 1.15rem;
+		filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.28));
+	}
+
 	.hero__title {
 		font-family: 'Times Sans Serif', sans-serif;
 		font-weight: 400;
@@ -147,7 +164,16 @@ const { variant = 'default' } = Astro.props;
 
 	@media (max-width: 640px) {
 		.hero {
-			padding-bottom: 4rem;
+			align-items: center;
+			padding-bottom: 0;
+		}
+
+		.hero__content {
+			padding: 5.75rem 1.35rem 2rem;
+		}
+
+		.hero__crest {
+			display: block;
 		}
 
 		.hero__cta {

@@ -4,10 +4,10 @@
 }
 
 .room-adjacent__inner {
-	display: flex;
-	justify-content: space-between;
-	align-items: flex-start;
-	gap: 1.5rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: start;
+	gap: 1.25rem;
 	max-width: 90rem;
 	margin: 0 auto;
 	padding: clamp(2.25rem, 4.5vw, 3.5rem) clamp(1.5rem, 5.5vw, 5.75rem);
@@ -16,7 +16,11 @@
 
 .room-adjacent .room-adjacent__reveal {
 	min-width: 0;
-	flex: 0 1 auto;
+}
+
+.room-adjacent .room-adjacent__reveal--next {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .room-adjacent__link {
@@ -57,18 +61,19 @@
 	font-size: clamp(1.05rem, 1.6vw, 1.35rem);
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
-	line-height: 1.15;
+	line-height: 1.2;
 	color: var(--brand-terracotta);
+	overflow-wrap: anywhere;
 }
 
 @media (max-width: 640px) {
 	.room-adjacent__inner {
-		flex-direction: column;
-		align-items: flex-start;
+		padding: 2rem 1.25rem 2.35rem;
+		gap: 1rem;
 	}
 
-	.room-adjacent__link--next {
-		align-items: flex-start;
-		text-align: left;
+	.room-adjacent__name {
+		font-size: 0.98rem;
+		letter-spacing: 0.06em;
 	}
 }
