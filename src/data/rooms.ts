@@ -140,6 +140,7 @@ export function roomCardMeta(room: Room) {
 	return {
 		slug: room.slug,
 		name: room.name,
+		category: room.category,
 		highlightImage: room.highlightImage,
 		excerpt: room.excerpt,
 		meta: `${roomAreaLabel(room)} - ${room.bedType}`,

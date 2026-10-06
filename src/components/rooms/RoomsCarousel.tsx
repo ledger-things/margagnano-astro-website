@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { guestRooms, localizeRoom, roomCardMeta } from '../../data/rooms';
+import { rooms, localizeRoom, roomCardMeta } from '../../data/rooms';
 import { useSiteLang } from '../../lib/useSiteLang';
 
 export default function RoomsCarousel() {
 	const lang = useSiteLang();
-	const cards = guestRooms.map((room) => roomCardMeta(localizeRoom(room, lang)));
+	const cards = rooms.map((room) => roomCardMeta(localizeRoom(room, lang)));
 	const viewportRef = useRef<HTMLDivElement>(null);
 	const [canPrev, setCanPrev] = useState(false);
 	const [canNext, setCanNext] = useState(true);
@@ -70,6 +70,7 @@ export default function RoomsCarousel() {
 									height="900"
 									loading="lazy"
 								/>
+								{room.category === 'suite' && <span className="rooms-carousel__tag">Suite</span>}
 							</figure>
 							<h3 className="rooms-carousel__name">{room.name}</h3>
 							<p className="rooms-carousel__meta">{room.meta}</p>

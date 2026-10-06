@@ -3,6 +3,119 @@ import Reveal from '../Reveal.tsx';
 import LifeTimelineRule from './LifeTimelineRule.tsx';
 import I18n from '../I18n.astro';
 
+interface Props {
+	variant?: 'teaser' | 'full';
+}
+
+const { variant = 'teaser' } = Astro.props;
+
+type Text = { it: string; en: string };
+type Moment = { num: string; title: string; lead: Text; body?: Text[] };
+
+const teaser: Moment[] = [
+	{
+		num: '01.',
+		title: 'RITUALS OF<br />WELLBEING',
+		lead: {
+			it: 'Spa, trattamenti e percorsi dedicati al benessere.',
+			en: 'Spa, treatments and rituals dedicated to wellbeing.',
+		},
+	},
+	{
+		num: '02.',
+		title: 'UNDER<br />THE SUN',
+		lead: {
+			it: 'Il solarium, tra luce, quiete e paesaggio.',
+			en: 'The solarium, between light, quiet and landscape.',
+		},
+	},
+	{
+		num: '03.',
+		title: 'RITUALS<br />OF QUIET',
+		lead: {
+			it: 'Il pensatoio e gli angoli più riservati della masseria.',
+			en: 'The thinking room and the most private corners of the masseria.',
+		},
+	},
+	{
+		num: '04.',
+		title: 'THE POOL',
+		lead: {
+			it: 'Uno spazio dove acqua, natura e architettura si incontrano.',
+			en: 'A space where water, nature and architecture meet.',
+		},
+	},
+];
+
+const full: Moment[] = [
+	{
+		num: '01.',
+		title: 'RITUALS OF<br />WELLBEING',
+		lead: {
+			it: 'Spazi dedicati al corpo e alla mente.',
+			en: 'Spaces dedicated to body and mind.',
+		},
+		body: [
+			{
+				it: "L'area wellness riunisce idropiscina con vasca calda e fredda, sauna, bagno turco e sala massaggi. La barberia completa gli spazi dedicati alla cura personale. Accanto alla wellness area, una zona ricreativa con biliardo, tavolo da poker, simulatore F1, bar e area TV offre uno spazio più informale da condividere.",
+				en: 'The wellness area brings together a hydro pool with hot and cold plunge, sauna, Turkish bath and massage room. The barbershop completes the spaces dedicated to personal care. Next to the wellness area, a recreation room with billiards, a poker table, an F1 simulator, bar and TV area offers a more informal space to share.',
+			},
+		],
+	},
+	{
+		num: '02.',
+		title: 'MOVEMENT<br />&amp; BALANCE',
+		lead: {
+			it: 'Uno spazio per il movimento<br />e la quiete.',
+			en: 'A space for movement<br />and stillness.',
+		},
+		body: [
+			{
+				it: "La palestra e la zona yoga sono pensate per accompagnare la giornata attraverso il movimento, l'allenamento e momenti dedicati all'equilibrio. Uno spazio da vivere secondo il proprio ritmo, dal primo allenamento del mattino alla pratica più lenta dello yoga.",
+				en: 'The gym and the yoga area are designed to accompany the day through movement, training and moments dedicated to balance. A space to live at your own pace, from the first workout of the morning to the slower practice of yoga.',
+			},
+			{
+				it: 'Per chi desidera muoversi anche oltre la masseria è disponibile un servizio bici, per scoprire la campagna circostante al proprio ritmo.',
+				en: 'For those who wish to move beyond the masseria, a bike service is available to explore the surrounding countryside at your own pace.',
+			},
+		],
+	},
+	{
+		num: '03.',
+		title: 'UNDER<br />THE SUN',
+		lead: {
+			it: "Acqua, ombra e vita all'aria aperta.",
+			en: 'Water, shade and open-air living.',
+		},
+		body: [
+			{
+				it: "Una grande piscina, accompagnata da docce e zona solarium, è il cuore della vita all'aperto a Margagnano.",
+				en: 'A large pool, with showers and a sun deck, is the heart of outdoor life at Margagnano.',
+			},
+			{
+				it: "Accanto all'acqua, la Pool House ospita una cucina esterna e una zona relax, con un servizio bar che accompagna le ore a bordo piscina: uno spazio pensato per vivere la giornata senza rientrare negli ambienti interni.",
+				en: 'Beside the water, the Pool House hosts an outdoor kitchen and a lounge area, with a bar service accompanying the hours by the pool: a space designed to spend the whole day without going back indoors.',
+			},
+		],
+	},
+	{
+		num: '04.',
+		title: 'RITUALS<br />OF QUIET',
+		lead: {
+			it: 'Luoghi in cui fermarsi, insieme o da soli.',
+			en: 'Places to pause, together or alone.',
+		},
+		body: [
+			{
+				it: 'Il pensatoio, le corti, le terrazze e gli spazi comuni creano piccoli luoghi in cui fermarsi durante la giornata. Leggere, conversare, osservare il paesaggio o semplicemente restare in silenzio. A Margagnano, anche il tempo senza programma trova il suo spazio.',
+				en: 'The thinking room, the courtyards, the terraces and the common areas create small places to pause during the day. Reading, talking, watching the landscape or simply staying in silence. At Margagnano, even unscheduled time finds its place.',
+			},
+		],
+	},
+];
+
+const moments = variant === 'full' ? full : teaser;
+
 const img = '/images/life/life-1.jpg';
 ---
 
@@ -39,14 +152,10 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy">
 				<Reveal client:visible inView delay={0.15} y={24} duration={1.7}>
 					<div class="lm-copy">
-						<p class="lm-copy__num">01.</p>
-						<h2 class="lm-copy__title">RITUALS OF<br />WELLBEING</h2>
-						<p class="lm-copy__lead">
-							<I18n
-								it="Spa, trattamenti e percorsi dedicati al benessere."
-								en="Spa, treatments and rituals dedicated to wellbeing."
-							/>
-						</p>
+						<p class="lm-copy__num">{moments[0].num}</p>
+						<h2 class="lm-copy__title" set:html={moments[0].title} />
+						<p class="lm-copy__lead"><I18n html {...moments[0].lead} /></p>
+						{moments[0].body?.map((t) => <p class="lm-copy__body"><I18n {...t} /></p>)}
 					</div>
 				</Reveal>
 				<LifeTimelineRule client:visible align="center" />
@@ -86,14 +195,10 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy lm-row__col--copy-end">
 				<Reveal client:visible inView delay={0.3} y={32} duration={1.7}>
 					<div class="lm-copy">
-						<p class="lm-copy__num">02.</p>
-						<h2 class="lm-copy__title">UNDER<br />THE SUN</h2>
-						<p class="lm-copy__lead">
-							<I18n
-								it="Il solarium, tra luce, quiete e paesaggio."
-								en="The solarium, between light, quiet and landscape."
-							/>
-						</p>
+						<p class="lm-copy__num">{moments[1].num}</p>
+						<h2 class="lm-copy__title" set:html={moments[1].title} />
+						<p class="lm-copy__lead"><I18n html {...moments[1].lead} /></p>
+						{moments[1].body?.map((t) => <p class="lm-copy__body"><I18n {...t} /></p>)}
 					</div>
 				</Reveal>
 				<LifeTimelineRule client:visible align="center" />
@@ -105,14 +210,10 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy">
 				<Reveal client:visible inView delay={0.15} y={24} duration={1.7}>
 					<div class="lm-copy">
-						<p class="lm-copy__num">03.</p>
-						<h2 class="lm-copy__title">RITUALS<br />OF QUIET</h2>
-						<p class="lm-copy__lead">
-							<I18n
-								it="Il pensatoio e gli angoli più riservati della masseria."
-								en="The thinking room and the most private corners of the masseria."
-							/>
-						</p>
+						<p class="lm-copy__num">{moments[2].num}</p>
+						<h2 class="lm-copy__title" set:html={moments[2].title} />
+						<p class="lm-copy__lead"><I18n html {...moments[2].lead} /></p>
+						{moments[2].body?.map((t) => <p class="lm-copy__body"><I18n {...t} /></p>)}
 					</div>
 				</Reveal>
 				<LifeTimelineRule client:visible align="center" />
@@ -149,14 +250,10 @@ const img = '/images/life/life-1.jpg';
 			<div class="lm-row__col lm-row__col--copy lm-row__col--copy-end">
 				<Reveal client:visible inView delay={0.35} y={28} duration={1.7}>
 					<div class="lm-copy">
-						<p class="lm-copy__num">04.</p>
-						<h2 class="lm-copy__title">THE POOL</h2>
-						<p class="lm-copy__lead">
-							<I18n
-								it="Uno spazio dove acqua, natura e architettura si incontrano."
-								en="A space where water, nature and architecture meet."
-							/>
-						</p>
+						<p class="lm-copy__num">{moments[3].num}</p>
+						<h2 class="lm-copy__title" set:html={moments[3].title} />
+						<p class="lm-copy__lead"><I18n html {...moments[3].lead} /></p>
+						{moments[3].body?.map((t) => <p class="lm-copy__body"><I18n {...t} /></p>)}
 					</div>
 				</Reveal>
 			</div>

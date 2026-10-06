@@ -37,7 +37,7 @@ const leftLinks = [
 
 const rightLinks = [
 	{ href: '/life-in-margagnano', label: { it: 'Life in Margagnano', en: 'Life in Margagnano' } },
-	{ href: '/home#prefooter', label: { it: 'Contatti', en: 'Contacts' } },
+	{ href: '/contacts', label: { it: 'Contatti', en: 'Contacts' } },
 ];
 
 const allLinks = [...leftLinks, ...rightLinks];

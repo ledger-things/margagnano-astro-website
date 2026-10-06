@@ -151,6 +151,7 @@ const { roomsCarousel } = roomsPage;
 	}
 
 	.rooms-collection :global(.rooms-carousel__figure) {
+		position: relative;
 		margin: 0;
 		width: 100%;
 		aspect-ratio: 4 / 5;
@@ -164,6 +165,20 @@ const { roomsCarousel } = roomsPage;
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
+	}
+
+	.rooms-collection :global(.rooms-carousel__tag) {
+		position: absolute;
+		top: 0.85rem;
+		left: 0.85rem;
+		padding: 0.4rem 0.75rem;
+		background: #f6f3ed;
+		color: var(--brand-terracotta);
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.68rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		line-height: 1;
 	}
 
 	.rooms-collection :global(.rooms-carousel__name) {

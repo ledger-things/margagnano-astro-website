@@ -26,11 +26,11 @@ const { moreHref = '/suites', variant = 'default' } = Astro.props;
 			<SuitesCarousel client:visible variant={variant} />
 		</Reveal>
 
-		<Reveal client:visible inView delay={0.28} y={16} className="suites__reveal">
+       {variant !== 'teaser' && <Reveal client:visible inView delay={0.28} y={16} className="suites__reveal">
 			<div class="suites__cta-wrap">
 				<a class="suites__cta" href={moreHref}>View more</a>
 			</div>
-		</Reveal>
+		</Reveal>}
 	</div>
 </section>
 
