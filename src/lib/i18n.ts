@@ -8,14 +8,14 @@ export function isLang(value: unknown): value is Lang {
 }
 
 export function readSiteLang(): Lang {
-	if (typeof window === 'undefined') return 'it';
+	if (typeof window === 'undefined') return 'en';
 	try {
 		const stored = window.localStorage.getItem(LANG_STORAGE_KEY);
 		if (isLang(stored)) return stored;
 	} catch {
 		// ignore
 	}
-	return document.documentElement.lang === 'en' ? 'en' : 'it';
+	return document.documentElement.lang === 'it' ? 'it' : 'en';
 }
 
 export function applySiteLang(lang: Lang) {

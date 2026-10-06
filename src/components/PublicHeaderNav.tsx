@@ -96,22 +96,22 @@ export default function PublicHeader({
 		<div className="public-header__lang" role="group" aria-label={lang === 'it' ? 'Lingua' : 'Language'}>
 			<button
 				type="button"
-				className={`public-header__lang-btn${lang === 'it' ? ' is-active' : ''}`}
-				aria-pressed={lang === 'it'}
-				onClick={() => setLanguage('it')}
+				className={`public-header__lang-btn${lang === 'en' ? ' is-active' : ''}`}
+				aria-pressed={lang === 'en'}
+				onClick={() => setLanguage('en')}
 			>
-				IT
+				EN
 			</button>
 			<span className="public-header__lang-sep" aria-hidden="true">
 				/
 			</span>
 			<button
 				type="button"
-				className={`public-header__lang-btn${lang === 'en' ? ' is-active' : ''}`}
-				aria-pressed={lang === 'en'}
-				onClick={() => setLanguage('en')}
+				className={`public-header__lang-btn${lang === 'it' ? ' is-active' : ''}`}
+				aria-pressed={lang === 'it'}
+				onClick={() => setLanguage('it')}
 			>
-				EN
+				IT
 			</button>
 		</div>
 	);

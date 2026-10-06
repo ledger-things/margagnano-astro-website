@@ -10,7 +10,7 @@ const indexable = Astro.locals.indexable ?? true;
 ---
 
 <!doctype html>
-<html lang="it">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -33,13 +33,13 @@ const indexable = Astro.locals.indexable ?? true;
 			})();
 		</script>
 		<style is:inline>
-			.i18n[data-lang='en'] {
+			.i18n[data-lang='it'] {
 				display: none !important;
 			}
-			html[lang='en'] .i18n[data-lang='it'] {
+			html[lang='it'] .i18n[data-lang='en'] {
 				display: none !important;
 			}
-			html[lang='en'] .i18n[data-lang='en'] {
+			html[lang='it'] .i18n[data-lang='it'] {
 				display: revert !important;
 			}
 		</style>

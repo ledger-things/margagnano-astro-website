@@ -11,7 +11,7 @@ function getSnapshot(): Lang {
 }
 
 function getServerSnapshot(): Lang {
-	return 'it';
+	return 'en';
 }
 
 export function useSiteLang(): Lang {

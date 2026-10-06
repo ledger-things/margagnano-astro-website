@@ -70,7 +70,7 @@ export const POST: APIRoute = async ({ request }) => {
 	const agencyName = String(body.agencyName ?? '').trim();
 	const guestCount = String(body.guestCount ?? '').trim();
 	const message = String(body.message ?? '').trim();
-	const lang: Lang = body.lang === 'en' ? 'en' : 'it';
+	const lang: Lang = body.lang === 'it' ? 'it' : 'en';
 
 	if (!firstName || !lastName || !isEmail(email) || !country || !guestType || body.privacy !== true) {
 		return new Response(JSON.stringify({ ok: false, error: 'validation' }), {
