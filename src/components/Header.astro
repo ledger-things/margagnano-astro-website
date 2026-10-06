@@ -1,6 +1,13 @@
 ---
 // Header con logo centrale. I link verranno aggiunti in seguito.
 import Reveal from './Reveal.tsx';
+
+interface Props {
+	/** `light`: logo a colori per pagine con sfondo chiaro. */
+	tone?: 'dark' | 'light';
+}
+
+const { tone = 'dark' } = Astro.props;
 ---
 
 <header class="site-header">
@@ -11,13 +18,25 @@ import Reveal from './Reveal.tsx';
 
 		<a class="site-header__brand" href="/" aria-label="Masseria Margagnano - Home">
 			<Reveal client:load delay={0.1} y={-16} duration={1}>
-				<img
-					src="/images/logo-margagnano-white.png"
-					alt="Masseria Margagnano"
-					class="site-header__logo"
-					width="1024"
-					height="724"
-				/>
+				{
+					tone === 'light' ? (
+						<img
+							src="/logo/logo-full-color.svg"
+							alt="Masseria Margagnano"
+							class="site-header__logo site-header__logo--color"
+							width="842"
+							height="595"
+						/>
+					) : (
+						<img
+							src="/images/logo-margagnano-white.png"
+							alt="Masseria Margagnano"
+							class="site-header__logo"
+							width="1024"
+							height="724"
+						/>
+					)
+				}
 			</Reveal>
 		</a>
 
@@ -57,6 +76,10 @@ import Reveal from './Reveal.tsx';
 		height: 88px;
 		width: auto;
 		filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.35));
+	}
+
+	.site-header__logo--color {
+		filter: none;
 	}
 
 	.site-header__side {

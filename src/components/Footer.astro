@@ -23,13 +23,39 @@ import Reveal from './Reveal.tsx';
 					<span class="footer__address-name">Masseria Margagnano</span>
 					<span>Strada Comunale Burgo Cerasina</span>
 					<span>72015 Fasano, Brindisi, Italy</span>
+					<a
+						class="footer__social"
+						href="https://www.instagram.com/masseriamargagnano/"
+						target="_blank"
+						rel="noopener noreferrer"
+						aria-label="Instagram – @masseriamargagnano"
+					>
+						<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+							<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.4" />
+							<circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.4" />
+							<circle cx="17.4" cy="6.6" r="1" fill="currentColor" />
+						</svg>
+						<span>@masseriamargagnano</span>
+					</a>
 				</address>
 			</Reveal>
 		</div>
 
 		<div class="footer__divider" aria-hidden="true"></div>
 
-		<p class="footer__copy">&copy; 2026 Masseria Margagnano</p>
+		<div class="footer__bottom">
+			<p class="footer__collection">
+				Part of the
+				<a
+					href="https://www.dominiquedebayprivateretreats.com/masseria-margagnano-puglia-italy"
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					Dominique Debay Collection
+				</a>
+			</p>
+			<p class="footer__copy">&copy; 2026 Masseria Margagnano</p>
+		</div>
 	</div>
 </footer>
 
@@ -90,6 +116,51 @@ import Reveal from './Reveal.tsx';
 		background-color: color-mix(in srgb, var(--brand-avorio) 30%, transparent);
 	}
 
+	.footer__social {
+		display: inline-flex;
+		align-items: center;
+		justify-content: flex-end;
+		gap: 0.5rem;
+		margin-top: 0.85rem;
+		color: inherit;
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+	}
+
+	.footer__social:hover,
+	.footer__social:focus-visible,
+	.footer__collection a:hover,
+	.footer__collection a:focus-visible {
+		opacity: 0.65;
+		outline: none;
+	}
+
+	.footer__bottom {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.footer__collection {
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-weight: 400;
+		font-size: clamp(0.7rem, 0.9vw, 0.8rem);
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		opacity: 0.85;
+	}
+
+	.footer__collection a {
+		color: inherit;
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+		text-decoration-thickness: 1px;
+		transition: opacity 0.2s ease;
+	}
+
 	.footer__copy {
 		margin: 0;
 		font-family: 'New Caledonia LT Std', serif;
@@ -110,6 +181,15 @@ import Reveal from './Reveal.tsx';
 		}
 
 		.footer__address {
+			text-align: center;
+		}
+
+		.footer__social {
+			justify-content: center;
+		}
+
+		.footer__bottom {
+			flex-direction: column;
 			text-align: center;
 		}
 

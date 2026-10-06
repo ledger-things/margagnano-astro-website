@@ -1,0 +1,304 @@
+---
+import Reveal from '../Reveal.tsx';
+
+const email = 'info@masseriamargagnano.com';
+const phone = '+1 917 940 2407';
+const generalManager = 'Barbara Santovito';
+
+const socials = [
+	{ name: 'Instagram', handle: '@masseriamargagnano', href: 'https://www.instagram.com/masseriamargagnano/' },
+];
+
+const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
+---
+
+<section class="contacts" aria-labelledby="contacts-title">
+	<div class="contacts__inner">
+		<div class="contacts__copy">
+			<Reveal client:load delay={0.18} duration={0.95} y={20}>
+				<p class="contacts__eyebrow">Contacts</p>
+			</Reveal>
+			<Reveal client:load delay={0.3} duration={1.05} y={28}>
+				<h1 id="contacts-title" class="contacts__title">Get in<br />touch</h1>
+			</Reveal>
+			<Reveal client:load delay={0.42} duration={0.95} y={18}>
+				<p class="contacts__subtitle">We look forward to welcoming you.</p>
+			</Reveal>
+			<Reveal client:load delay={0.54} duration={1} y={20}>
+				<p class="contacts__text">
+					For information about your stay, special requests or to plan your time at Margagnano,
+					our team is at your disposal.
+				</p>
+			</Reveal>
+
+			<Reveal client:load delay={0.66} duration={1} y={20} className="contacts__list-wrap">
+				<dl class="contacts__list">
+					<div class="contacts__item">
+						<dt class="contacts__label">Email</dt>
+						<dd class="contacts__value">
+							<a href={`mailto:${email}`}>{email}</a>
+						</dd>
+					</div>
+
+					<div class="contacts__item">
+						<dt class="contacts__label">Phone</dt>
+						<dd class="contacts__value">
+							<a href={telHref(phone)}>{phone}</a>
+						</dd>
+					</div>
+
+					<div class="contacts__item">
+						<dt class="contacts__label">General Manager</dt>
+						<dd class="contacts__value">{generalManager}</dd>
+					</div>
+
+					<div class="contacts__item">
+						<dt class="contacts__label">Social</dt>
+						<dd class="contacts__value">
+							{
+								socials.map((social) => (
+									<span class="contacts__line">
+										<span class="contacts__line-label">{social.name}</span>
+										<a href={social.href} target="_blank" rel="noopener noreferrer">
+											{social.handle}
+										</a>
+									</span>
+								))
+							}
+						</dd>
+					</div>
+
+					<div class="contacts__item">
+						<dt class="contacts__label">Address</dt>
+						<dd class="contacts__value">
+							<address>
+								Strada Comunale Burgo Cerasina<br />
+								72015 Fasano, Brindisi, Italy
+							</address>
+						</dd>
+					</div>
+				</dl>
+			</Reveal>
+		</div>
+
+		<div class="contacts__media">
+			<Reveal client:load delay={0.28} y={32} duration={1.15}>
+				<img
+					src="/images/hero.png"
+					alt="Masseria Margagnano"
+					width="1440"
+					height="1024"
+					fetchpriority="high"
+				/>
+			</Reveal>
+		</div>
+	</div>
+</section>
+
+<style>
+	.contacts {
+		position: relative;
+		isolation: isolate;
+		overflow-x: clip;
+		min-height: 100svh;
+		background: #f6f3ed;
+		color: var(--brand-marrone);
+	}
+
+	.contacts__inner {
+		display: grid;
+		grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+		gap: clamp(2rem, 6vw, 6.5rem);
+		align-items: center;
+		max-width: 90rem;
+		min-height: 100svh;
+		margin: 0 auto;
+		padding: clamp(8rem, 14vh, 9.5rem) clamp(1.5rem, 5.5vw, 5.75rem) clamp(2.75rem, 6vh, 4.5rem);
+		box-sizing: border-box;
+	}
+
+	.contacts__copy,
+	.contacts__media {
+		min-width: 0;
+	}
+
+	.contacts__copy {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		max-width: 32rem;
+		padding-block: 0.5rem;
+	}
+
+	.contacts__eyebrow {
+		display: flex;
+		align-items: center;
+		gap: 0.85rem;
+		margin: 0;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 24px;
+		letter-spacing: 0.28em;
+		text-transform: uppercase;
+		color: var(--brand-verde);
+	}
+
+	.contacts__eyebrow::after {
+		content: '';
+		flex: 0 0 3.25rem;
+		width: 3.25rem;
+		height: 1px;
+		background: var(--brand-terracotta);
+	}
+
+	.contacts__title {
+		margin: 1.15rem 0 0;
+		max-width: 11ch;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(2.35rem, 4.6vw, 4.15rem);
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+		line-height: 1.05;
+	}
+
+	.contacts__subtitle {
+		margin: 1.15rem 0 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-style: italic;
+		font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+		line-height: 1.4;
+		color: var(--brand-marrone);
+	}
+
+	.contacts__text {
+		margin: 1.35rem 0 0;
+		max-width: 28rem;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(0.98rem, 1.12vw, 1.1rem);
+		line-height: 1.75;
+		color: var(--brand-marrone);
+	}
+
+	.contacts :global(.contacts__list-wrap) {
+		width: 100%;
+	}
+
+	.contacts__list {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		margin: clamp(2rem, 4vw, 2.75rem) 0 0;
+		border-top: 1px solid rgba(107, 90, 68, 0.18);
+	}
+
+	.contacts__item {
+		display: grid;
+		grid-template-columns: 7.5rem minmax(0, 1fr);
+		gap: 1rem;
+		padding: 1.1rem 0;
+		border-bottom: 1px solid rgba(107, 90, 68, 0.18);
+	}
+
+	.contacts__label {
+		padding-top: 0.2rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: 0.72rem;
+		letter-spacing: 0.22em;
+		text-transform: uppercase;
+		color: var(--brand-verde);
+	}
+
+	.contacts__value {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+		margin: 0;
+		font-family: 'New Caledonia LT Std', serif;
+		font-size: clamp(1rem, 1.15vw, 1.1rem);
+		line-height: 1.5;
+		color: var(--brand-marrone);
+	}
+
+	.contacts__value address {
+		font-style: normal;
+	}
+
+	.contacts__value a {
+		color: var(--brand-terracotta);
+		text-decoration: none;
+		transition: opacity 0.2s ease;
+	}
+
+	.contacts__value a:hover,
+	.contacts__value a:focus-visible {
+		opacity: 0.65;
+		outline: none;
+	}
+
+	.contacts__line {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem 0.75rem;
+		align-items: baseline;
+	}
+
+	.contacts__line-label {
+		min-width: 6.5rem;
+		font-style: italic;
+	}
+
+	.contacts__media {
+		width: 100%;
+		max-width: 42rem;
+		aspect-ratio: 4 / 5;
+		overflow: hidden;
+		justify-self: end;
+	}
+
+	.contacts__media :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.contacts__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	@media (max-width: 900px) {
+		.contacts__inner {
+			grid-template-columns: 1fr;
+			min-height: auto;
+			padding: 7rem 1.25rem 2.75rem;
+			gap: 2.5rem;
+		}
+
+		.contacts__copy {
+			max-width: 36rem;
+			margin: 0 auto;
+			width: 100%;
+		}
+
+		.contacts__title {
+			max-width: none;
+		}
+
+		.contacts__media {
+			max-width: 36rem;
+			margin: 0 auto;
+			aspect-ratio: 4 / 3;
+			justify-self: stretch;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.contacts__item {
+			grid-template-columns: 1fr;
+			gap: 0.5rem;
+		}
+	}
+</style>

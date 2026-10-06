@@ -14,6 +14,9 @@ import Reveal from './Reveal.tsx';
 		<Reveal client:load delay={0.5} duration={1.1}>
 			<h1 class="hero__title">Coming Soon</h1>
 		</Reveal>
+		<Reveal client:load delay={0.7} duration={1}>
+			<a class="hero__cta" href="/contacts">Contacts</a>
+		</Reveal>
 	</div>
 </section>
 
@@ -71,6 +74,29 @@ import Reveal from './Reveal.tsx';
 		line-height: 1;
 		margin: 0;
 		letter-spacing: 0.02em;
+	}
+
+	.hero__cta {
+		display: inline-block;
+		margin-top: clamp(1.75rem, 3.5vw, 2.5rem);
+		padding: 0.85rem 1.75rem;
+		border: 1px solid rgba(255, 255, 255, 0.75);
+		color: #fff;
+		text-decoration: none;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-size: clamp(0.72rem, 1vw, 0.85rem);
+		letter-spacing: 0.3em;
+		text-transform: uppercase;
+		transition:
+			background-color 0.25s ease,
+			color 0.25s ease;
+	}
+
+	.hero__cta:hover,
+	.hero__cta:focus-visible {
+		background: #fff;
+		color: var(--brand-marrone);
+		outline: none;
 	}
 
 	@media (max-width: 640px) {
