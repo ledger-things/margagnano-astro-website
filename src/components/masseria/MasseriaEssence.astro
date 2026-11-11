@@ -1,0 +1,75 @@
+---
+import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
+---
+
+<section class="mh-essence" aria-labelledby="essence-title">
+	<div class="mh-essence__inner">
+		<Reveal client:visible inView delay={0.05} y={28} duration={1.05}>
+			<p id="essence-title" class="mh-essence__script">the essence</p>
+		</Reveal>
+		<Reveal client:visible inView delay={0.18} y={18}>
+			<span class="mh-essence__rule" aria-hidden="true"></span>
+		</Reveal>
+		<Reveal client:visible inView delay={0.28} y={24}>
+			<div class="mh-essence__text">
+				<I18n
+					as="p"
+					it="Margagnano è il punto d'incontro tra ciò che il tempo ha custodito e ciò che il presente sa valorizzare."
+					en="Margagnano is the meeting point between what time has kept and what the present knows how to honour."
+				/>
+				<I18n
+					as="p"
+					it="Un luogo dove storia, architettura e paesaggio continuano a raccontarsi con naturalezza."
+					en="A place where history, architecture and landscape continue to speak with ease."
+				/>
+			</div>
+		</Reveal>
+	</div>
+</section>
+
+<style>
+	.mh-essence {
+		background: var(--brand-cream);
+		color: var(--brand-marrone);
+		text-align: center;
+	}
+
+	.mh-essence__inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		max-width: 40rem;
+		margin: 0 auto;
+		padding: clamp(4rem, 9vw, 6.5rem) 1.5rem;
+	}
+
+	.mh-essence__script {
+		margin: 0;
+		font-family: 'Monsieur La Doulaise', cursive;
+		font-size: clamp(3.25rem, 8vw, 6.25rem);
+		line-height: 0.95;
+		color: var(--brand-azzurro);
+	}
+
+	.mh-essence__rule {
+		display: block;
+		width: 1px;
+		height: 3.25rem;
+		margin: 0.85rem 0 1.35rem;
+		background: var(--brand-azzurro);
+	}
+
+	.mh-essence__text {
+		display: grid;
+		gap: 1.15rem;
+	}
+
+	.mh-essence__text p {
+		margin: 0;
+		font-family: 'Cardo', serif;
+		font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+		line-height: 1.55;
+		color: var(--brand-marrone);
+	}
+</style>

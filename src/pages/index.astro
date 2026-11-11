@@ -1,16 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import PublicHeader from '../components/PublicHeader.astro';
 import Hero from '../components/Hero.astro';
+import LaMasseria from '../components/LaMasseria.astro';
+import LifeInMargagnano from '../components/LifeInMargagnano.astro';
+import Experience from '../components/Experience.astro';
+import Gallery from '../components/Gallery.astro';
 import Prefooter from '../components/Prefooter.astro';
+import PrivateCollectionCta from '../components/PrivateCollectionCta.astro';
 import Footer from '../components/Footer.astro';
+// TEASER: sezione Suites nascosta. Vedi TEASER-DA-RIPRISTINARE.md
+// import LeSuites from '../components/LeSuites.astro';
 ---
 
-<Layout>
-	<Header />
+<Layout title="Masseria Margagnano">
+	<PublicHeader />
 	<main>
-		<Hero />
+		<Hero variant="teaser" />
+		<LaMasseria moreHref="/philosophy" />
+		<!-- TEASER: sezione Suites nascosta. Vedi TEASER-DA-RIPRISTINARE.md
+		<LeSuites moreHref="/request-access" variant="teaser" />
+		-->
+		<!-- TEASER: CTA Life nascosta, /life non è pubblica. Vedi TEASER-DA-RIPRISTINARE.md -->
+		<LifeInMargagnano moreHref="/life" showMore={false} />
+		<!-- TEASER: CTA Experience nascosta, puntava a /request-access. Vedi TEASER-DA-RIPRISTINARE.md -->
+		<Experience moreHref="/request-access" showMore={false} />
+		<Gallery />
 		<Prefooter />
+		<!-- TEASER: banner Private Collection sostituito dai Contatti. Vedi TEASER-DA-RIPRISTINARE.md -->
+		<PrivateCollectionCta
+			href="/contacts"
+			titleIt="Contatti"
+			titleEn="Contacts"
+			textIt="Saremo lieti di accogliervi."
+			textEn="We look forward to welcoming you."
+			linkIt="Contattaci →"
+			linkEn="Get in touch →"
+		/>
 	</main>
-	<Footer />
+	<Footer homeHref="/" />
 </Layout>

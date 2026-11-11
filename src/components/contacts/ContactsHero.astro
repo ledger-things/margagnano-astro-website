@@ -1,33 +1,40 @@
 ---
 import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
 
 const email = 'info@masseriamargagnano.com';
-const phone = '+1 917 940 2407';
-const generalManager = 'Barbara Santovito';
+
+// TEASER: telefono e general manager nascosti. Vedi TEASER-DA-RIPRISTINARE.md
+// const phone = '+1 917 940 2407';
+// const generalManager = 'Barbara Santovito';
 
 const socials = [
 	{ name: 'Instagram', handle: '@masseriamargagnano', href: 'https://www.instagram.com/masseriamargagnano/' },
 ];
 
-const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
+// const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 ---
 
 <section class="contacts" aria-labelledby="contacts-title">
 	<div class="contacts__inner">
 		<div class="contacts__copy">
 			<Reveal client:load delay={0.18} duration={0.95} y={20}>
-				<p class="contacts__eyebrow">Contacts</p>
+				<p class="contacts__eyebrow"><I18n it="Contatti" en="Contacts" /></p>
 			</Reveal>
 			<Reveal client:load delay={0.3} duration={1.05} y={28}>
 				<h1 id="contacts-title" class="contacts__title">Get in<br />touch</h1>
 			</Reveal>
 			<Reveal client:load delay={0.42} duration={0.95} y={18}>
-				<p class="contacts__subtitle">We look forward to welcoming you.</p>
+				<p class="contacts__subtitle">
+					<I18n it="Saremo lieti di accogliervi." en="We look forward to welcoming you." />
+				</p>
 			</Reveal>
 			<Reveal client:load delay={0.54} duration={1} y={20}>
 				<p class="contacts__text">
-					For information about your stay, special requests or to plan your time at Margagnano,
-					our team is at your disposal.
+					<I18n
+						it="Per informazioni sul soggiorno, richieste particolari o per organizzare la vostra permanenza a Margagnano, il nostro team è a vostra disposizione."
+						en="For information about your stay, special requests or to plan your time at Margagnano, our team is at your disposal."
+					/>
 				</p>
 			</Reveal>
 
@@ -40,17 +47,21 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 						</dd>
 					</div>
 
+					<!-- TEASER: telefono nascosto. Vedi TEASER-DA-RIPRISTINARE.md
 					<div class="contacts__item">
-						<dt class="contacts__label">Phone</dt>
+						<dt class="contacts__label"><I18n it="Telefono" en="Phone" /></dt>
 						<dd class="contacts__value">
 							<a href={telHref(phone)}>{phone}</a>
 						</dd>
 					</div>
+					-->
 
+					<!-- TEASER: general manager nascosto. Vedi TEASER-DA-RIPRISTINARE.md
 					<div class="contacts__item">
 						<dt class="contacts__label">General Manager</dt>
 						<dd class="contacts__value">{generalManager}</dd>
 					</div>
+					-->
 
 					<div class="contacts__item">
 						<dt class="contacts__label">Social</dt>
@@ -69,7 +80,7 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 					</div>
 
 					<div class="contacts__item">
-						<dt class="contacts__label">Address</dt>
+						<dt class="contacts__label"><I18n it="Indirizzo" en="Address" /></dt>
 						<dd class="contacts__value">
 							<address>
 								Strada Comunale Burgo Cerasina<br />
@@ -82,12 +93,12 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 		</div>
 
 		<div class="contacts__media">
-			<Reveal client:load delay={0.28} y={32} duration={1.15}>
+			<Reveal client:load delay={0.28} x={32} y={0} duration={1.15}>
 				<img
-					src="/images/hero.png"
-					alt="Masseria Margagnano"
-					width="1440"
-					height="1024"
+					src="/images/rooms/hero.jpg"
+					alt="Cortile della masseria con archi in pietra e cielo pugliese"
+					width="1444"
+					height="856"
 					fetchpriority="high"
 				/>
 			</Reveal>
@@ -113,7 +124,7 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 		max-width: 90rem;
 		min-height: 100svh;
 		margin: 0 auto;
-		padding: clamp(8rem, 14vh, 9.5rem) clamp(1.5rem, 5.5vw, 5.75rem) clamp(2.75rem, 6vh, 4.5rem);
+		padding: clamp(6.5rem, 11vh, 8rem) clamp(1.5rem, 5.5vw, 5.75rem) clamp(2.75rem, 6vh, 4.5rem);
 		box-sizing: border-box;
 	}
 
@@ -164,7 +175,7 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 
 	.contacts__subtitle {
 		margin: 1.15rem 0 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-style: italic;
 		font-size: clamp(1.05rem, 1.5vw, 1.35rem);
 		line-height: 1.4;
@@ -174,7 +185,7 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 	.contacts__text {
 		margin: 1.35rem 0 0;
 		max-width: 28rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(0.98rem, 1.12vw, 1.1rem);
 		line-height: 1.75;
 		color: var(--brand-marrone);
@@ -214,7 +225,7 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 		flex-direction: column;
 		gap: 0.45rem;
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-size: clamp(1rem, 1.15vw, 1.1rem);
 		line-height: 1.5;
 		color: var(--brand-marrone);
@@ -266,14 +277,14 @@ const telHref = (number: string) => `tel:${number.replace(/[^\d+]/g, '')}`;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: center;
+		object-position: center 40%;
 	}
 
 	@media (max-width: 900px) {
 		.contacts__inner {
 			grid-template-columns: 1fr;
 			min-height: auto;
-			padding: 7rem 1.25rem 2.75rem;
+			padding: 5.75rem 1.25rem 2.75rem;
 			gap: 2.5rem;
 		}
 

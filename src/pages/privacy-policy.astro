@@ -1,0 +1,62 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PublicHeader from '../components/PublicHeader.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Privacy Policy | Masseria Margagnano">
+	<PublicHeader tone="light" />
+	<main class="privacy">
+		<article class="privacy__inner">
+			<h1>Privacy Policy</h1>
+			<div class="i18n" data-lang="it">
+				<p>
+					Questa pagina è un testo provvisorio. Il contenuto legale definitivo sarà pubblicato prima
+					del lancio.
+				</p>
+				<p>
+					I dati inviati tramite il form di richiesta accesso (nome, cognome, email, paese, date del
+					soggiorno e informazioni sul viaggio) sono utilizzati esclusivamente per valutare la
+					richiesta e ricontattarti. Non vengono ceduti a terzi per finalità di marketing.
+				</p>
+			</div>
+			<div class="i18n" data-lang="en">
+				<p>
+					This is a placeholder privacy notice. The final legal copy will be published before launch.
+				</p>
+				<p>
+					Information submitted through the access request form (first name, last name, email,
+					country, stay dates and travel details) is used only to review your enquiry and contact
+					you. It is not shared with third parties for marketing purposes.
+				</p>
+			</div>
+		</article>
+	</main>
+	<Footer homeHref="/" />
+</Layout>
+
+<style>
+	.privacy {
+		padding: 8rem clamp(1.25rem, 5vw, 5rem) 5rem;
+		color: var(--brand-marrone);
+	}
+
+	.privacy__inner {
+		max-width: 42rem;
+		margin: 0 auto;
+	}
+
+	.privacy h1 {
+		margin: 0 0 1.5rem;
+		font-family: 'Cardo', serif;
+		font-weight: 400;
+		font-size: clamp(2rem, 4vw, 3rem);
+		color: var(--brand-terracotta);
+	}
+
+	.privacy p {
+		font-family: 'Cardo', serif;
+		line-height: 1.65;
+		margin: 0 0 1rem;
+	}
+</style>

@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PublicHeader from '../components/PublicHeader.astro';
+import Footer from '../components/Footer.astro';
+import MasseriaHero from '../components/masseria/MasseriaHero.astro';
+import MasseriaOrigini from '../components/masseria/MasseriaOrigini.astro';
+import MasseriaTabs from '../components/masseria/MasseriaTabs.tsx';
+import MasseriaTabsStyles from '../components/masseria/MasseriaTabsStyles.astro';
+import MasseriaEssence from '../components/masseria/MasseriaEssence.astro';
+import MasseriaGalleryGrid from '../components/masseria/MasseriaGalleryGrid.astro';
+import MasseriaMaterials from '../components/masseria/MasseriaMaterials.astro';
+import PrivateCollectionCta from '../components/PrivateCollectionCta.astro';
+// TEASER: Prima e Dopo e filosofia della cucina nascosti. Vedi TEASER-DA-RIPRISTINARE.md
+// import MasseriaCompare from '../components/masseria/MasseriaCompare.astro';
+// import CucinaHero from '../components/cucina/CucinaHero.astro';
+---
+
+<Layout title="Masseria & Philosophy | Masseria Margagnano">
+	<PublicHeader tone="light" />
+	<main>
+		<MasseriaHero />
+		<MasseriaOrigini />
+		<MasseriaTabsStyles />
+		<MasseriaTabs client:visible />
+		<MasseriaEssence />
+		<MasseriaGalleryGrid />
+		<MasseriaMaterials />
+		<!-- TEASER: sezione Prima e Dopo nascosta. Vedi TEASER-DA-RIPRISTINARE.md
+		<MasseriaCompare />
+		-->
+		<!-- TEASER: filosofia della cucina nascosta. Vedi TEASER-DA-RIPRISTINARE.md
+		<CucinaHero variant="section" />
+		-->
+		<!-- TEASER: banner Private Collection sostituito dai Contatti. Vedi TEASER-DA-RIPRISTINARE.md -->
+		<PrivateCollectionCta
+			href="/contacts"
+			titleIt="Contatti"
+			titleEn="Contacts"
+			textIt="Saremo lieti di accogliervi."
+			textEn="We look forward to welcoming you."
+			linkIt="Contattaci →"
+			linkEn="Get in touch →"
+		/>
+	</main>
+	<Footer homeHref="/" />
+</Layout>

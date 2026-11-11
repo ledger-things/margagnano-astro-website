@@ -33,6 +33,5 @@ desktop.ini
 
 # editor settings
 .idea/
-.vscode/*
-!.vscode/extensions.json
-!.vscode/launch.json
+
+.vercel/

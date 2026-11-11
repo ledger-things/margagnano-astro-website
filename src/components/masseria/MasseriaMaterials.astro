@@ -1,0 +1,129 @@
+---
+import Reveal from '../Reveal.tsx';
+import I18n from '../I18n.astro';
+---
+
+<section id="materia" class="mh-materia" aria-labelledby="materia-title">
+	<div class="mh-materia__inner">
+		<div class="mh-materia__copy">
+			<Reveal client:visible inView delay={0.05} y={28}>
+				<h2 id="materia-title" class="mh-materia__title">
+					<I18n it="La materia" en="The material" />
+				</h2>
+			</Reveal>
+			<Reveal client:visible inView delay={0.18} y={32}>
+				<div class="mh-materia__text">
+					<I18n
+						as="p"
+						it="La pietra pugliese è l'elemento che più di ogni altro racconta l'identità di Margagnano. Le sue superfici, modellate dal tempo e dalla luce, custodiscono la memoria del luogo e ne definiscono il carattere con naturalezza."
+						en="Apulian stone is the element that most clearly tells the identity of Margagnano. Its surfaces, shaped by time and light, keep the memory of the place and define its character with ease."
+					/>
+					<I18n
+						as="p"
+						it="Accanto alla pietra, materiali come legno, calce, lino e ferro dialogano in un equilibrio essenziale, dando vita ad ambienti autentici e senza tempo. Ogni texture, finitura e dettaglio è stato scelto per valorizzare la materia nella sua forma più pura, lasciando che siano la semplicità, la luce e l'artigianalità a definire l'esperienza dello spazio."
+						en="Beside the stone, wood, lime, linen and iron speak in a spare balance, creating rooms that feel authentic and unhurried. Every texture, finish and detail is chosen to honour the material in its purest form, so that simplicity, light and craft define the experience of the space."
+					/>
+					<I18n
+						as="p"
+						it="Qui nulla è decorativo: ogni elemento nasce dal desiderio di rispettare l'architettura originaria e il paesaggio che la circonda, creando una continuità naturale tra interno ed esterno."
+						en="Nothing here is merely decorative: each element comes from the wish to respect the original architecture and the landscape around it, creating a natural continuity between inside and outside."
+					/>
+				</div>
+			</Reveal>
+		</div>
+
+		<div class="mh-materia__media">
+			<Reveal client:visible inView delay={0.22} x={36} y={0} duration={1.05}>
+				<img
+					src="/images/home/gallery/08-vault.jpg"
+					alt="Volta in pietra della masseria"
+					width="1444"
+					height="856"
+					loading="lazy"
+				/>
+			</Reveal>
+		</div>
+	</div>
+</section>
+
+<style>
+	.mh-materia {
+		position: relative;
+		overflow: hidden;
+		background-color: #fff;
+		background-image: linear-gradient(rgba(226, 214, 199, 0.71), rgba(226, 214, 199, 0.71));
+		color: var(--brand-marrone);
+	}
+
+	.mh-materia__inner {
+		position: relative;
+		z-index: 1;
+		display: grid;
+		grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.15fr);
+		gap: clamp(2.25rem, 5.5vw, 5rem);
+		align-items: center;
+		max-width: 90rem;
+		margin: 0 auto;
+		padding: clamp(4rem, 8vw, 6.5rem) clamp(1.25rem, 5vw, 5rem);
+	}
+
+	.mh-materia__title {
+		margin: 0 0 1.65rem;
+		font-family: 'Times Sans Serif', sans-serif;
+		font-weight: 400;
+		font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+		line-height: 1.1;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--brand-terracotta);
+	}
+
+	.mh-materia__text {
+		display: grid;
+		gap: 1.2rem;
+		max-width: 34rem;
+	}
+
+	.mh-materia__text p {
+		margin: 0;
+		font-family: 'Cardo', serif;
+		font-size: clamp(1rem, 1.2vw, 1.125rem);
+		line-height: 1.65;
+		color: var(--brand-marrone);
+	}
+
+	.mh-materia__media {
+		width: 100%;
+		aspect-ratio: 16 / 10;
+		overflow: hidden;
+		min-width: 0;
+	}
+
+	.mh-materia__media :global(div) {
+		width: 100%;
+		height: 100%;
+	}
+
+	.mh-materia__media img {
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	@media (max-width: 900px) {
+		.mh-materia__inner {
+			grid-template-columns: 1fr;
+			padding: clamp(3rem, 8vw, 4.5rem) clamp(1.25rem, 5vw, 2rem);
+		}
+
+		.mh-materia__media {
+			order: -1;
+			aspect-ratio: 4 / 3;
+		}
+
+		.mh-materia__title {
+			margin-bottom: 1.25rem;
+		}
+	}
+</style>

@@ -1,0 +1,28 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MasseriaHero from '../components/masseria/MasseriaHero.astro';
+import MasseriaOrigini from '../components/masseria/MasseriaOrigini.astro';
+import MasseriaTabs from '../components/masseria/MasseriaTabs.tsx';
+import MasseriaTabsStyles from '../components/masseria/MasseriaTabsStyles.astro';
+import MasseriaEssence from '../components/masseria/MasseriaEssence.astro';
+import MasseriaGalleryGrid from '../components/masseria/MasseriaGalleryGrid.astro';
+import MasseriaMaterials from '../components/masseria/MasseriaMaterials.astro';
+import MasseriaCompare from '../components/masseria/MasseriaCompare.astro';
+---
+
+<Layout title="La Masseria | Masseria Margagnano">
+	<Header tone="light" />
+	<main>
+		<MasseriaHero />
+		<MasseriaOrigini />
+		<MasseriaTabsStyles />
+		<MasseriaTabs client:visible />
+		<MasseriaEssence />
+		<MasseriaGalleryGrid />
+		<MasseriaMaterials />
+		<MasseriaCompare />
+	</main>
+	<Footer />
+</Layout>

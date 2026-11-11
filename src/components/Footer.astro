@@ -1,13 +1,20 @@
 ---
 // Footer: sfondo verde, logo bianco e informazioni di contatto.
 import Reveal from './Reveal.tsx';
+import I18n from './I18n.astro';
+
+interface Props {
+	homeHref?: string;
+}
+
+const { homeHref = '/home' } = Astro.props;
 ---
 
 <footer class="footer">
 	<div class="footer__inner">
 		<div class="footer__main">
 			<Reveal client:visible inView delay={0.05}>
-				<a class="footer__brand" href="/" aria-label="Masseria Margagnano - Home">
+				<a class="footer__brand" href={homeHref} aria-label="Masseria Margagnano - Home">
 					<img
 						class="footer__logo"
 						src="/logo/logo-full-white.svg"
@@ -45,7 +52,7 @@ import Reveal from './Reveal.tsx';
 
 		<div class="footer__bottom">
 			<p class="footer__collection">
-				Part of the{' '}
+				<I18n it="Parte della " en="Part of the " />
 				<a
 					href="https://www.dominiquedebayprivateretreats.com/masseria-margagnano-puglia-italy"
 					target="_blank"
@@ -94,7 +101,7 @@ import Reveal from './Reveal.tsx';
 		display: flex;
 		flex-direction: column;
 		gap: 0.35rem;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-style: normal;
 		font-size: clamp(0.95rem, 1.2vw, 1.05rem);
@@ -145,7 +152,7 @@ import Reveal from './Reveal.tsx';
 
 	.footer__collection {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-size: clamp(0.7rem, 0.9vw, 0.8rem);
 		letter-spacing: 0.18em;
@@ -163,7 +170,7 @@ import Reveal from './Reveal.tsx';
 
 	.footer__copy {
 		margin: 0;
-		font-family: 'New Caledonia LT Std', serif;
+		font-family: 'Cardo', serif;
 		font-weight: 400;
 		font-size: clamp(0.7rem, 0.9vw, 0.8rem);
 		letter-spacing: 0.18em;

@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import RoomsHero from '../../components/rooms/RoomsHero.astro';
+import RoomsOverview from '../../components/rooms/RoomsOverview.astro';
+import RoomsCollection from '../../components/rooms/RoomsCollection.astro';
+import RoomsSuites from '../../components/rooms/RoomsSuites.astro';
+import RoomsWhole from '../../components/rooms/RoomsWhole.astro';
+---
+
+<Layout title="Suites | Masseria Margagnano">
+	<Header tone="light" />
+	<main>
+		<RoomsHero />
+		<RoomsOverview />
+		<RoomsCollection />
+		<RoomsSuites />
+		<RoomsWhole />
+	</main>
+	<Footer />
+</Layout>
