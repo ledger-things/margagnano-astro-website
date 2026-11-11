@@ -16,22 +16,28 @@ type Slide = {
 
 const slides: Slide[] = [
 	{
-		left: '/images/home/gallery-vault.png',
-		midTop: '/images/home/gallery-grove.png',
-		midBottom: '/images/home/gallery-steps.png',
-		right: '/images/home/gallery-lantern.png',
+		left: '/images/home/gallery/57-sconce.jpg',
+		midTop: '/images/home/gallery/52-arch.jpg',
+		midBottom: '/images/home/gallery/40-facade.jpg',
+		right: '/images/home/gallery/37-chandelier.jpg',
 	},
 	{
-		left: '/images/home/gallery-lantern.png',
-		midTop: '/images/home/gallery-steps.png',
-		midBottom: '/images/home/gallery-grove.png',
-		right: '/images/home/gallery-vault.png',
+		left: '/images/home/gallery/60-cactus.jpg',
+		midTop: '/images/home/gallery/50-pergola.jpg',
+		midBottom: '/images/home/gallery/51-pergola.jpg',
+		right: '/images/home/gallery/07-door.jpg',
 	},
 	{
-		left: '/images/home/gallery-grove.png',
-		midTop: '/images/home/gallery-vault.png',
-		midBottom: '/images/home/gallery-lantern.png',
-		right: '/images/home/gallery-steps.png',
+		left: '/images/home/gallery/43-cypress.jpg',
+		midTop: '/images/home/gallery/46-grove.jpg',
+		midBottom: '/images/home/gallery/49-orchard.jpg',
+		right: '/images/home/gallery/08-vault.jpg',
+	},
+	{
+		left: '/images/home/gallery/57-sconce.jpg',
+		midTop: '/images/home/gallery/66-building.jpg',
+		midBottom: '/images/home/gallery/47-garden.jpg',
+		right: '/images/home/gallery/37-chandelier.jpg',
 	},
 ];
 

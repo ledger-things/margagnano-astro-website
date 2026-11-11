@@ -5,8 +5,8 @@ export const MEMBERS_HOME = '/home';
 const PUBLIC_PATHS = new Set([
 	'/',
 	'/philosophy',
-	'/life',
-	'/request-access',
+	'/contacts',
+	// TEASER: /life e /request-access non sono pubbliche. Vedi TEASER-DA-RIPRISTINARE.md
 	'/access',
 	'/privacy-policy',
 	'/robots.txt',

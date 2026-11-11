@@ -4,9 +4,10 @@ import I18n from './I18n.astro';
 
 interface Props {
 	moreHref?: string;
+	showMore?: boolean;
 }
 
-const { moreHref = '/life-in-margagnano' } = Astro.props;
+const { moreHref = '/life-in-margagnano', showMore = true } = Astro.props;
 ---
 
 <section id="life" class="life" aria-labelledby="life-title">
@@ -37,7 +38,7 @@ const { moreHref = '/life-in-margagnano' } = Astro.props;
 					<I18n
 						as="p"
 						it="Dalle colazioni che aprono la giornata ai momenti a bordo piscina, dai percorsi dedicati alla spa ai Rituali di Quiete, ogni esperienza si inserisce con naturalezza nel ritmo della masseria, offrendo il piacere di riscoprire il valore del tempo dedicato a sé."
-						en="From breakfasts that open the day to hours by the pool, from spa rituals to the quieter corners of the house, each experience finds its place in the rhythm of the masseria — a chance to recover the value of time kept for oneself."
+						en="From breakfasts that open the day to hours by the pool, from spa rituals to the quieter corners of the house, each experience finds its place in the rhythm of the masseria, a chance to recover the value of time kept for oneself."
 					/>
 					<I18n
 						as="p"
@@ -46,9 +47,11 @@ const { moreHref = '/life-in-margagnano' } = Astro.props;
 					/>
 				</div>
 			</Reveal>
-			<Reveal client:visible inView delay={0.38} y={20}>
-				<a class="life__cta" href={moreHref}>View more</a>
-			</Reveal>
+			{showMore ? (
+				<Reveal client:visible inView delay={0.38} y={20}>
+					<a class="life__cta" href={moreHref}>View more</a>
+				</Reveal>
+			) : null}
 		</div>
 	</div>
 </section>

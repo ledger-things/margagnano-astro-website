@@ -4,9 +4,10 @@ export const GET: APIRoute = () => {
 	const body = `User-agent: *
 Allow: /
 Allow: /philosophy
-Allow: /life
-Allow: /request-access
+Allow: /contacts
 Allow: /privacy-policy
+Disallow: /life
+Disallow: /request-access
 Disallow: /home
 Disallow: /masseria
 Disallow: /suites

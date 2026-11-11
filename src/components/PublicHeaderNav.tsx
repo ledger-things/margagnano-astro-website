@@ -22,7 +22,8 @@ function isActiveHref(href: string, pathname: string) {
 
 const navLinks = [
 	{ href: '/philosophy', label: { it: 'Masseria & Filosofia', en: 'Masseria & Philosophy' } },
-	{ href: '/life', label: { it: 'Life in Margagnano', en: 'Life in Margagnano' } },
+	// TEASER: voce Life nascosta. Vedi TEASER-DA-RIPRISTINARE.md
+	// { href: '/life', label: { it: 'Life in Margagnano', en: 'Life in Margagnano' } },
 ];
 
 export default function PublicHeader({
@@ -82,7 +83,9 @@ export default function PublicHeader({
 
 	const closeMenu = () => setMenuOpen(false);
 
-	const cta = hasAccess
+	// TEASER: pulsante Private Collection sostituito da Contatti.
+	// Per ripristinare, usa privateCta al posto di cta. Vedi TEASER-DA-RIPRISTINARE.md
+	const privateCta = hasAccess
 		? {
 				href: '/home',
 				label: lang === 'it' ? 'Entra nella collezione' : 'Enter the collection',
@@ -91,6 +94,11 @@ export default function PublicHeader({
 				href: '/request-access',
 				label: lang === 'it' ? 'Scopri la private collection' : 'Discover the private collection',
 			};
+	const cta = {
+		href: '/contacts',
+		label: lang === 'it' ? 'Contatti' : 'Contacts',
+	};
+	void privateCta;
 
 	const langSwitch = (
 		<div className="public-header__lang" role="group" aria-label={lang === 'it' ? 'Lingua' : 'Language'}>

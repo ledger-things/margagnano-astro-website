@@ -4,9 +4,10 @@ import I18n from './I18n.astro';
 
 interface Props {
 	moreHref?: string;
+	showMore?: boolean;
 }
 
-const { moreHref = '/experience' } = Astro.props;
+const { moreHref = '/experience', showMore = true } = Astro.props;
 ---
 
 <section id="experience" class="experience" aria-labelledby="experience-title">
@@ -31,9 +32,11 @@ const { moreHref = '/experience' } = Astro.props;
 				/>
 			</p>
 		</Reveal>
-		<Reveal client:visible inView delay={0.52} y={18}>
-			<a class="experience__cta" href={moreHref}>View more</a>
-		</Reveal>
+		{showMore ? (
+			<Reveal client:visible inView delay={0.52} y={18}>
+				<a class="experience__cta" href={moreHref}>View more</a>
+			</Reveal>
+		) : null}
 	</div>
 </section>
 

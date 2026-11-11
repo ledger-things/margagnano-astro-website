@@ -5,12 +5,13 @@ import I18n from '../I18n.astro';
 
 <section class="mh-hero" aria-labelledby="mh-hero-title">
 	<div class="mh-hero__texture" aria-hidden="true"></div>
+	<div class="mh-hero__tint" aria-hidden="true"></div>
 
 	<div class="mh-hero__frame">
 		<div class="mh-hero__media mh-hero__media--left">
 			<Reveal client:load delay={0.15} x={-28} y={0} duration={1.15}>
 				<img
-					src="/images/masseria/hero-left.jpg"
+					src="/images/home/gallery/52-arch.jpg"
 					alt=""
 					width="1040"
 					height="1232"
@@ -48,7 +49,7 @@ import I18n from '../I18n.astro';
 		<div class="mh-hero__media mh-hero__media--right">
 			<Reveal client:load delay={0.3} x={28} y={0} duration={1.15}>
 				<img
-					src="/images/masseria/hero-right.png"
+					src="/images/home/gallery/40-facade.jpg"
 					alt=""
 					width="888"
 					height="1232"
@@ -76,7 +77,14 @@ import I18n from '../I18n.astro';
 		background-image: url('/images/home/masseria-texture.png');
 		background-size: cover;
 		background-position: center;
-		opacity: 0.45;
+		pointer-events: none;
+	}
+
+	.mh-hero__tint {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		background: rgba(233, 227, 211, 0.45);
 		pointer-events: none;
 	}
 

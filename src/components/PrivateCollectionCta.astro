@@ -6,12 +6,24 @@ interface Props {
 	imageSrc?: string;
 	href?: string;
 	variant?: 'default' | 'hero';
+	titleIt?: string;
+	titleEn?: string;
+	textIt?: string;
+	textEn?: string;
+	linkIt?: string;
+	linkEn?: string;
 }
 
 const {
 	imageSrc = '/images/home/masseria-arch.png',
 	href = '/request-access',
 	variant = 'default',
+	titleIt = 'Scopri la private collection',
+	titleEn = 'Discover the private collection',
+	textIt = "Richiedi l'accesso per scoprire ciò che sta oltre la prima impressione di Margagnano.",
+	textEn = 'Request access to discover what lies beyond the first impression of Margagnano.',
+	linkIt = "Richiedi l'accesso privato →",
+	linkEn = 'Request private access →',
 } = Astro.props;
 ---
 
@@ -26,20 +38,17 @@ const {
 		<div class="private-cta__copy">
 			<Reveal client:visible inView delay={0.08} y={24}>
 				<h2 id="private-cta-title" class="private-cta__title">
-					<I18n it="Scopri la private collection" en="Discover the private collection" />
+					<I18n it={titleIt} en={titleEn} />
 				</h2>
 			</Reveal>
 			<Reveal client:visible inView delay={0.18} y={20}>
 				<p class="private-cta__text">
-					<I18n
-						it="Richiedi l'accesso per scoprire ciò che sta oltre la prima impressione di Margagnano."
-						en="Request access to discover what lies beyond the first impression of Margagnano."
-					/>
+					<I18n it={textIt} en={textEn} />
 				</p>
 			</Reveal>
 			<Reveal client:visible inView delay={0.28} y={16}>
 				<a class="private-cta__link" href={href}>
-					<I18n it="Richiedi l'accesso privato →" en="Request private access →" />
+					<I18n it={linkIt} en={linkEn} />
 				</a>
 			</Reveal>
 		</div>
